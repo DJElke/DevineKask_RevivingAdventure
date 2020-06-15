@@ -18,7 +18,23 @@ $routes = array(
     'photoeditor' => array (
       'controller' => 'Navigation',
       'action' => 'photoeditor'
-    )
+    ),
+    'home' => array (
+      'controller' => 'Home',
+      'action' => 'home'
+    ),
+    'ownedVacation' => array (
+      'controller' => 'Vacation',
+      'action' => 'ownedVacation'
+    ),
+    'ownerStation1' => array (
+      'controller' => 'Station',
+      'action' => 'ownerStation1'
+    ),
+    'ownerStation1' => array (
+      'controller' => 'Station',
+      'action' => 'ownerStation1'
+    ),
 );
 
 if(empty($_GET['page'])) {

@@ -6,15 +6,18 @@ let currentTab = 0;
 //konva stage
 let stageWidth = 1000;
 let stageHeight = 1000;
-//making the container
-let stage = new Konva.Stage({
-  container: 'cs',
-  width: stageWidth,
-  height: stageHeight,
-});
+
 //getting the canvas element
 let container = document.querySelector('.cs');
-
+let stage ='';
+  if (container != null){
+  //making the container
+  let stage = new Konva.Stage({
+    container: 'cs',
+    width: stageWidth,
+    height: stageHeight,
+  });
+}
 const init = () => {
   // PHOTO EDITOR 
   //Make sure the konva stage and background image is scaled right.
@@ -23,12 +26,13 @@ const init = () => {
       fitStageIntoParentContainer();
     }
   });
+  if (typeof window.orientation !== 'undefined' && stage != '') { 
   //then load the container
-  if (typeof window.orientation !== 'undefined') { 
     loadCanvasMobile();
-  }else{
-    loadCanvasDesktop();
   }
+  // else{
+  //   loadCanvasDesktop();
+  // }
   //after that you want to "listen" if the window resizes or not
   window.addEventListener('resize', () => {
     if(container != null){

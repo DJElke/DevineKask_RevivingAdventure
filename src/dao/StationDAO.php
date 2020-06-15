@@ -4,64 +4,90 @@ require_once __DIR__ . '/DAO.php';
 
 class StationDAO extends DAO {
  
-  public function insertCharacterCard($data) {
-    
-    try {
-      $this->pdo->beginTransaction();
+  public function insertCharacterCard($cards) {
+    $errors = $this->validate( $cards );
+    if (empty($errors)) {
+      try {
+        $this->pdo->beginTransaction();
 
-      $sql = "INSERT INTO Card (cardtype_id) VALUES (:cardtype_id)";
-      $stmt = $this->pdo->prepare($sql);
-      $stmt->execute(array(
-          ":cardtype_id" => 1
-        )
-      );
+        foreach ($cards as $card){
 
-      $sql = "hier komt statement1";
-      $stmt = $this->pdo->prepare($sql);
-      $stmt->execute(array(
-          "hier komen parameters"
-      
-        )
-      );
+          $sql = "INSERT INTO `Card` (`cardtype_id`) VALUES (:cardtype_id);";
+          $stmt = $this->pdo->prepare($sql);
+          $stmt->execute(array(
+              ':cardtype_id' => 1      
+            )
+          );
+          
+          $cardID = $this->pdo->lastInsertId();
 
-      $sql = "hier komt statement1";
-      $stmt = $this->pdo->prepare($sql);
-      $stmt->execute(array(
-          "hier komen parameters"
-      
-        )
-      );
+          $sql = "INSERT INTO `Title` (`description`) VALUES (:title_description);";
+          $stmt = $this->pdo->prepare($sql);
+          $stmt->execute(array(
+              ':title_description' => $card['title']      
+            )
+          );
 
-      $sql = "hier komt statement1";
-      $stmt = $this->pdo->prepare($sql);
-      $stmt->execute(array(
-          "hier komen parameters"
-      
-        )
-      );
+          $titleID = $this->pdo->lastInsertId();
 
-      $sql = "hier komt statement1";
-      $stmt = $this->pdo->prepare($sql);
-      $stmt->execute(array(
-          "hier komen parameters"
-      
-        )
-      );
+          $sql = "INSERT INTO `Card_Title` (`card_id`, `title_id`) VALUES (:card_id, :title_id);";
+          $stmt = $this->pdo->prepare($sql);
+          $stmt->execute(array(
+              ':card_id' => $cardID,
+              ':title_id' => $titleID      
+            )
+          );
 
-      $sql = "hier komt statement1";
-      $stmt = $this->pdo->prepare($sql);
-      $stmt->execute(array(
-          "hier komen parameters"
-      
-        )
-      );
+          // $sql = "INSERT INTO `Picture` (`image`) VALUES (:picture);";
+          // $stmt = $this->pdo->prepare($sql);
+          // $stmt->execute(array(
+          //     ':picture' => $data['picture']      
+          //   )
+          // );
 
+          // $pictureID = $this->pdo->lastInsertId();
 
-    } catch (Exception $e) {
-        echo $e-> getMessage();
-        $this->pdo->rollback();
+          // $sql = "INSERT INTO `Card_Title` (`card_id`, `picture_id`) VALUES (:card_id, picture_id);";
+          // $stmt = $this->pdo->prepare($sql);
+          // $stmt->execute(array(
+          //     ':card_id' => $cardID,
+          //     ':picture_id' => $pictureID      
+          //   )
+          // );
+
+          $sql = "INSERT INTO `Vacation_Card` (`card_id`, `vacation_id`) VALUES (:card_id, :vacation_id);";
+          $stmt = $this->pdo->prepare($sql);
+          $stmt->execute(array(
+              ':card_id' => $cardID,
+              ':vacation_id' => $card['vacation_id']
+            )
+          );
+
+          unset($cardID);
+          // unset($pictureID);
+          unset($titleID);
+        }
+        $this->pdo->commit();
+
+      } catch (Exception $e) {
+          echo $e-> getMessage();
+          $this->pdo->rollback();
+        }
     }
   }
-   
+
+  public function validate( $cards ){
+    // $errors = [];
+    // if (!isset($data['voornaam'])) {
+    //   $errors['voornaam'] = 'Gelieve in te vullen';
+    // }
+    // if (empty($data['achternaam']) ){
+    //   $errors['achternaam'] = 'Gelieve in te vullen';
+    // }
+    // if (!isset($data['email'])) {
+    //   $errors['email'] = 'Gelieve in te vullen';
+    // }
+    // return $errors;
+  }
 }
 ?>

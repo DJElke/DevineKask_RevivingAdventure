@@ -1,8 +1,66 @@
+/* GENERAL */
 html {
   /* font-size: 22px; */
   width: 100%;
   height: 100vh;
 }
+
+body{
+  padding: 0;
+  margin: 0;
+}
+
+.containerItem--left{
+  width: 50%;
+  height: 100%;
+  padding: 0.5rem;
+}
+
+.containerItem--right{
+  width: 50%;
+  height: 100%;
+  padding: 0.5rem;
+}
+
+.textLeft{
+  text-align: left;
+}
+
+.textRight{
+  text-align: right;
+}
+
+/* PHOTOEDITOR CSS */
+/* ----------------- */
+/* container which contains 2 divs inside */
+/* menu container */
+.menuContainer{
+  width: 100%;
+  height: 15%;
+  display: flex;
+  background-color: red;
+}
+
+/* photo container */
+.photoContainer{
+  width: 100%;
+  height: 60%;
+}
+
+/* options container */
+.optionsContainer{
+  width: 100%;
+  height: 25%;
+  background-color: red;
+}
+
+/* canvas */
+.cs{
+  width: 100%;
+  height: auto;
+}
+
+/* START SARAH CSS */
 
 .navigation, .tabs, .participant__list {
   display: flex;

@@ -1,0 +1,63 @@
+/* PHOTOEDITOR CSS */
+/* ----------------- */
+
+/* the responsive grid */
+.photoeditor__grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 0.2fr auto 0.5fr;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* container which contains 2 divs inside */
+/* menu container */
+.menuContainer{
+  grid-column: 1 / span 2;
+  width: 100%;
+  display: flex;
+  background-color: red;
+}
+
+/* photo container */
+.photoContainer{
+  grid-column: 1 / span 2;
+  width: 100%;
+  background-color: blue;
+}
+
+/* options container */
+.optionsContainer{
+  grid-column: 1 / span 2;
+  width: 100%;
+  background-color: yellow;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* sticker */
+.stickerContainer{
+  width: 5rem;
+  height: 5rem;
+  padding: 1rem;
+  display: inline-block;
+  float: none;
+}
+
+.sticker{
+  max-width: 5rem;
+  max-height: 5rem;
+  min-width: auto;
+  min-height: auto;
+}
+
+/* canvas */
+.cs{
+  width: 100%;
+  height: auto;
+  margin-top: 2rem;
+}

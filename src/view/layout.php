@@ -9,7 +9,6 @@
   </head>
   <body>
     <main>
-      <!-- <header><h1><?php echo $title; ?></h1></header> -->
       <?php echo $content;?>
     </main>
     <?php echo $js; ?>

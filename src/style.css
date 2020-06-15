@@ -1,0 +1,54 @@
+body{
+  /* background-color: rgb(236, 197, 197); */
+  position: fixed;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* GENERAL */
+.textLeft{
+  text-align: left;
+}
+
+.textRight{
+  text-align: right;
+}
+
+/* WRAPPER WITH 2 DIVS INSIDE (AND NEXT TO EACHOTHER) */
+.menuContainer{
+  width: 100%;
+  height: 15%;
+  display: flex;
+  background-color: red;
+}
+
+.containerItem--left{
+  width: 50%;
+  height: 100%;
+  padding: 0.5rem;
+}
+
+.containerItem--right{
+  width: 50%;
+  height: 100%;
+  padding: 0.5rem;
+}
+
+/* PHOTO WRAPPER */
+.photoContainer{
+  width: 100%;
+  height: 60%;
+}
+
+/* OPTIONS WRAPPER */
+.optionsContainer{
+  width: 100%;
+  height: 25%;
+  background-color: red;
+}
+
+.cs{
+  width: 100%;
+  height: auto;
+}

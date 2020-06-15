@@ -1,6 +1,7 @@
 require('./style.css');
 require('konva');
 {
+// ----VARIABLES
 let currentTab = 0;
 //konva stage
 let stageWidth = 1000;
@@ -11,12 +12,16 @@ let stage = new Konva.Stage({
   width: stageWidth,
   height: stageHeight,
 });
+//getting the canvas element
+let container = document.querySelector('.cs');
 
 const init = () => {
   // PHOTO EDITOR 
   //Make sure the konva stage and background image is scaled right.
   window.addEventListener('load', () => {
-    fitStageIntoParentContainer();
+    if(container != null){
+      fitStageIntoParentContainer();
+    }
   });
   //then load the container
   if (typeof window.orientation !== 'undefined') { 
@@ -26,7 +31,9 @@ const init = () => {
   }
   //after that you want to "listen" if the window resizes or not
   window.addEventListener('resize', () => {
-    fitStageIntoParentContainer();
+    if(container != null){
+      fitStageIntoParentContainer();
+    }
   })
   
   initLoadFile();
@@ -104,7 +111,6 @@ const loadCanvasMobile = () => {
   Konva.Image.fromURL(bgImageURL, image => {
     image.attrs.image.width = 1000;
     image.attrs.image.height = 1000;
-    console.log(image);
     background.add(image);
     background.draw();
   });
@@ -140,8 +146,8 @@ const loadCanvasMobile = () => {
   }); 
 };
 
+//method to fit the stage into the size of the parent container (make it responsive)
 const fitStageIntoParentContainer = () => {
-  let container = document.querySelector('.cs');
   //fit the stage into the parent
   let containerWidth = container.offsetWidth;
   //scale the stage

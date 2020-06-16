@@ -4,8 +4,8 @@
 /* the responsive grid */
 .photoeditor__grid{
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 0.2fr auto 0.4fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 0.2fr 1fr 0.1fr 0.3fr;
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -14,43 +14,54 @@
 /* container which contains 2 divs inside */
 /* menu container */
 .menuContainer{
-  grid-column: 1 / span 2;
+  grid-column: 1 / span 3;
   width: 100%;
   display: flex;
-  background-color: red;
+  padding: 1rem;
 }
 
 /* photo container */
 .photoContainer{
-  grid-column: 1 / span 2;
+  grid-column: 1 / span 3;
   width: 100%;
-  background-color: blue;
+  background-color: #424A9F;
 }
 
 /* options container */
 .optionsContainer{
-  grid-column: 1 / span 2;
+  grid-column: 1 / span 3;
   width: 100%;
   height: auto;
-  background-color: yellow;
+  background-color: white;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
   position: relative;
   -webkit-overflow-scrolling: touch;
+  padding-top: 1rem;
+  padding-left: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 /* sticker */
 .stickerContainer{
-  width: 5rem;
+  width: 4rem;
   height: auto;
-  padding: 1rem;
   float: none;
   display: inline-block;
   zoom: 1;
+  padding-right: 0.5rem;
 }
 
 .sticker{
+  width: 100%;
+  height: auto;
+}
+
+.textItem{
+  color: #424A9F;
+  text-align: center;
+  vertical-align: middle;
   width: 100%;
   height: auto;
 }
@@ -59,5 +70,34 @@
 .cs{
   width: 100%;
   height: auto;
-  margin-top: 3.5rem;
+  margin-top: 1rem;
+}
+
+/* option menu */
+.editOption{
+  border: #424A9F solid 2px;
+  background-color: #F8A593;
+  color: white;
+  padding: 1rem;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  line-height: auto;
+}
+
+.editOption--checked{
+  background-color: white;
+  color: #424A9F;
+}
+
+.editOption--left{
+  grid-column: 1;
+}
+
+.editOption--middle{
+  grid-column: 2;
+}
+
+.editOption--right{
+  grid-column: 3;
 }

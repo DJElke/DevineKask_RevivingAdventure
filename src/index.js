@@ -6,109 +6,90 @@ let currentTab = 0;
 //konva stage
 let stageWidth = 1000;
 let stageHeight = 1000;
-
-//getting the canvas element
+//getting the canvas elements
 let container = document.querySelector('.cs');
 let stage ='';
-  if (container != null){
+let background ='';
+if (container != null){
   //making the container
-  let stage = new Konva.Stage({
+  stage = new Konva.Stage({
     container: 'cs',
     width: stageWidth,
     height: stageHeight,
   });
 }
+//photoeditor page: getting the options buttons
+let stickersButton = document.querySelector('.stickersButton');
+let textButton = document.querySelector('.textButton');
+//optionsContainer --> content
+let addTextButton = document.querySelector('.textItem');
+let dragItems = document.querySelector('.dragItems');
+
+
+
 const init = () => {
-  // PHOTO EDITOR 
+  // PHOTO EDITOR SETUP 
   //Make sure the konva stage and background image is scaled right.
   window.addEventListener('load', () => {
     if(container != null){
       fitStageIntoParentContainer();
     }
+    if(stage != ''){
+    //put the stickers button on "checked"
+    stickersButton.classList.add('editOption--checked');
+    addTextButton.classList.add('hide');
+    //then load the container
+    addBackground();
+    }
   });
-  if (typeof window.orientation !== 'undefined' && stage != '') { 
-  //then load the container
-    loadCanvasMobile();
-  }
-  // else{
-  //   loadCanvasDesktop();
-  // }
   //after that you want to "listen" if the window resizes or not
   window.addEventListener('resize', () => {
     if(container != null){
       fitStageIntoParentContainer();
     }
   })
-  
+
+  //  PHOTO EDITOR OPTIONS
+  optionsMenuClicked();
+  //add eventlistener to the stickers so they can be added to the canvas
+  addStickerToCanvas();
+  //add eventlistener to the text button so they can add text to the canvas
+  addTextToCanvas();
+
   initLoadFile();
   initTabButtons();
   showTab(currentTab);
 };
 
-//deze mag dan op het einde weg ofso
-// const loadCanvasDesktop = () => {
-//   let width = 540;
-//   let height = 960;
+const optionsMenuClicked = () => {
+  //stickersbutton clicked
+  stickersButton.addEventListener('click', () => {
+    //show right edit options
+    addTextButton.classList.add('hide');
+    dragItems.classList.remove('hide');
 
-//   //making the container
-//   let stage = new Konva.Stage({
-//       container: 'cs',
-//       width: width,
-//       height: height,
-//   });
-//   //making the background layer
-//   let background = new Konva.Layer();
-//   stage.add(background);
-//   //making the sticker layer
-//   let layer = new Konva.Layer();
-//   stage.add(layer);
-    
-//   //getting the stickers
-//   let itemURL = '';
-//   let dragitems = document.getElementById('drag-items');
-//   dragitems.addEventListener('dragstart', e => {
-//     itemURL = e.target.src;
-//   });
+    //change the edit options menu
+    textButton.classList.remove('editOption--checked');
+    stickersButton.classList.add('editOption--checked');
+  });
 
-//   //add the background to the background layer and resize it so it fits
-//   let bgImageURL = 'assets/img/bg.PNG';
-//   Konva.Image.fromURL(bgImageURL, image => {
-//     image.attrs.image.width = width;
-//     image.attrs.image.height = height;
-//     background.add(image);
-//     background.draw();
-//   });
+  //textButton clicked
+  textButton.addEventListener('click', () => {
+    //show right edit options
+    dragItems.classList.add('hide');
+    addTextButton.classList.remove('hide');
 
-//   //add sticker layer before background 
-//   background.zIndex(0);
-//   layer.zIndex(1);
+    //change the edit options menu 
+    stickersButton.classList.remove('editOption--checked');
+    textButton.classList.add('editOption--checked');
 
-//   let con = stage.container();
-//   con.addEventListener('dragover', e => {
-//     e.preventDefault();
-//   });
+  });
+}
 
-//   con.addEventListener('drop', e => {
-//     e.preventDefault();
-//     stage.setPointersPositions(e);
-//     Konva.Image.fromURL(itemURL, image => {
-//       //image.attrs.image.width = 60;
-//       //image.attrs.image.height = 50;
-//       layer.add(image);
-//       image.position(stage.getPointerPosition());
-//       image.draggable(true);
-//       layer.draw();
-//       });
-//   });
-// };
-
-const loadCanvasMobile = () => {
+const addBackground = () => {
   //making the background layer
-  let background = new Konva.Layer();
+  background = new Konva.Layer();
   stage.add(background);
-  //making the sticker layer
-  let layer = new Konva.Layer();
-  stage.add(layer);
 
   //add the background to the background layer and resize it so it fits
   let bgImageURL = 'assets/img/bg.png';
@@ -118,36 +99,6 @@ const loadCanvasMobile = () => {
     background.add(image);
     background.draw();
   });
-
-  //getting the stickers from the stickerlane
-  let itemURL = '';
-  let dragitems = document.getElementById('drag-items');
-
-  //When you click on a sticker, add it to the stickerlayer and make it possible to resize
-  dragitems.addEventListener('click', e => {
-    itemURL = e.target.src;
-    let imgObj = new Image();
-    imgObj.src = itemURL;
-    let sticker = new Konva.Image({
-        x: 500,
-        y: 500,
-        image: imgObj,
-        draggable: true,
-      });
-    layer.add(sticker);
-    let tr = new Konva.Transformer({
-      nodes: [sticker],
-      keepRatio: true,
-      enabledAnchors: [
-        'top-left',
-        'top-right',
-        'bottom-left',
-        'bottom-right',
-        ],
-      });
-    layer.add(tr);
-    layer.draw();
-  }); 
 };
 
 //method to fit the stage into the size of the parent container (make it responsive)
@@ -160,6 +111,80 @@ const fitStageIntoParentContainer = () => {
   stage.height(stageHeight * scale);
   stage.scale({x: scale, y: scale});
   stage.draw();
+};
+
+const addStickerToCanvas = () => {
+  //making the sticker layer
+  let stickerLayer = new Konva.Layer();
+  stage.add(stickerLayer);
+  //When you click on a sticker, add it to the stickerlayer and make it possible to resize
+  dragItems.addEventListener('click', e => {
+    let itemURL = '';
+    itemURL = e.target.src;
+    let imgObj = new Image();
+    imgObj.src = itemURL;
+    let sticker = new Konva.Image({
+      x: 500,
+      y: 500,
+      image: imgObj,
+      draggable: true,
+    });
+    stickerLayer.add(sticker);
+    let tr = new Konva.Transformer({
+      nodes: [sticker],
+      keepRatio: true,
+      enabledAnchors: [
+        'top-left',
+        'top-right',
+        'bottom-left',
+        'bottom-right',
+        ],
+      });
+    stickerLayer.add(tr);
+    stickerLayer.draw();
+  }); 
+};
+
+const addTextToCanvas = () => {
+  //making the text layer
+  let textLayer = new Konva.Layer();
+  stage.add(textLayer);
+  addTextButton.addEventListener('click', () => {
+    let textNode = new Konva.Text({
+      text: 'Double click to edit',
+      x: 500,
+      y: 500,
+      fontSize: 50,
+      fontStyle: 'bold',
+      stroke: 'white',
+      strokeWidth: 3,
+      fill: '#424A9F',
+      draggable: true,
+      width: 'auto',
+    });
+    textLayer.add(textNode);
+    let tr = new Konva.Transformer({
+      node: textNode,
+      enabledAnchors: [
+        'middle-left',
+        'middle-right'
+      ],
+      //set minimum width of text
+      boundBoxFunc: (oldBox, newBox) => {
+        newBox.width = Math.max(30, newBox.width);
+        return newBox;
+      },
+    });
+    textNode.on('transform', () => {
+      //reset scale, so only the width is changing by transformer
+      textNode.setAttrs({
+        width: textNode.width() * textNode.scaleX(),
+        scaleX: 1,
+      });
+    });
+    textLayer.add(tr);
+    textLayer.draw();
+  });
 };
 
 
@@ -218,6 +243,63 @@ const prev = () => {
   // Display the correct tab
   showTab(currentTab);
 }
+
+//deze mag dan op het einde weg ofso
+// const loadCanvasDesktop = () => {
+//   let width = 540;
+//   let height = 960;
+
+//   //making the container
+//   let stage = new Konva.Stage({
+//       container: 'cs',
+//       width: width,
+//       height: height,
+//   });
+//   //making the background layer
+//   let background = new Konva.Layer();
+//   stage.add(background);
+//   //making the sticker layer
+//   let layer = new Konva.Layer();
+//   stage.add(layer);
+    
+//   //getting the stickers
+//   let itemURL = '';
+//   let dragitems = document.getElementById('drag-items');
+//   dragitems.addEventListener('dragstart', e => {
+//     itemURL = e.target.src;
+//   });
+
+//   //add the background to the background layer and resize it so it fits
+//   let bgImageURL = 'assets/img/bg.PNG';
+//   Konva.Image.fromURL(bgImageURL, image => {
+//     image.attrs.image.width = width;
+//     image.attrs.image.height = height;
+//     background.add(image);
+//     background.draw();
+//   });
+
+//   //add sticker layer before background 
+//   background.zIndex(0);
+//   layer.zIndex(1);
+
+//   let con = stage.container();
+//   con.addEventListener('dragover', e => {
+//     e.preventDefault();
+//   });
+
+//   con.addEventListener('drop', e => {
+//     e.preventDefault();
+//     stage.setPointersPositions(e);
+//     Konva.Image.fromURL(itemURL, image => {
+//       //image.attrs.image.width = 60;
+//       //image.attrs.image.height = 50;
+//       layer.add(image);
+//       image.position(stage.getPointerPosition());
+//       image.draggable(true);
+//       layer.draw();
+//       });
+//   });
+// };
 
 init();
 

@@ -4,6 +4,8 @@ html {
   width: 100%;
   height: 100vh;
   overflow-y: hidden;
+  font-family: avenir;
+  font-style: normal;
 }
 
 body{
@@ -30,3 +32,34 @@ body{
 .textRight{
   text-align: right;
 }
+
+.text--big{
+  font-size: 2rem;
+}
+
+.floatRight{
+  float: right;
+}
+
+.primaryButton{
+  border: solid #424A9F 2px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  text-decoration: none;
+  background-color: #424A9F;
+  box-shadow: 0.3rem 0.3rem #424A9F;
+  color:white;
+}
+
+.secondaryButton{
+  border: solid #424A9F 2px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  box-shadow: 0.3rem 0.3rem #424A9F;
+  text-decoration: none;
+  color: #424A9F;
+  font-style: bold;
+}
+
+.hide{
+  display: none;
+}
+

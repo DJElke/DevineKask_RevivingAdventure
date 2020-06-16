@@ -12,7 +12,7 @@ let stage ='';
 let background ='';
 if (container != null){
   //making the container
-    stage = new Konva.Stage({
+  stage = new Konva.Stage({
     container: 'cs',
     width: stageWidth,
     height: stageHeight,
@@ -50,11 +50,15 @@ const init = () => {
   })
 
   //  PHOTO EDITOR OPTIONS
-  optionsMenuClicked();
-  //add eventlistener to the stickers so they can be added to the canvas
-  addStickerToCanvas();
+  if(stickersButton != null){
+    optionsMenuClicked();
+    //add eventlistener to the stickers so they can be added to the canvas
+    addStickerToCanvas();
+  }
+  if(textButton != null){
   //add eventlistener to the text button so they can add text to the canvas
   addTextToCanvas();
+  }
 
   initLoadFile();
   initTabButtons();

@@ -12,7 +12,7 @@ let stage ='';
 let background ='';
 if (container != null){
   //making the container
-  stage = new Konva.Stage({
+    stage = new Konva.Stage({
     container: 'cs',
     width: stageWidth,
     height: stageHeight,

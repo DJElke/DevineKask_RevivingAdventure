@@ -31,9 +31,9 @@ $routes = array(
       'controller' => 'Station',
       'action' => 'ownerStation1'
     ),
-    'ownerStation1' => array (
+    'ownerStation2' => array (
       'controller' => 'Station',
-      'action' => 'ownerStation1'
+      'action' => 'ownerStation2'
     ),
 );
 

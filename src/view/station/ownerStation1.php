@@ -1,15 +1,15 @@
-<header>
-  <a href="index.php?page=home">
-      <span class="close">&#10005;</span>
-    </a>
-  <h1>Station one </h1>
-  <h2>Player cards for each player</h2>
-</header>
+<a href="index.php?page=home">
+  <span class="close">&#10005;</span>
+</a>
 
 <div class="tab">
-<img src='assets/passport.svg'>
-<p>Choose for every friend who is in this game a fitting character trait and a beautiful photo.<p>
-<button type="button" class="nextBtn" >START</button>
+  <header>
+    <h1>Station one </h1>
+    <h2>Player cards for each player</h2>
+  </header>
+  <img src='assets/illustrations/passport.svg'>
+  <p>Choose for every friend who is in this game a fitting character trait and a beautiful photo.<p>
+  <button type="button" class="nextBtn" >START</button>
 </div>
 
 <form class="characterCardForm" action="index.php?page=ownerStation1" method="post">

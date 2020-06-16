@@ -1,5 +1,6 @@
 @import './css/algemeen.css';
 @import './css/photoeditor.css';
+@import './css/home.css';
 
 /* START SARAH CSS */
 
@@ -67,5 +68,28 @@ img{
   display: flex;
   flex-flow: row;
   align-items: baseline;
+}
+
+.itemCardForm__img {
+  visibility: hidden;
+
+}
+
+.itemCardFrom__imagesholder {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.itemCard__output__label {
+  width: 150px;
+  height: 150px;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+
+}
+
+.itemCard__output__label .output {
+  height: 150px;
+  width: 150px;
 }
 

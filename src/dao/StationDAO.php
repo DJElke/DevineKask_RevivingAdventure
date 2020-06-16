@@ -89,5 +89,16 @@ class StationDAO extends DAO {
     // }
     // return $errors;
   }
+
+  public function updateStatus($vac_id, $user_id){
+    $sql = "UPDATE `Vacation_User` SET status = status + 1 WHERE user_id = :user_id AND vacation_id = :vacation_id ;";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute(array(
+        ':user_id' => $user_id,
+        ':vacation_id' => $vac_id
+      )
+    );
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+  }
 }
 ?>

@@ -18,14 +18,27 @@ class StationController extends Controller{
       $this->set('participants', $participants);
 
       if (!empty($_POST['action'])) {
-        $this->_handleAdd();
+        $this->_handleAddCharacterCard();
+      }
+      
+    }
+
+    public function ownerStation2() {
+      $this->set('title', 'station 2');
+
+      $participants = $this->vacationDAO-> getParticipants($_GET['id']);
+      $this->set('participants', $participants);
+
+      if (!empty($_POST['action'])) {
+        $this->_handleAddItemCard();
       }
       
     }
   
-  
-    private function _handleAdd() {
-  
+    private function _handleAddCharacterCard() {
+      $loggedInUser = 1;
+
+
       $cards = array();
 
       if($_POST['action'] == 'add'){
@@ -41,12 +54,39 @@ class StationController extends Controller{
         unset($i);
       }
      
-      $insertCards = $this->stationDAO->insertCharacterCard($cards);
-      // if (empty($insertCards)) {
-      //   $errors = $this->stationDAO->validate($cards);
+      // $insertCards = $this->stationDAO->insertCharacterCard($cards);
+      // if (!empty($insertCards)) {
+      //   $this->stationDAO->updateStatus($card['vacation_id'],$loggedInUser);
       // }
-      
-      header('Location: index.php?page=ownedVacation');
+
+      if (empty($insertCards)) {
+        $errors = $this->stationDAO->validate($cards);
+      }
+
+      header("Location: index.php?page=ownedVacation&id=" . $cards[0]['vacation_id']);
+      exit();
+    }
+
+    private function _handleAddItemCard() {
+      $loggedInUser = 1;
+
+
+      $cards = array();
+
+      if($_POST['action'] == 'add'){
+        
+        }
+     
+      // $insertCards = $this->stationDAO->insertCharacterCard($cards);
+      // if (!empty($insertCards)) {
+      //   $this->stationDAO->updateStatus($card['vacation_id'],$loggedInUser);
+      // }
+
+      if (empty($insertCards)) {
+        $errors = $this->stationDAO->validate($cards);
+      }
+
+      header("Location: index.php?page=ownedVacation&id=" . $_POST['vacation_id']);
       exit();
     }
   }

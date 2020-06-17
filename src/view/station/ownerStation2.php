@@ -14,16 +14,20 @@
 <form class="itemCardForm" action="index.php?page=ownerStation2" method="post">
 <input type="hidden" name="vacation_id" value="<?php echo $_GET['id'];?>" />
 <?php $i = 0 ?> 
+<!-- set amount of pictures that need to be uploaded per person -->
+<?php $demoGame = 1?> 
+<?php $actualGame = 6?>
+
   <?php foreach($participants as $participant): ?>
     <div class="tab">
       <p>Item cards for <?php echo $participant['name'] ?></p>
       <div class="itemCardFrom__imagesholder">
-      <?php for($e = 1; $e <= 6; $e++): ?>
-      <label for="ptImage<?php echo $i;?>" class="itemCard__output__label">
-        <img class="output"/>
-        <input type="file" accept="image/*" class="itemCardForm__img" name="image" id="ptImage<?php echo $i;?>">
-      </label>
-      <?php endfor; ?>
+        <?php for($e = 1; $e <= $demoGame; $e++): ?>
+        <label for="ptImage<?php echo $i;?>" class="itemCard__output__label">
+          <img class="output"/>
+          <input type="file" accept="image/*" class="itemCardForm__img" name="itemCardImage<?php echo $i;?>" id="ptImage<?php echo $i;?>">
+        </label>
+        <?php endfor; ?>
       </div>
       <div>
         <button type="button" class="prevBtn">PREVIOUS</button>

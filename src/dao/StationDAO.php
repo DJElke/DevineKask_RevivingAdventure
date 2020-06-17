@@ -38,22 +38,22 @@ class StationDAO extends DAO {
             )
           );
 
-          // $sql = "INSERT INTO `Picture` (`image`) VALUES (:picture);";
-          // $stmt = $this->pdo->prepare($sql);
-          // $stmt->execute(array(
-          //     ':picture' => $data['picture']      
-          //   )
-          // );
+          $sql = "INSERT INTO `Picture` (`image`) VALUES (:image);";
+          $stmt = $this->pdo->prepare($sql);
+          $stmt->execute(array(
+              ':image' => $card['image']      
+            )
+          );
 
-          // $pictureID = $this->pdo->lastInsertId();
+          $pictureID = $this->pdo->lastInsertId();
 
-          // $sql = "INSERT INTO `Card_Title` (`card_id`, `picture_id`) VALUES (:card_id, picture_id);";
-          // $stmt = $this->pdo->prepare($sql);
-          // $stmt->execute(array(
-          //     ':card_id' => $cardID,
-          //     ':picture_id' => $pictureID      
-          //   )
-          // );
+          $sql = "INSERT INTO `Card_Picture` (`card_id`, `picture_id`) VALUES (:card_id, :picture_id);";
+          $stmt = $this->pdo->prepare($sql);
+          $stmt->execute(array(
+              ':card_id' => $cardID,
+              ':picture_id' => $pictureID      
+            )
+          );
 
           $sql = "INSERT INTO `Vacation_Card` (`card_id`, `vacation_id`) VALUES (:card_id, :vacation_id);";
           $stmt = $this->pdo->prepare($sql);
@@ -64,14 +64,16 @@ class StationDAO extends DAO {
           );
 
           unset($cardID);
-          // unset($pictureID);
+          unset($pictureID);
           unset($titleID);
         }
         $this->pdo->commit();
+        return true;
 
       } catch (Exception $e) {
           echo $e-> getMessage();
           $this->pdo->rollback();
+          return false;
         }
     }
   }

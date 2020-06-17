@@ -25,6 +25,8 @@ let textButton = document.querySelector('.textButton');
 let addTextButton = document.querySelector('.textItem');
 let dragItems = document.querySelector('.dragItems');
 
+// let characterImg = document.querySelectorAll(".characterCardForm__img");
+// let itemImg = document.querySelectorAll(".itemCardForm__img");
 
 
 const init = () => {
@@ -47,9 +49,9 @@ const init = () => {
     if(container != null){
       fitStageIntoParentContainer();
     }
-  })
+  });
 
-  //  PHOTO EDITOR OPTIONS
+  //PHOTO EDITOR OPTIONS
   if(stickersButton != null){
     optionsMenuClicked();
     //add eventlistener to the stickers so they can be added to the canvas
@@ -60,7 +62,8 @@ const init = () => {
   addTextToCanvas();
   }
 
-  initLoadFile();
+  initLoadCharacterFile();
+  // initLoadItemFile();
   initTabButtons();
   showTab(currentTab);
 };
@@ -198,9 +201,13 @@ const loadFile = e => {
   image[currentTab-1].src = URL.createObjectURL(e.target.files[0]);
 }
 
-const initLoadFile = () => {
+const initLoadCharacterFile = () => {
   document.querySelectorAll(".characterCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
 }
+
+// const initLoadItemFile = () => {
+//   document.querySelectorAll(".itemCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
+// }
 
 ////SECTION TABS
 const showTab = n =>{

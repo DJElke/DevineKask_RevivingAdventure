@@ -12,7 +12,7 @@
   <button type="button" class="nextBtn" >START</button>
 </div>
 
-<form class="characterCardForm" action="index.php?page=ownerStation1" method="post">
+<form class="characterCardForm" action="index.php?page=ownerStation1" method="post" enctype="multipart/form-data">
 <?php $i = 0 ?> 
   <?php foreach($participants as $participant): ?>
     <input type="hidden" name="cards[<?php echo $i;?>][vacation_id]" value="<?php echo $_GET['id'];?>" />
@@ -30,10 +30,10 @@
           <option value="loudest">loudest</option>
         </select>
       </div>
-      <!-- <label for="ptImage<?php echo $i;?>">
+      <label for="ptImage<?php echo $i;?>">
         <img class="output" width="200px"/>
-        <input type="file" accept="image/*" class="characterCardForm__img" name="image" id="ptImage<?php echo $i;?>">
-      </label> -->
+        <input type="file" accept="image/*" class="characterCardForm__img" name="characterImage<?php echo $i;?>" id="ptImage<?php echo $i;?>">
+      </label>
       <div>
         <button type="button" class="prevBtn">PREVIOUS</button>
         <button type="button" class="nextBtn"><?php echo $participant['id'] ?>/<?php echo count($participants) ?> NEXT</button>

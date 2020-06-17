@@ -37,32 +37,47 @@ class StationController extends Controller{
   
     private function _handleAddCharacterCard() {
       $loggedInUser = 1;
-
-
+      $target_dir = "uploads/";
+      $uploadedFiles = array();
       $cards = array();
 
       if($_POST['action'] == 'add'){
         $i = 0;
         foreach($_POST['cards'] as $card){
+          $file = $_FILES['characterImage'.$i]['name'];
+          $path = pathinfo($file);
+          $filename = $path['filename'];
+          $ext = $path['extension'];
+          $tmpFilePath = $_FILES['characterImage'.$i]['tmp_name'];
+          $path_filename_ext = $target_dir.$filename.".".$ext;
+          move_uploaded_file($tmpFilePath,$path_filename_ext);
+          array_push($uploadedFiles, $path_filename_ext);
+
           $card = array(
             'vacation_id' => $card['vacation_id'],
             'title' => $card['participant_name'] . ' is the ' . $card['characteristic'],
+            'image' => $path_filename_ext
           );
           $i++;
           array_push($cards, $card);
         }
         unset($i);
+        unset($_FILES);
       }
      
-      // $insertCards = $this->stationDAO->insertCharacterCard($cards);
-      // if (!empty($insertCards)) {
-      //   $this->stationDAO->updateStatus($card['vacation_id'],$loggedInUser);
-      // }
+      $insertCards = $this->stationDAO->insertCharacterCard($cards);
+      if ($insertCards) {
+        $this->stationDAO->updateStatus($card['vacation_id'],$loggedInUser);
+      }
 
-      if (empty($insertCards)) {
+      if (!$insertCards) {
+        foreach($uploadedFiles as $file){
+          unlink($file);
+        }
         $errors = $this->stationDAO->validate($cards);
       }
 
+      unset($uploadedFiles);
       header("Location: index.php?page=ownedVacation&id=" . $cards[0]['vacation_id']);
       exit();
     }
@@ -70,21 +85,47 @@ class StationController extends Controller{
     private function _handleAddItemCard() {
       $loggedInUser = 1;
 
-
+      $loggedInUser = 1;
+      $target_dir = "uploads/";
+      $uploadedFiles = array();
       $cards = array();
 
       if($_POST['action'] == 'add'){
-        
-        }
-     
-      // $insertCards = $this->stationDAO->insertCharacterCard($cards);
-      // if (!empty($insertCards)) {
-      //   $this->stationDAO->updateStatus($card['vacation_id'],$loggedInUser);
-      // }
+        $i = 0;
+        foreach($_FILES as $file){
+          $file = $_FILES['itemCardImage'.$i]['name'];
+          $path = pathinfo($file);
+          $filename = $path['filename'];
+          $ext = $path['extension'];
+          $tmpFilePath = $_FILES['characterImage'.$i]['tmp_name'];
+          $path_filename_ext = $target_dir.$filename.".".$ext;
+          move_uploaded_file($tmpFilePath,$path_filename_ext);
+          array_push($uploadedFiles, $path_filename_ext);
 
-      if (empty($insertCards)) {
+          $card = array(
+            'vacation_id' => $_POST['vacation_id'],
+            'image' => $path_filename_ext
+          );
+          $i++;
+          array_push($cards, $card);
+        }
+        unset($i);
+        unset($_FILES);
+      }
+     
+      $insertCards = $this->stationDAO->insertItemCard($cards);
+      if ($insertCards) {
+        $this->stationDAO->updateStatus($card['vacation_id'],$loggedInUser);
+      }
+
+      if (!$insertCards) {
+        foreach($uploadedFiles as $file){
+          unlink($file);
+        }
         $errors = $this->stationDAO->validate($cards);
       }
+
+      unset($uploadedFiles);
 
       header("Location: index.php?page=ownedVacation&id=" . $_POST['vacation_id']);
       exit();

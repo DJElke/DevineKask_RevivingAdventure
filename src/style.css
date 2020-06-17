@@ -69,6 +69,9 @@ img{
   flex-flow: row;
   align-items: baseline;
 }
+/* .itemCardForm {
+  overflow: scroll;
+} */
 
 .itemCardForm__img {
   visibility: hidden;
@@ -78,6 +81,8 @@ img{
 .itemCardFrom__imagesholder {
   display: flex;
   flex-wrap: wrap;
+  /* overflow: scroll; */
+  /* scroll-behavior: smooth; */
 }
 
 .itemCard__output__label {

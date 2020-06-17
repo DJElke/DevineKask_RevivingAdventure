@@ -1,7 +1,7 @@
 <div class="photoeditor__grid">
   <div class="menuContainer">
-    <div class="containerItem--left"><a href="" class="secondaryButton">QUIT</a></div>
-    <div class="containerItem--right"><a href="" class="primaryButton">SAVE</a></div>
+    <div class="containerItem--left quitButton"><a href="" class="secondaryButton">QUIT</a></div>
+    <div class="containerItem--right saveButton"><a class="primaryButton">SAVE</a></div>
   </div>
 
   <div class="photoContainer">

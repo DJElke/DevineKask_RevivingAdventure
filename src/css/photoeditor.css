@@ -15,7 +15,6 @@
 /* menu container */
 .menuContainer{
   grid-column: 1 / span 3;
-  width: 100%;
   display: flex;
   padding: 1rem;
 }
@@ -23,14 +22,12 @@
 /* photo container */
 .photoContainer{
   grid-column: 1 / span 3;
-  width: 100%;
   background-color: #424A9F;
 }
 
 /* options container */
 .optionsContainer{
   grid-column: 1 / span 3;
-  width: 100%;
   height: auto;
   background-color: white;
   overflow-x: scroll;
@@ -100,4 +97,9 @@
 
 .editOption--right{
   grid-column: 3;
+}
+
+.textEdit{
+  grid-column: 1 / span 3;
+  grid-row: 2;
 }

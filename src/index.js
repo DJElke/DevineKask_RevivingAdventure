@@ -68,12 +68,15 @@ const init = () => {
   addTextToCanvas();
   }
   //   PHOTO EDITOR SAVE THE STAGE
-  saveStage();
+  // saveStage();
 
   initLoadCharacterFile();
-  // initLoadItemFile();
-  initTabButtons();
-  showTab(currentTab);
+  initLoadItemFile();
+  initLoadAdventureFile();
+
+    initTabButtons();
+    showTab(currentTab);
+  
 };
 
 const optionsMenuClicked = () => {
@@ -104,8 +107,9 @@ const loadBackground = () => {
   //making the background layer
   let background ='';
   background = new Konva.Layer();
-  stage.add(background);
-
+  if(stage != ''){
+    stage.add(background);
+  }
   //add the background to the background layer and resize it so it fits
   let bgImageURL = 'assets/img/bg.png';
   Konva.Image.fromURL(bgImageURL, image => {
@@ -332,12 +336,12 @@ const addTransformer = (konvaItem, layer) => {
   layer.draw();
 };
 
-const saveStage = () => {
-  saveButton.addEventListener('click', () => {
-    let dataURL = stage.toDataURL({pixelRatio: 3});
-    console.log(dataURL);
-  });
-};
+// const saveStage = () => {
+//   saveButton.addEventListener('click', () => {
+//     let dataURL = stage.toDataURL({pixelRatio: 3});
+//     console.log(dataURL);
+//   });
+// };
 
 //// SECTION SELECT PICTURE
 const loadFile = e => {
@@ -349,21 +353,27 @@ const initLoadCharacterFile = () => {
   document.querySelectorAll(".characterCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
 }
 
-// const initLoadItemFile = () => {
-//   document.querySelectorAll(".itemCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
-// }
+const initLoadItemFile = () => {
+  document.querySelectorAll(".itemCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
+}
+
+const initLoadAdventureFile = () => {
+  document.querySelectorAll(".adventureCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
+}
 
 ////SECTION TABS
 const showTab = n =>{
   //Display the right tab
   var x = document.querySelectorAll(".tab");
-  x[n].style.display = "block";
-
-  //Handle buttons:
-  if (n == 1) {
-    document.querySelector(".prevBtn").style.display = "none";
-  } else {
-    document.querySelector(".prevBtn").style.display = "inline";
+  if (x.length != 0){
+    x[n].style.display = "block";
+  
+    //Handle buttons:
+    if (n == 1) {
+      document.querySelector(".prevBtn").style.display = "none";
+    } else {
+      document.querySelector(".prevBtn").style.display = "inline";
+    }
   }
 }
 

@@ -11,8 +11,10 @@
 <button type="button" class="nextBtn" >START</button>
 </div>
 
-<form class="itemCardForm" action="index.php?page=ownerStation2" method="post">
+<form class="itemCardForm" action="index.php?page=ownerStation2" method="post" enctype="multipart/form-data">
 <input type="hidden" name="vacation_id" value="<?php echo $_GET['id'];?>" />
+<!-- <input type="hidden" name="cardTypeId" value="2" /> -->
+
 <?php $i = 0 ?> 
 <!-- set amount of pictures that need to be uploaded per person -->
 <?php $demoGame = 1?> 
@@ -25,7 +27,7 @@
         <?php for($e = 1; $e <= $demoGame; $e++): ?>
         <label for="ptImage<?php echo $i;?>" class="itemCard__output__label">
           <img class="output"/>
-          <input type="file" accept="image/*" class="itemCardForm__img" name="itemCardImage<?php echo $i;?>" id="ptImage<?php echo $i;?>">
+          <input type="file" accept="image/*" class="itemCardForm__img" name="itemImage<?php echo $i;?>" id="ptImage<?php echo $i;?>">
         </label>
         <?php endfor; ?>
       </div>

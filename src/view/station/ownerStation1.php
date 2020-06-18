@@ -13,6 +13,7 @@
 </div>
 
 <form class="characterCardForm" action="index.php?page=ownerStation1" method="post" enctype="multipart/form-data">
+<!-- <input type="hidden" name="cardTypeId" value="1" /> -->
 <?php $i = 0 ?> 
   <?php foreach($participants as $participant): ?>
     <input type="hidden" name="cards[<?php echo $i;?>][vacation_id]" value="<?php echo $_GET['id'];?>" />

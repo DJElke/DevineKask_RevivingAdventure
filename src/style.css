@@ -73,19 +73,19 @@ img{
   overflow: scroll;
 } */
 
-.itemCardForm__img {
+.itemCardForm__img, .adventureCardForm__img {
   visibility: hidden;
 
 }
 
-.itemCardFrom__imagesholder {
+.itemCardFrom__imagesholder, .adventureCardFrom__imagesholder {
   display: flex;
   flex-wrap: wrap;
   /* overflow: scroll; */
   /* scroll-behavior: smooth; */
 }
 
-.itemCard__output__label {
+.itemCard__output__label, .adventureCard__output__label {
   width: 150px;
   height: 150px;
   margin-left: 1rem;
@@ -93,7 +93,7 @@ img{
 
 }
 
-.itemCard__output__label .output {
+.itemCard__output__label .output , .adventureCard__output__label .output{
   height: 150px;
   width: 150px;
 }

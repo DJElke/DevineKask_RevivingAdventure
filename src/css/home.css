@@ -5,3 +5,63 @@
 .locked {
   color: red;
 }
+
+.dashboard__grid{
+  display: grid;
+  height: 100vh;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 0.5fr 3fr 0.5fr;
+}
+
+.dashboardIntro{
+  grid-column: 1 / span 5;
+  padding: 1rem;
+}
+
+.dashboardIntro p{
+  margin-top: -0.5rem;
+}
+
+.dashboardTabs{
+  grid-column: 1 / span 5;
+  display: flex;
+}
+
+.dashboardTab{ 
+  border: 2px #424A9F solid;
+  margin: 1rem;
+  text-align: center;
+}
+
+.dashboardTab--selected{
+  border: 2px white solid;
+  background-color: white;
+}
+
+.dashboardList{
+  grid-column: 1 / span 5;
+  margin: 1rem;
+}
+
+.navigation{
+  grid-column: 1 / span 5;
+  padding: 1rem;
+  text-align: center;
+  vertical-align: middle;
+}
+.navHome{
+  grid-column: 1;
+}
+.navRules{
+  grid-column: 2;
+}
+.navAdd{
+  grid-column: 3;
+}
+.navGuide{
+  grid-column: 4;
+}
+.navProfile{
+  grid-column: 5;
+}
+

@@ -27,9 +27,13 @@ class HomeController extends Controller {
 
     //get owned vacations
     //if(!empty($_GET['id'])){
-      $vacations = $this->homeDAO-> getOwnedVacations($loggedInUser);
-      $this->set('vacations', $vacations);
+      $ownedVacations = $this->homeDAO-> getOwnedVacations($loggedInUser);
+      $this->set('ownedVacations', $ownedVacations);
     //}
+
+    //get involved vacations
+      $involvedVacations = $this->homeDAO-> getInvolvedVacations($loggedInUser);
+      $this->set('involvedVacations', $involvedVacations);
 
   }
 }

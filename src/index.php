@@ -8,15 +8,11 @@ setlocale(LC_ALL, 'nl_BE');
 // set routes
 $routes = array(
     'login' => array (
-      'controller' => 'Navigation',
+      'controller' => 'Editor',
       'action' => 'index'
     ),
-    'dashboard' => array (
-      'controller' => 'Navigation',
-      'action' => 'dashboard'
-    ),
     'photoeditor' => array (
-      'controller' => 'Navigation',
+      'controller' => 'Editor',
       'action' => 'photoeditor'
     ),
     'home' => array (

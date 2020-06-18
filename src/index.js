@@ -36,10 +36,14 @@ let saveButton = document.querySelector('.saveButton');
 
 
 const init = () => {
+  startUpDashboard();
+
   // PHOTO EDITOR SETUP 
   //Make sure the konva stage and background image is scaled right.
   //then load the background of the stage
+  if(stage != ''){
   loadBackground();
+  }
   window.addEventListener('load', () => {
     if(container != null){
       fitStageIntoParentContainer();
@@ -74,6 +78,30 @@ const init = () => {
   // initLoadItemFile();
   initTabButtons();
   showTab(currentTab);
+};
+
+const startUpDashboard = () => {
+  let owned = document.getElementById('owned');
+  let involved = document.getElementById('involved');
+  let ownedVac = document.querySelector('.ownedVac');
+  let involvedVac = document.querySelector('.involvedVac');
+
+  involvedVac.classList.add('hide');
+  owned.classList.add('dashboardTab--selected');
+
+  owned.addEventListener('click', () => {
+    involvedVac.classList.add('hide');
+    involved.classList.remove('dashboardTab--selected');
+    owned.classList.add('dashboardTab--selected');
+    ownedVac.classList.remove('hide');
+  });
+
+  involved.addEventListener('click', () => {
+    ownedVac.classList.add('hide');
+    owned.classList.remove('dashboardTab--selected');
+    involved.classList.add('dashboardTab--selected');
+    involvedVac.classList.remove('hide');
+  });
 };
 
 const optionsMenuClicked = () => {
@@ -332,11 +360,24 @@ const addTransformer = (konvaItem, layer) => {
   layer.draw();
 };
 
+function downloadURI(uri, name) {
+  let link = document.createElement('a');
+  link.download = name;
+  link.href = uri;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
 const saveStage = () => {
   saveButton.addEventListener('click', () => {
+    let transformers = stage.find('Transformer');
+    transformers.forEach(transform => {
+      transform.destroy();
+    });
     let dataURL = stage.toDataURL({pixelRatio: 3});
-    console.log(dataURL);
-  });
+    downloadURI(dataURL, 'url_edit_userid.png');
+  }, false);
 };
 
 //// SECTION SELECT PICTURE

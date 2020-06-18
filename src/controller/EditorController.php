@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/Controller.php';
 
-class NavigationController extends Controller{
+class EditorController extends Controller{
 
     function __construct() {
     }
@@ -10,11 +10,6 @@ class NavigationController extends Controller{
     public function index(){
       $this->set('title', 'Login');
       $this->set('currentpage', 'login');
-    }
-
-    public function dashboard(){
-      $this->set('title', 'Dashboard');
-      $this->set('currentpage', 'dashboard');
     }
 
     public function photoeditor(){

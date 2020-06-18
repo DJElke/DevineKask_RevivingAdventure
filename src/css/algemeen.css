@@ -62,4 +62,14 @@ body{
 .hide{
   display: none;
 }
+.blue{
+  color: #424A9F;
+}
 
+.white{
+  color: white;
+}
+
+.bg--red{
+  background-color: #F8A593;
+}

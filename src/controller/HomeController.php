@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/Controller.php';
-require_once __DIR__ . '/../dao/HomeDao.php';
-require_once __DIR__ . '/../dao/UserDao.php';
+require_once __DIR__ . '/../dao/HomeDAO.php';
+require_once __DIR__ . '/../dao/UserDAO.php';
 
 
 class HomeController extends Controller {

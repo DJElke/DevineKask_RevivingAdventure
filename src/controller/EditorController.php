@@ -1,8 +1,8 @@
 <?php
 
 require_once __DIR__ . '/Controller.php';
-require_once __DIR__ . '/../dao/VacationDao.php';
-require_once __DIR__ . '/../dao/UserDao.php';
+require_once __DIR__ . '/../dao/VacationDAO.php';
+require_once __DIR__ . '/../dao/UserDAO.php';
 require_once __DIR__ . '/../dao/CardDAO.php';
 
 class EditorController extends Controller{

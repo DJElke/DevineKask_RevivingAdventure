@@ -1,6 +1,5 @@
 require('./style.css');
 require('konva');
-{
 // ----VARIABLES
 let currentTab = 0;
 //konva stage
@@ -500,4 +499,3 @@ const handleClickCharacteristic = i => {
  
 init();
  
-}

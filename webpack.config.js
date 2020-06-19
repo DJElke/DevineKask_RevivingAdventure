@@ -7,7 +7,7 @@ module.exports = (env, {mode}) => {
   console.log(mode);
   return {
     output: {
-      path: require('path').resolve(`./dist/js`),
+      path: require('path').resolve(`./dist/`),
       filename: 'script.js'
     },
     devServer: {

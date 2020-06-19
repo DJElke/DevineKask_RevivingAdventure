@@ -1,9 +1,9 @@
 <?php
 
 require_once __DIR__ . '/Controller.php';
-require_once __DIR__ . '/../dao/VacationDao.php';
-require_once __DIR__ . '/../dao/StationDao.php';
-require_once __DIR__ . '/../dao/DesignDao.php';
+require_once __DIR__ . '/../dao/VacationDAO.php';
+require_once __DIR__ . '/../dao/StationDAO.php';
+require_once __DIR__ . '/../dao/DesignDAO.php';
 
 
 class StationController extends Controller{

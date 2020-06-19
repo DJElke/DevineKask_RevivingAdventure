@@ -29,67 +29,72 @@ class EditorController extends Controller{
       $this->set('title', 'PhotoEditor');
       $this->set('currentpage', 'photoEditor');
       $loggedInUser = 1;
+      $vacationId = $_GET['id'];
 
-      $vacation = $this->vacationDAO-> getVacationById($_GET['id']);
+      $vacation = $this->vacationDAO-> getVacationById($vacationId);
       $this->set('vacation', $vacation);
 
-      $status = $this->vacationDAO-> getStatus($_GET['id'], $loggedInUser);
+      $status = $this->vacationDAO-> getStatus($vacationId, $loggedInUser);
       $this->set('status', $status['status']);
 
       $cardsToEdit = array();
-      if(empty($_GET['cardToEdit'])){
-        $cardCount = 0;
-        $cardsFromVacation = $this->vacationDAO->getCardsFromVacation($_GET['id']);
-        foreach($cardsFromVacation as $card){
+      $cardsFromVacation = $this->vacationDAO->getCardsFromVacation($vacationId);
+      foreach($cardsFromVacation as $card){
           $cardToEdit = $this->cardDAO->getCardAndImage($card['card_id']);
           array_push($cardsToEdit,$cardToEdit);
-        }
+      }
+
+      if(empty($_GET['cardToEdit']) || empty($_GET['cardCount'])){
         $this->set('card', $cardsToEdit[0]);
-      }else{
+        $cardCount = 0;
+        $this->set('cardCount', $cardCount);
+      } else {
         $cardCount = $_GET['cardCount'];
+        $this->set('cardCount', $cardCount);
         $cardToEdit = $this->cardDAO->getCardAndImage($_GET['cardToEdit']);
         $this->set('card', $cardToEdit);
       }
-      $this->set('cardCount', $cardCount);
 
-      $participants = $this->vacationDAO-> getParticipants($_GET['id']);
-      foreach($participants as $participant){
-        if(strpos($participant['description'], "Owner") !== false){
-          $owner = $participant['name'];
-        }
-      }
-      $this->set('owner', $owner);
-
-      //set title in the case of character cards
-      if(empty($_GET['cardToEdit'])){
-        $titleId = $this->cardDAO->getTitleIdByCardIdChar($cardsToEdit[0]['id']);
-      }
-      else{
-        $titleId = $this->cardDAO->getTitleIdByCardIdChar($cardToEdit['id']);
-      }
-      $cardTitle = $this->cardDAO->getTitleById($titleId['title_id']);
-      $this->set('cardTitle', $cardTitle);
-    }
-
-    public function handleEdit(){
       if(!empty($_POST['action'])){
         if($_POST['action'] == 'add'){
-          $vacationId = $_POST['vacationId']; 
-          $cardId = "";
           //cardCount to int to use as parameter
-          $cardCountInt = intval($_POST['cardCount']);
+          if(empty($_GET['cardCount'])){
+            $cardCountInt = 0;
+          }else{
+            $cardCountInt = intval($_GET['cardCount']);
+          }
           $cardCountInt += 1;
           //cardCount to string to use in header
           $cardCountStr = strval($cardCountInt);
-          $cardsFromVacation = $this->vacationDAO->getCardsFromVacation($_POST['vacationId']);
           $i = 0;
           for($i; $i <= count($cardsFromVacation); $i++){
             if($i == $cardCountInt){
-              $cardId = strval($cardsFromVacation[$i]['card_id']);
+              if($i == count($cardsFromVacation)){
+                header('Location: index.php?page=home');
+              }else{
+                $cardId = strval($cardsFromVacation[$i]['card_id']);
+                header('Location: index.php?page=photoEditor&id='.$vacationId.'&cardToEdit='.$cardId.'&cardCount='.$cardCountStr);
+              }
             }
           }
+        }
+      }
 
-          header('Location: index.php?page=photoEditor&id='.$vacationId.'&cardToEdit='.$cardId.'&cardCount='.$cardCountStr);
+      $participants = $this->vacationDAO-> getParticipants($vacationId);
+      foreach($participants as $participant){
+        if(strpos($participant['description'], "Owner") !== false){
+          $owner = $participant['name'];
+        } 
+      }
+      $this->set('owner', $owner);
+
+      if($status['status'] == 0){
+        if(empty($_GET['cardToEdit'])){
+          $cardTitle = $this->cardDAO->getTitleById($cardsToEdit[0]['title_id']);
+          $this->set('cardTitle', $cardTitle);
+        }else{
+          $cardTitle = $this->cardDAO->getTitleById($cardToEdit['title_id']);
+          $this->set('cardTitle', $cardTitle);
         }
       }
     }

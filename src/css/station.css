@@ -1,0 +1,135 @@
+.output{
+  object-fit: cover;
+  height: 20rem;
+  width: 20rem;
+} 
+.characterCardForm__img {
+  visibility: hidden;
+}
+
+.tab {
+  display: none;
+}
+
+.charactercard__name {
+  display: flex;
+  flex-flow: row;
+  align-items: baseline;
+}
+
+.itemCardForm__img, .adventureCardForm__img {
+  visibility: hidden;
+}
+
+.itemCardFrom__imagesholder, .adventureCardFrom__imagesholder {
+  display: flex;
+  flex-wrap: wrap;
+  /* overflow: scroll; */
+  /* scroll-behavior: smooth; */
+}
+
+.itemCard__output__label, .adventureCard__output__label {
+  width: 150px;
+  height: 150px;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+
+}
+
+.itemCard__output__label .output , .adventureCard__output__label .output{
+  height: 150px;
+  width: 150px;
+}
+
+[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  /* margin-top: 1rem; */
+}
+
+.characteristic--option--description {
+  color: white;
+  background: #424A9F;
+  border-radius: 19.5px;
+  padding: .2rem .5rem;
+  /* white-space: nowrap; */
+}
+
+[type=radio]:checked + label {
+  color: #F8A593;
+}
+
+.characteristic--options {
+display: flex;
+flex-wrap: wrap-reverse;
+align-items: flex-start;
+padding-left: .5rem;
+padding-right: .5rem;
+}
+
+.characteristic--option--wrap {
+  margin-bottom: 1rem;
+  margin-right: .1rem;
+  margin-left: .1rem;
+}
+
+.tab--header {
+  display: flex;
+  padding: 1rem
+}
+
+.tab--header .user--icon{
+  margin-right: 1rem;
+}
+
+/*** STATION 4 ***/
+
+
+.design {
+  height: 8rem;
+}
+
+.list--design--card {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.design--checkbox {
+  height: 1.5rem;
+  width: 1.5rem;
+  border: solid 2px #424A9F;
+  margin-right: .5rem;
+}
+
+[type=radio]:checked + .design--checkbox {
+  height: 1.5rem;
+  width: 1.5rem;
+  border: solid 2px #424A9F;
+  background-color: #424A9F;
+  margin-right: .5rem;
+}
+
+.design--card p {
+  margin: 0;
+}
+
+.limited_edition {
+  justify-self: right;
+}
+
+.design--card {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: 1rem auto;
+}
+
+.form--design--card {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}

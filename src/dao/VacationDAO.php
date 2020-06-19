@@ -16,7 +16,7 @@ class VacationDAO extends DAO {
   
   //get the participants (name and role) for a vacation
   public function getParticipants($vacationId) {
-    $sql = "SELECT Vacation_User.user_id as 'id', User.name, UserRole.description 
+    $sql = "SELECT Vacation_User.user_id as 'id', User.name, UserRole.description, User.picture as 'icon' 
     FROM Vacation_User JOIN User ON Vacation_User.user_id = User.id 
     JOIN UserRole ON Vacation_User.userrole_id = UserRole.id 
     WHERE Vacation_User.vacation_id = :vacationId";

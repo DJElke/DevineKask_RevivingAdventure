@@ -16,7 +16,7 @@ class StationDAO extends DAO {
           $sql = "INSERT INTO `Card` (`cardtype_id`) VALUES (:cardtype_id);";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
-              ':cardtype_id' => $cardTypeId      
+              ':cardtype_id' => 1      
             )
           );
           
@@ -193,17 +193,16 @@ class StationDAO extends DAO {
   }
 
   public function validate( $cards ){
-    // $errors = [];
-    // if (!isset($data['voornaam'])) {
-    //   $errors['voornaam'] = 'Gelieve in te vullen';
-    // }
-    // if (empty($data['achternaam']) ){
-    //   $errors['achternaam'] = 'Gelieve in te vullen';
-    // }
-    // if (!isset($data['email'])) {
-    //   $errors['email'] = 'Gelieve in te vullen';
-    // }
-    // return $errors;
+     $errors = [];
+     foreach($cards as $card){
+      if (!isset($card['image'])) {
+        $errors['image'] = 'Please select an image';
+      }
+      if (!isset($card['title'])) {
+        $errors['title'] = 'Please select a characteristic';
+      }
+     }
+      return $errors;
   }
 
   public function updateStatus($vac_id, $user_id){

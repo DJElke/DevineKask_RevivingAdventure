@@ -70,6 +70,10 @@ body{
   color: white;
 }
 
+.red{
+  color: #F8A593;
+}
+
 .bg--red{
   background-color: #F8A593;
 }

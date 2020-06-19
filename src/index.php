@@ -11,17 +11,29 @@ $routes = array(
       'controller' => 'Editor',
       'action' => 'index'
     ),
-    'photoeditor' => array (
-      'controller' => 'Editor',
-      'action' => 'photoeditor'
-    ),
     'home' => array (
       'controller' => 'Home',
       'action' => 'home'
     ),
+    'editorIndex' => array (
+      'controller' => 'Editor',
+      'action' => 'editorIndex'
+    ),
+    'photoEditor' => array (
+      'controller' => 'Editor',
+      'action' => 'photoEditor'
+    ),
+    'handleEdit' => array (
+      'controller' => 'Editor',
+      'action' => 'handleEdit'
+    ),
     'ownedVacation' => array (
       'controller' => 'Vacation',
       'action' => 'ownedVacation'
+    ),
+    'involvedVacation' => array (
+      'controller' => 'Vacation',
+      'action' => 'involvedVacation'
     ),
     'ownerStation1' => array (
       'controller' => 'Station',
@@ -38,10 +50,10 @@ $routes = array(
 );
 
 if(empty($_GET['page'])) {
-    $_GET['page'] = 'login';
+    $_GET['page'] = 'home';
   }
   if(empty($routes[$_GET['page']])) {
-    header('Location: index.php');
+    header('Location: home.php');
     exit();
   }
 

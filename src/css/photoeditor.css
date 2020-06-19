@@ -2,7 +2,7 @@
 /* ----------------- */
 
 /* the responsive grid */
-.photoeditor__grid{
+.photoEditor__grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 0.2fr 1fr 0.1fr 0.3fr;
@@ -102,4 +102,47 @@
 .textEdit{
   grid-column: 1 / span 3;
   grid-row: 2;
+}
+
+.titleContainer{
+  grid-column: 1 / span 3;
+  text-align: center;
+}
+
+.photoEditorPart2__grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 0.2fr 0.2fr 0.1fr 1fr 0.4fr;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.titleContainer{
+  grid-column: 1 / span 3;
+  text-align: center;
+}
+
+.imgEditContainer{
+  grid-column: 1 / span 3;
+  text-align: center;
+}
+
+.descriptionContainer{
+  grid-column: 1 / span 3;
+}
+
+.descArea{
+  width: 80%;
+  height: 8rem;
+  outline: none;
+  resize: none;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.editCardForm{
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 6;
 }

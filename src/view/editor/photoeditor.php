@@ -1,16 +1,19 @@
-<div class="photoeditor__grid">
+
+<div class="photoEditor__grid">
   <div class="menuContainer">
-    <div class="containerItem--left quitButton"><a href="" class="secondaryButton">QUIT</a></div>
-    <div class="containerItem--right saveButton"><a class="primaryButton">SAVE</a></div>
+    <div class="containerItem--left quitButton"><a href="index.php?page=involvedVacation&amp;id=<?php echo $vacation['id'];?>" class="secondaryButton">QUIT</a></div>
+    <div class="containerItem--right saveButton"><a class="primaryButton">NEXT</a></div>
   </div>
 
   <div class="photoContainer">
     <div class="cs" id="cs">Your browser does not support the html5 canvas</div>
   </div>
 
+
   <div class="editOption editOption--left stickersButton">STICKERS</div>
   <div class="editOption editOption--middle textButton">TEXT</div>
-  <div class="editOption editOption--right">DRAW</div>
+  <div class="editOption editOption--right drawButton">DRAW</div>
+
 
   <div class="optionsContainer">
     <!-- sticker items -->
@@ -41,6 +44,31 @@
       <span class="text--big">+</span> </br> add some text
     </div>
   </div>
+
+  <form class="hide editCardForm" action="index.php?page=handleEdit" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="cardId" value="<?php echo $card['id']; ?>"/>
+    <input type="hidden" name="vacationId" value="<?php echo $vacation['id']?>"/>
+    <input type="hidden" name="cardCount" value="<?php echo $cardCount;?>"/>
+    <img class="hide editBgImg" src=<?php echo $card['img']; ?> alt="background"/>
+    <div class="hide titleContainer">
+      <?php if(($cardTitle != null) && ($status == 0)){?>
+        <p class="red">psst... <?php echo $owner; ?> called <?php echo $cardTitle['description']; ?> ...</p>
+      <?php } else {?> 
+        <textarea name="title" type="textarea" placeholder="Title of the card..."></textarea>
+      <?php } ?>
+    </div>
+
+    <div class="hide imgEditContainer">
+    </div>
+    
+    <div class="hide descriptionContainer">
+      <textarea name="description" class="descArea" type="textarea" maxlength="250" placeholder="Write here a fitting text for your masterpiece..."></textarea>
+    </div>
+
+    <div class="hide submitContainer">
+      <button type="submit" class="secondaryButton" name="action" value="add">NEXT</button>
+    </div>
+  </form>
 </div> 
 
 

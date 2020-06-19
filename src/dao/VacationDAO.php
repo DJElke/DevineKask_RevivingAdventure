@@ -4,6 +4,17 @@ require_once __DIR__ . '/DAO.php';
 
 class VacationDAO extends DAO {
  
+  //get the vacation by id
+  public function getVacationById($id){
+    $sql = "SELECT * FROM Vacation 
+    WHERE Vacation.id = :id";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+  }
+
+
   //get the name of a vacation
   public function getVacationName($vacationId) {
     $sql = "SELECT Vacation.id, Vacation.name FROM Vacation WHERE Vacation.id = :vacationId";
@@ -38,7 +49,17 @@ class VacationDAO extends DAO {
       ':userId' => $userId
     ));
     return $stmt->fetch(PDO::FETCH_ASSOC); 
-    
+  }
+
+  //get cards from a vacation 
+  public function getCardsFromVacation($id){
+    $sql = "SELECT *
+    FROM Vacation_Card
+    WHERE Vacation_Card.vacation_id = :id";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 }
 ?>

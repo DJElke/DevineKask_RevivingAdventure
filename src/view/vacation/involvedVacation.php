@@ -30,7 +30,7 @@
     <?php else: ?>
       class="locked" 
       <?php endif; ?>>
-    <a class="station__link" <?php if($status == 0): ?> href="index.php?page=ownerStation1&amp;id=<?php echo $vacation['id'];?>" <?php endif; ?>>
+    <a class="station__link" <?php if($status == 0): ?> href="index.php?page=editorIndex&amp;id=<?php echo $vacation['id'];?>" <?php endif; ?>>
       <p>Station one</p>
     </a>
     <?php if($status == 1): ?><input type='checkbox' disabled='disabled' checked="true"><label>Playercards 4/4</label><?php else: ?><input type='checkbox' disabled='disabled'><label>Playercards 0/4</label><?php endif;?>

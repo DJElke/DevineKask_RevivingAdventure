@@ -19,9 +19,11 @@ if (container != null){
   });
 }
 //photoeditor page: getting the options buttons
+let photoEditorGrid = document.querySelector('.photoEditor__grid');
 let editOptions = document.querySelector('.optionsContainer');
 let stickersButton = document.querySelector('.stickersButton');
 let textButton = document.querySelector('.textButton');
+let drawButton = document.querySelector('.drawButton');
 //optionsContainer --> content
 let addTextButton = document.querySelector('.textItem');
 let dragItems = document.querySelector('.dragItems');
@@ -29,21 +31,23 @@ let dragItems = document.querySelector('.dragItems');
 let menuContainer = document.querySelector('.menuContainer');
 let quitButton = document.querySelector('.quitButton');
 let saveButton = document.querySelector('.saveButton');
+//edited image --> add title and description
+let imgEditContainer = document.querySelector('.imgEditContainer');
+let descriptionContainer = document.querySelector('.descriptionContainer');
+let submitContainer = document.querySelector('.submitContainer');
+
 
 // let characterImg = document.querySelectorAll(".characterCardForm__img");
 // let itemImg = document.querySelectorAll(".itemCardForm__img");
 
 
 
+
 const init = () => {
   startUpDashboard();
-
   // PHOTO EDITOR SETUP 
   //Make sure the konva stage and background image is scaled right.
   //then load the background of the stage
-  if(stage != ''){
-  loadBackground();
-  }
   window.addEventListener('load', () => {
     if(container != null){
       fitStageIntoParentContainer();
@@ -54,6 +58,9 @@ const init = () => {
       addTextButton.classList.add('hide');
     }
   });
+  if(stage != ''){
+    loadBackground();
+  }
   //after that you want to "listen" if the window resizes or not
   window.addEventListener('resize', () => {
     if(container != null){
@@ -72,7 +79,9 @@ const init = () => {
   addTextToCanvas();
   }
   //   PHOTO EDITOR SAVE THE STAGE
-  // saveStage();
+  if(stage != ''){
+    saveStage();
+  }
 
   initLoadCharacterFile();
   initLoadItemFile();
@@ -88,23 +97,24 @@ const startUpDashboard = () => {
   let involved = document.getElementById('involved');
   let ownedVac = document.querySelector('.ownedVac');
   let involvedVac = document.querySelector('.involvedVac');
-
-  involvedVac.classList.add('hide');
-  owned.classList.add('dashboardTab--selected');
-
-  owned.addEventListener('click', () => {
+  if((owned != null) && (involved != null) && (ownedVac != null) && (involvedVac != null)){
     involvedVac.classList.add('hide');
-    involved.classList.remove('dashboardTab--selected');
     owned.classList.add('dashboardTab--selected');
-    ownedVac.classList.remove('hide');
-  });
-
-  involved.addEventListener('click', () => {
-    ownedVac.classList.add('hide');
-    owned.classList.remove('dashboardTab--selected');
-    involved.classList.add('dashboardTab--selected');
-    involvedVac.classList.remove('hide');
-  });
+  
+    owned.addEventListener('click', () => {
+      involvedVac.classList.add('hide');
+      involved.classList.remove('dashboardTab--selected');
+      owned.classList.add('dashboardTab--selected');
+      ownedVac.classList.remove('hide');
+    });
+  
+    involved.addEventListener('click', () => {
+      ownedVac.classList.add('hide');
+      owned.classList.remove('dashboardTab--selected');
+      involved.classList.add('dashboardTab--selected');
+      involvedVac.classList.remove('hide');
+    });
+  }
 };
 
 const optionsMenuClicked = () => {
@@ -139,7 +149,7 @@ const loadBackground = () => {
     stage.add(background);
   }
   //add the background to the background layer and resize it so it fits
-  let bgImageURL = 'assets/img/bg.png';
+  let bgImageURL = document.querySelector('.editBgImg').src;
   Konva.Image.fromURL(bgImageURL, image => {
     image.attrs.image.width = 1000;
     image.attrs.image.height = 1000;
@@ -364,23 +374,43 @@ const addTransformer = (konvaItem, layer) => {
   layer.draw();
 };
 
-function downloadURI(uri, name) {
-  let link = document.createElement('a');
-  link.download = name;
-  link.href = uri;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
-
 const saveStage = () => {
   saveButton.addEventListener('click', () => {
     let transformers = stage.find('Transformer');
     transformers.forEach(transform => {
       transform.destroy();
     });
-    let dataURL = stage.toDataURL({pixelRatio: 3});
-    downloadURI(dataURL, 'url_edit_userid.png');
+    stage.toImage({
+      callback(img){
+      img.name = "imgEdit";
+      imgEditContainer.appendChild(img);
+      let imgInput = document.createElement('input');
+      imgInput.type = "hidden";
+      imgInput.name = "image";
+      imgInput.value = img.src;
+      imgEditContainer.appendChild(imgInput);
+    }
+    });
+    //hide all items so we can show a "new" form
+    photoEditorGrid.classList.add('hide');
+    photoEditorGrid.classList.add('photoEditorPart2__grid');
+    photoEditorGrid.classList.remove('photoEditor__grid');
+    imgEditContainer.classList.remove('hide');
+    container.classList.add('hide');
+    editOptions.classList.add('hide');
+    stickersButton.classList.add('hide');
+    textButton.classList.add('hide');
+    drawButton.classList.add('hide');
+    let photoContainer = document.querySelector('.photoContainer');
+    photoContainer.classList.add('hide');
+    quitButton.classList.add('hide');
+    saveButton.classList.add('hide');
+    let titleContainer = document.querySelector('.titleContainer');
+    titleContainer.classList.remove('hide');
+    descriptionContainer.classList.remove('hide');
+    submitContainer.classList.remove('hide');
+    let editCardForm = document.querySelector('.editCardForm');
+    editCardForm.classList.remove('hide');
   }, false);
 };
 

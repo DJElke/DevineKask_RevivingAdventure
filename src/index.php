@@ -47,6 +47,10 @@ $routes = array(
       'controller' => 'Station',
       'action' => 'ownerStation3'
     ),
+    'station4' => array (
+      'controller' => 'Station',
+      'action' => 'station4'
+    ),
 );
 
 if(empty($_GET['page'])) {

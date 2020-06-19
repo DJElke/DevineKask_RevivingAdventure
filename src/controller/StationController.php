@@ -3,12 +3,16 @@
 require_once __DIR__ . '/Controller.php';
 require_once __DIR__ . '/../dao/VacationDao.php';
 require_once __DIR__ . '/../dao/StationDao.php';
+require_once __DIR__ . '/../dao/DesignDao.php';
+
 
 class StationController extends Controller{
 
     function __construct() {
       $this->vacationDAO = new VacationDAO();
       $this->stationDAO = new StationDAO();
+      $this->designDAO = new DesignDAO();
+
     }
 
     public function ownerStation1() {
@@ -46,6 +50,19 @@ class StationController extends Controller{
       }
       
     }
+
+    public function station4() {
+      $this->set('title', 'station 4');
+
+      $designs = $this->designDAO-> getDesigns();
+      $this->set('designs', $designs);
+
+
+      if (!empty($_POST['action'])) {
+        $this->_handleRegisterVote();
+      }
+      
+    }
   
     private function _handleAddCharacterCard() {
       $loggedInUser = 1;
@@ -65,9 +82,20 @@ class StationController extends Controller{
           move_uploaded_file($tmpFilePath,$path_filename_ext);
           array_push($uploadedFiles, $path_filename_ext);
 
+          $title = '';
+          if($card['characteristic'] != '' ) 
+          {
+            $title = $card['participant_name'] . ' is the ' . $card['characteristic'];
+          }
+
+          if($filename = '') 
+          {
+            $path_filename_ext = '';
+          }
+          
           $card = array(
             'vacation_id' => $card['vacation_id'],
-            'title' => $card['participant_name'] . ' is the ' . $card['characteristic'],
+            'title' => $title,
             'image' => $path_filename_ext
           );
           $i++;
@@ -187,6 +215,18 @@ class StationController extends Controller{
       }
 
       unset($uploadedFiles);
+
+      header("Location: index.php?page=ownedVacation&id=" . $_POST['vacation_id']);
+      exit();
+    }
+
+    private function _handleRegisterVote() {
+      $loggedInUser = 1;
+
+      if($_POST['action'] == 'add'){
+        $this->designDAO->registerVote($loggedInUser, $_POST['design--option']);
+        $this->stationDAO->updateStatus($_POST['vacation_id'],$loggedInUser);
+      }
 
       header("Location: index.php?page=ownedVacation&id=" . $_POST['vacation_id']);
       exit();

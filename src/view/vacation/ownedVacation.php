@@ -1,4 +1,4 @@
-<header>
+<header class="bg--red">
   <a href="index.php?page=home">
     <span class="close">&#10005;</span>
   </a>
@@ -11,13 +11,13 @@
           <?php else: ?>
             <p> &nbsp; </p>
           <?php endif; ?>
-          <span class="dot"></span>
+          <img class="user--icon" src='<?php echo $participant['icon'] ?>'/>
             <p> <?php echo $participant['name'] ?> </p>
           </a>
         </div>
     <?php endforeach; ?>
     <div class="participant">
-      <span class="plus">&#43;</span>
+      <input type="image" src="assets/icons/plus-icon.svg" class="user--icon" >
     </div>
   </wrapper>
   <div>
@@ -33,58 +33,63 @@
     <a class="station__link" <?php if($status == 0): ?> href="index.php?page=ownerStation1&amp;id=<?php echo $vacation['id'];?>" <?php endif; ?>>
       <p>Station one</p>
     </a>
-    <?php if($status == 1): ?><input type='checkbox' disabled='disabled' checked="true"><label>Playercards 4/4</label><?php else: ?><input type='checkbox' disabled='disabled'><label>Playercards 0/4</label><?php endif;?>
+    <?php if($status >= 1): ?><input type='checkbox' disabled='disabled' checked="true"><label>Playercards 4/4</label><?php else: ?><input type='checkbox' disabled='disabled'><label>Playercards 0/4</label><?php endif;?>
   </div> 
-  <div <?php if($status >= 1): ?>
-    class="unlocked" 
-    <?php else: ?>
-      class="locked" 
-      <?php endif; ?>>
+
+  <div <?php if($status >= 1): ?> class="unlocked" <?php else: ?> class="locked" <?php endif; ?>>
     <a class="station__link" <?php if($status == 1): ?> href="index.php?page=ownerStation2&amp;id=<?php echo $vacation['id'];?>" <?php endif; ?>>
       <p>Station two</p>
     </a>
-    <input type='checkbox' disabled='disabled'><label>Item cards 0/26</label>
+    <?php if($status >= 2): ?><input type='checkbox' disabled='disabled' checked='true'><label>Item cards 26/26</label><?php else: ?><input type='checkbox' disabled='disabled'><label>Item cards 0/26</label><?php endif;?>
   </div> 
+
   <div <?php if($status >= 2): ?>class="unlocked" <?php else: ?>class="locked" <?php endif; ?>>
     <a class="station__link" <?php if($status == 2): ?> href="index.php?page=ownerStation3&amp;id=<?php echo $vacation['id'];?>" <?php endif; ?>>
       <p>Station three</p>
     </a>
-   <input type='checkbox' disabled='disabled'><label>Adventure cards 0/27</label>
+    <?php if($status >= 3): ?><input type='checkbox' disabled='disabled' checked='true'><label>Adventure cards 27/27</label><?php else: ?><input type='checkbox' disabled='disabled'>Adventure cards 0/27</label><?php endif;?>
   </div> 
-  <div class="<?php if($status >= 3): ?>unlocked <?php else: ?>locked" <?php endif; ?>>
-    <a class="station__link" <?php if($status == 3): ?>href="index.php?page=station4" <?php endif; ?>>
+
+  <div <?php if($status >= 3): ?>class="unlocked" <?php else: ?> class="locked" <?php endif; ?>>
+    <a class="station__link" <?php if($status == 3): ?> href="index.php?page=station4&amp;id=<?php echo $vacation['id'];?>" <?php endif; ?>>
       <p>Station four</p>
     </a>
-    <input type='checkbox' disabled='disabled'><label>Style votes</label>
+    <?php if($status >= 4): ?><input type='checkbox' disabled='disabled' checked='true'><?php else: ?><input type='checkbox' disabled='disabled'><?php endif;?><label>Style vote</label>
   </div> 
+
     <div class="<?php if($status >= 4): ?>unlocked <?php else: ?>locked" <?php endif; ?>>
       <a class="station__link" <?php if($status == 4): ?> href="index.php?page=station5" <?php endif; ?>>
         <p>Station five</p>
       </a>
-      <input type='checkbox' disabled='disabled'><label>Playercards review 0/4</label>
+      <?php if($status >= 5): ?><input type='checkbox' disabled='disabled' checked='true'><label>Character cards revieuw 4/4</label><?php else: ?><input type='checkbox' disabled='disabled'><label>Character cards 0/4</label><?php endif;?>
     </div> 
+
     <div class="<?php if($status >= 5): ?>unlocked <?php else: ?>locked" <?php endif; ?>>
       <a class="station__link" <?php if($status == 5): ?>href="index.php?page=station6" <?php endif; ?>>
         <p>Station six</p>
       </a>
-      <input type='checkbox' disabled='disabled'><label>Item cards review 0/26</label>
+      <?php if($status >= 6): ?><input type='checkbox' disabled='disabled' checked='true'><label>Item cards revieuw 26/26</label><?php else: ?><input type='checkbox' disabled='disabled'><label>Item cards 0/26</label><?php endif;?>
     </div> 
+
     <div class="<?php if($status >= 6): ?>unlocked <?php else: ?>locked" <?php endif; ?>>
       <a class="station__link" <?php if($status == 6): ?>href="index.php?page=station7" <?php endif; ?>>
         <p>Station seven</p>
       </a>
-      <input type='checkbox' disabled='disabled'><label>Adventure cards review 0/27</label>
+      <?php if($status >= 7): ?><input type='checkbox' disabled='disabled' checked='true'><label>Adventure cards revieuw 27/27</label><?php else: ?><input type='checkbox' disabled='disabled'><label>Item cards 0/27</label><?php endif;?>
     </div> 
+
     <div class="<?php if($status >= 7): ?>unlocked <?php else: ?>locked" <?php endif; ?>>
       <a class="station__link" <?php if($status == 7): ?>href="index.php?page=station8" <?php endif; ?>>
         <p>station eight</p>
       </a>
-      <input type='checkbox' disabled='disabled'><label>Definitive style</label>
+      <?php if($status >= 8): ?><input type='checkbox' disabled='disabled' checked='true'><?php else: ?><input type='checkbox' disabled='disabled'><?php endif;?><label>Definitive style</label>
     </div> 
+
     <div class="<?php if($status >= 8): ?>unlocked <?php else: ?>locked" <?php endif; ?>>
       <a class="station__link" <?php if($status == 8): ?>href="index.php?page=order" <?php endif; ?>>
         <p>ORDER</p>
       </a>
-      <input type='checkbox' disabled='disabled'><label>Play IRL</label>
+      <?php if($status >= 8): ?><input type='checkbox' disabled='disabled' checked='true'><?php else: ?><input type='checkbox' disabled='disabled'><?php endif;?><label>Play IRL</label>
     </div> 
+
 </section>

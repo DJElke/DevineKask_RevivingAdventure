@@ -42,7 +42,6 @@ let submitContainer = document.querySelector('.submitContainer');
 
 
 
-
 const init = () => {
   startUpDashboard();
   // PHOTO EDITOR SETUP 
@@ -67,7 +66,7 @@ const init = () => {
       fitStageIntoParentContainer();
     }
   });
-
+ 
   //PHOTO EDITOR OPTIONS
   if(stickersButton != null){
     optionsMenuClicked();
@@ -86,12 +85,12 @@ const init = () => {
   initLoadCharacterFile();
   initLoadItemFile();
   initLoadAdventureFile();
-
-    initTabButtons();
-    showTab(currentTab);
-  
+  initTabButtons();
+  showTab(currentTab);
+  initCharacteristics();
+ 
 };
-
+ 
 const startUpDashboard = () => {
   let owned = document.getElementById('owned');
   let involved = document.getElementById('involved');
@@ -116,31 +115,31 @@ const startUpDashboard = () => {
     });
   }
 };
-
+ 
 const optionsMenuClicked = () => {
   //stickersbutton clicked
   stickersButton.addEventListener('click', () => {
     //show right edit options
     addTextButton.classList.add('hide');
     dragItems.classList.remove('hide');
-
+ 
     //change the edit options menu
     textButton.classList.remove('editOption--checked');
     stickersButton.classList.add('editOption--checked');
   });
-
+ 
   //textButton clicked
   textButton.addEventListener('click', () => {
     //show right edit options
     dragItems.classList.add('hide');
     addTextButton.classList.remove('hide');
-
-    //change the edit options menu 
+ 
+    //change the edit options menu
     stickersButton.classList.remove('editOption--checked');
     textButton.classList.add('editOption--checked');
   });
 }
-
+ 
 const loadBackground = () => {
   //making the background layer
   let background ='';
@@ -157,7 +156,7 @@ const loadBackground = () => {
     background.draw();
   });
 };
-
+ 
 //method to fit the stage into the size of the parent container (make it responsive)
 const fitStageIntoParentContainer = () => {
   //fit the stage into the parent
@@ -169,7 +168,7 @@ const fitStageIntoParentContainer = () => {
   stage.scale({x: scale, y: scale});
   stage.draw();
 };
-
+ 
 const addStickerToCanvas = () => {
   //making the sticker layer
   let stickerLayer = new Konva.Layer();
@@ -180,7 +179,7 @@ const addStickerToCanvas = () => {
     itemURL = e.target.src;
     let imgObj = new Image();
     imgObj.src = itemURL;
-
+ 
     let sticker = new Konva.Image({
       x: 500,
       y: 500,
@@ -188,25 +187,25 @@ const addStickerToCanvas = () => {
       draggable: true,
     });
     stickerLayer.add(sticker);
-
+ 
     //add transformer to konvaItem
     addTransformer(sticker, stickerLayer);
-
+ 
     stickerLayer.draw();
-  }); 
+  });
 };
-
+ 
 const addTextToCanvas = () => {
   //making the text layer
   let textLayer = new Konva.Layer();
   stage.add(textLayer);
-
+ 
   //make the node
   let textNode = '';
   let tr = '';
   let textArea = '';
-
-
+ 
+ 
   addTextButton.addEventListener('click', () => {
     textNode = new Konva.Text({
       text: 'Double click to edit',
@@ -220,12 +219,12 @@ const addTextToCanvas = () => {
       draggable: true,
     });
     textLayer.add(textNode);
-
+ 
     //add transformer to konvaItem
     addTransformer(textNode, textLayer);
-    
+   
     textLayer.draw();
-
+ 
     textNode.addEventListener('dbltap', () => {
       //hide the menu and change the buttons
       quitButton.classList.add('hide');
@@ -261,7 +260,7 @@ const addTextToCanvas = () => {
       textArea.style.fontFamily = textNode.fontFamily();
       textArea.style.transformOrigin = 'left top';
       textArea.style.textAlign = textNode.align();
-
+ 
       rotation = textNode.rotation();
       let transform = '';
       if(rotation){
@@ -275,14 +274,14 @@ const addTextToCanvas = () => {
       }
       transform += 'translateY(-' + px + 'px)';
       textArea.style.transform = transform;
-
+ 
       //reset height
       textArea.style.height = 'auto';
       //after browsers resized it we can set the actual value
       textArea.style.height = textArea.scrollHeight + 3 + 'px';
-
+ 
       textArea.focus();
-
+ 
       const removeTextArea = () => {
         textArea.parentNode.removeChild(textArea);
         window.removeEventListener('click', handleOutsideClick);
@@ -291,7 +290,7 @@ const addTextToCanvas = () => {
         tr.forceUpdate();
         textLayer.draw();
       };
-
+ 
       editButton.addEventListener('click', () => {
         textNode.text(textArea.value);
         removeTextArea();
@@ -301,7 +300,7 @@ const addTextToCanvas = () => {
         saveButton.classList.remove('hide');
         menuContainer.removeChild(editButton);
       });
-
+ 
       const handleOutsideClick = (e) => {
         if (e.target !== textArea){
           textNode.text(textArea.value);
@@ -312,15 +311,15 @@ const addTextToCanvas = () => {
       setTimeout(() => {
         window.addEventListener('click', handleOutsideClick);
       });
-
+ 
     });
   });
 };
-
+ 
 const getTransformer = () => {
   return tr;
 };
-
+ 
 const addTransformer = (konvaItem, layer) => {
   tr = new Konva.Transformer({
     nodes: [konvaItem],
@@ -338,7 +337,7 @@ const addTransformer = (konvaItem, layer) => {
     rotationSnaps:[0, 90, 180, 270],
   });
   layer.add(tr);
-
+ 
   let deleteButton = new Konva.Circle({
     x: tr.getWidth(),
     y: 0,
@@ -348,7 +347,7 @@ const addTransformer = (konvaItem, layer) => {
   deleteButton.x(-15);
   deleteButton.y(-15);
   tr.add(deleteButton);
-  
+ 
   let deleteIcon = new Konva.Path({
     data: '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><title>box-configurator-delete</title><circle cx="8" cy="8" r="8" style="fill:#fff"/><path d="M10.24,1.08v.66a.39.39,0,0,1-.36.36H1.12a.39.39,0,0,1-.36-.36V1.08A.39.39,0,0,1,1.12.72H3.64L3.82.3A.52.52,0,0,1,4.24,0h2.4a.61.61,0,0,1,.48.3L7.3.72H9.82C10.06.78,10.24.9,10.24,1.08ZM1.42,2.82h8.1V9.91a1.05,1.05,0,0,1-1,1H2.44a1.05,1.05,0,0,1-1-1ZM3.1,9.19a.39.39,0,0,0,.36.36.39.39,0,0,0,.36-.36V4.44a.39.39,0,0,0-.36-.36.39.39,0,0,0-.36.36Zm2,0a.36.36,0,0,0,.72,0V4.44a.36.36,0,1,0-.72,0Zm2,0a.36.36,0,0,0,.72,0V4.44a.36.36,0,0,0-.72,0Z"/></svg>',
     fill: 'white',
@@ -356,21 +355,21 @@ const addTransformer = (konvaItem, layer) => {
   deleteIcon.x(-22);
   deleteIcon.y(-22);
   tr.add(deleteIcon);
-  
+ 
   tr.on('transform', () => {
     deleteButton.x(-15);
     deleteButton.y(-15);
     deleteIcon.x(-22);
     deleteIcon.y(-22);
   });
-
+ 
   deleteIcon.addEventListener('tap', () => {
     tr.destroy();
     konvaItem.destroy();
     layer.draw();
     tr.hide();
   });
-
+ 
   layer.draw();
 };
 
@@ -413,32 +412,32 @@ const saveStage = () => {
     editCardForm.classList.remove('hide');
   }, false);
 };
-
+ 
 //// SECTION SELECT PICTURE
 const loadFile = e => {
   var image = document.querySelectorAll(".output");
   image[currentTab-1].src = URL.createObjectURL(e.target.files[0]);
 }
-
+ 
 const initLoadCharacterFile = () => {
   document.querySelectorAll(".characterCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
 }
-
+ 
 const initLoadItemFile = () => {
   document.querySelectorAll(".itemCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
 }
-
+ 
 const initLoadAdventureFile = () => {
   document.querySelectorAll(".adventureCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
 }
-
+ 
 ////SECTION TABS
 const showTab = n =>{
   //Display the right tab
   var x = document.querySelectorAll(".tab");
   if (x.length != 0){
     x[n].style.display = "block";
-  
+ 
     //Handle buttons:
     if (n == 1) {
       document.querySelector(".prevBtn").style.display = "none";
@@ -447,39 +446,50 @@ const showTab = n =>{
     }
   }
 }
-
+ 
 //initionalise the buttons used to navigate between the tabs
 const initTabButtons = () => {
   document.querySelectorAll(".nextBtn").forEach($nbtn => {$nbtn.addEventListener('click', next)});
   document.querySelectorAll(".prevBtn").forEach($pbtn => {$pbtn.addEventListener('click', prev)});
 }
-
+ 
 //Show the next tab
 const next = () => {
   var x = document.querySelectorAll(".tab");
-
+ 
   // Hide the current tab:
   x[currentTab].style.display = "none";
-
+ 
   currentTab = currentTab + 1;
-
+ 
   // Display the correct tab
   showTab(currentTab);
 }
-
+ 
 //Show previous tab
 const prev = () => {
   var x = document.querySelectorAll(".tab");
-
+ 
   // Hide the current tab:
   x[currentTab].style.display = "none";
-
+ 
   currentTab = currentTab -1;
-  
+ 
   // Display the correct tab
   showTab(currentTab);
 }
 
-init();
+const initCharacteristics = () => {
+  document.querySelectorAll(".characteristic--option").forEach($characteristic => {
+    $characteristic.addEventListener('click', handleClickCharacteristic);
+  })
+}
 
+const handleClickCharacteristic = i => {
+  $characteristicDescription = document.querySelectorAll(".characteristic--description");
+  $characteristicDescription[currentTab-1].innerHTML = i.target.value;
+}
+ 
+init();
+ 
 }

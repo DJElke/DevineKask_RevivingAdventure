@@ -1,6 +1,7 @@
 @import './css/algemeen.css';
 @import './css/photoeditor.css';
 @import './css/home.css';
+@import './css/station.css';
 
 /* START SARAH CSS */
 
@@ -20,17 +21,10 @@ h1, h2 {
   font-size: 20px;
 }
 
-.dot {
-  height: 25px;
-  width: 25px;
-  background-color: black;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.plus {
-  color: black;
-  font-size: 48px;
+.user--icon {
+ height: 3rem;
+ width: auto;
+ margin-bottom: -.8rem;
 }
 
 .participant {
@@ -50,51 +44,5 @@ justify-items: center;
   right: 20px;
 }
 
-img{
-  object-fit: cover;
-  height: 300px;
-  width: 300px;
-} 
 
-.characterCardForm__img {
-  visibility: hidden;
-}
-
-.tab {
-  display: none;
-}
-
-.charactercard__name {
-  display: flex;
-  flex-flow: row;
-  align-items: baseline;
-}
-/* .itemCardForm {
-  overflow: scroll;
-} */
-
-.itemCardForm__img, .adventureCardForm__img {
-  visibility: hidden;
-
-}
-
-.itemCardFrom__imagesholder, .adventureCardFrom__imagesholder {
-  display: flex;
-  flex-wrap: wrap;
-  /* overflow: scroll; */
-  /* scroll-behavior: smooth; */
-}
-
-.itemCard__output__label, .adventureCard__output__label {
-  width: 150px;
-  height: 150px;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
-
-}
-
-.itemCard__output__label .output , .adventureCard__output__label .output{
-  height: 150px;
-  width: 150px;
-}
 

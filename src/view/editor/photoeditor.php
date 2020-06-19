@@ -45,10 +45,8 @@
     </div>
   </div>
 
-  <form class="hide editCardForm" action="index.php?page=handleEdit" method="POST" enctype="multipart/form-data">
+  <form class="hide editCardForm" action="index.php?page=photoEditor&amp;id=<?php echo $vacation['id'];?>&amp;cardCount=<?php echo $cardCount;?>" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="cardId" value="<?php echo $card['id']; ?>"/>
-    <input type="hidden" name="vacationId" value="<?php echo $vacation['id']?>"/>
-    <input type="hidden" name="cardCount" value="<?php echo $cardCount;?>"/>
     <img class="hide editBgImg" src=<?php echo $card['img']; ?> alt="background"/>
     <div class="hide titleContainer">
       <?php if(($cardTitle != null) && ($status == 0)){?>

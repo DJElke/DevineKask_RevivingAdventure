@@ -3,7 +3,6 @@ html {
   /* font-size: 22px; */
   width: 100%;
   height: 100vh;
-  overflow-y: hidden;
   font-family: avenir;
   font-style: normal;
 }

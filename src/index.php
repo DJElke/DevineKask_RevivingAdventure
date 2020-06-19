@@ -23,10 +23,6 @@ $routes = array(
       'controller' => 'Editor',
       'action' => 'photoEditor'
     ),
-    'handleEdit' => array (
-      'controller' => 'Editor',
-      'action' => 'handleEdit'
-    ),
     'ownedVacation' => array (
       'controller' => 'Vacation',
       'action' => 'ownedVacation'

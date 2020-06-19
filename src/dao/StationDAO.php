@@ -77,6 +77,7 @@ class StationDAO extends DAO {
           return false;
         }
     }
+    return false;
   }
 
   public function insertItemCard($cards) {
@@ -133,6 +134,7 @@ class StationDAO extends DAO {
           return false;
         }
     }
+    return false;
   }
 
 
@@ -194,14 +196,17 @@ class StationDAO extends DAO {
 
   public function validate( $cards ){
      $errors = [];
+     $i = 0;
      foreach($cards as $card){
-      if (!isset($card['image'])) {
-        $errors['image'] = 'Please select an image';
+      if (strlen($card['image']) == 0) {
+        $errors[$i]['image'] = 'Please select an image';
       }
-      if (!isset($card['title'])) {
-        $errors['title'] = 'Please select a characteristic';
+      if (isset($card['title']) && strlen($card['title']) == 0) {
+        $errors[$i]['title'] = 'Please select a characteristic';
       }
+      $i++;
      }
+     unset($i);
       return $errors;
   }
 

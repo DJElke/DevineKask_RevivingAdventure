@@ -73,6 +73,7 @@ class StationController extends Controller{
       if($_POST['action'] == 'add'){
         $i = 0;
         foreach($_POST['cards'] as $card){
+          //upload images
           $file = $_FILES['characterImage'.$i]['name'];
           $path = pathinfo($file);
           $filename = $path['filename'];
@@ -82,17 +83,19 @@ class StationController extends Controller{
           move_uploaded_file($tmpFilePath,$path_filename_ext);
           array_push($uploadedFiles, $path_filename_ext);
 
+          //make path NULL if input is not correct 
           $title = '';
-          if($card['characteristic'] != '' ) 
+          if(isset($card['characteristic'])) 
           {
             $title = $card['participant_name'] . ' is the ' . $card['characteristic'];
           }
 
-          if($filename = '') 
+          if(!isset($path['extension'])) 
           {
             $path_filename_ext = '';
           }
           
+
           $card = array(
             'vacation_id' => $card['vacation_id'],
             'title' => $title,
@@ -111,10 +114,13 @@ class StationController extends Controller{
       }
 
       if (!$insertCards) {
-        foreach($uploadedFiles as $file){
+        foreach($uploadedFiles as $file){ 
           unlink($file);
         }
         $errors = $this->stationDAO->validate($cards);
+        unset($uploadedFiles);
+        header("Location: index.php?page=ownerStation1&id=".$card['vacation_id']);
+        exit();
       }
 
       unset($uploadedFiles);
@@ -133,6 +139,7 @@ class StationController extends Controller{
       if($_POST['action'] == 'add'){
         $i = 0;
         foreach($_FILES as $file){
+          //upload images
           $file = $_FILES['itemImage'.$i]['name'];
           $path = pathinfo($file);
           $filename = $path['filename'];
@@ -141,6 +148,12 @@ class StationController extends Controller{
           $path_filename_ext = $target_dir.$filename.".".$ext;
           move_uploaded_file($tmpFilePath,$path_filename_ext);
           array_push($uploadedFiles, $path_filename_ext);
+
+          //make path NULL if input is not correct
+          if(!isset($path['extension'])) 
+          {
+            $path_filename_ext = '';
+          }
 
           $card = array(
             'vacation_id' => $_POST['vacation_id'],
@@ -163,10 +176,12 @@ class StationController extends Controller{
           unlink($file);
         }
         $errors = $this->stationDAO->validate($cards);
+        unset($uploadedFiles);
+        header("Location: index.php?page=ownerStation2&id=" . $card['vacation_id']);
+        exit();
       }
 
       unset($uploadedFiles);
-
       header("Location: index.php?page=ownedVacation&id=" . $_POST['vacation_id']);
       exit();
     }
@@ -182,6 +197,7 @@ class StationController extends Controller{
       if($_POST['action'] == 'add'){
         $i = 0;
         foreach($_FILES as $file){
+          //upload images
           $file = $_FILES['adventureImage'.$i]['name'];
           $path = pathinfo($file);
           $filename = $path['filename'];
@@ -190,6 +206,12 @@ class StationController extends Controller{
           $path_filename_ext = $target_dir.$filename.".".$ext;
           move_uploaded_file($tmpFilePath,$path_filename_ext);
           array_push($uploadedFiles, $path_filename_ext);
+
+          //make path NULL if input is not correct
+          if(!isset($path['extension'])) 
+          {
+            $path_filename_ext = '';
+          }
 
           $card = array(
             'vacation_id' => $_POST['vacation_id'],
@@ -212,6 +234,9 @@ class StationController extends Controller{
           unlink($file);
         }
         $errors = $this->stationDAO->validate($cards);
+        unset($uploadedFiles);
+        header("Location: index.php?page=ownerStation3&id=".$card['vacation_id']);
+        exit();
       }
 
       unset($uploadedFiles);

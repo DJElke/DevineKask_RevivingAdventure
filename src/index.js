@@ -40,8 +40,6 @@ let submitContainer = document.querySelector('.submitContainer');
 // let characterImg = document.querySelectorAll(".characterCardForm__img");
 // let itemImg = document.querySelectorAll(".itemCardForm__img");
 
-
-
 const init = () => {
   startUpDashboard();
   // PHOTO EDITOR SETUP 
@@ -445,6 +443,16 @@ const showTab = n =>{
       document.querySelector(".prevBtn").style.display = "inline";
     }
   }
+  
+  // $characteristicChecked = false;
+  // var radiobuttons = document.querySelectorAll(".characteristic--option".concat(n));
+  // radiobuttons.forEach($radiobutton => { if ($radiobutton.checked) {$characteristicChecked = true} })
+
+  // $characterImages = document.querySelectorAll(".characterCardForm__img");
+  // if($characterImages[n-1]){
+
+  // }
+
 }
  
 //initionalise the buttons used to navigate between the tabs

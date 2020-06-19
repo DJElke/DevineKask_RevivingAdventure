@@ -2,7 +2,17 @@
 
 class DAO {
 
-  // Properties
+  // private static $dbHost = "localhost";
+  // private static $dbName = "Integration4";
+  // private static  $dbUser = "root";
+  // private static  $dbPass = "root";
+
+  private static $dbHost = "ID281926_20182019.db.webhosting.be";
+  private static $dbName = "ID281926_20182019";
+  private static $dbUser = "ID281926_20182019";
+  private static $dbPass = "Boterbloempje23";
+
+    // Properties
 	private static $sharedPDO;
 	protected $pdo;
 
@@ -10,13 +20,7 @@ class DAO {
 	function __construct() {
 
     if(empty(self::$sharedPDO)) {
-
-      $dbHost = getenv('PHP_DB_HOST') ?: "localhost";
-      $dbName = getenv('PHP_DB_DATABASE') ?: "Integration4";
-      $dbUser = getenv('PHP_DB_USERNAME') ?: "root";
-      $dbPass = getenv('PHP_DB_PASSWORD') ?: "root";
-
-			self::$sharedPDO = new PDO("mysql:host=" . $dbHost . ";dbname=" . $dbName, $dbUser, $dbPass);
+			self::$sharedPDO = new PDO("mysql:host=" . self::$dbHost . ";dbname=" . self::$dbName, self::$dbUser, self::$dbPass);
 			self::$sharedPDO->exec("SET CHARACTER SET utf8");
 			self::$sharedPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			self::$sharedPDO->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);

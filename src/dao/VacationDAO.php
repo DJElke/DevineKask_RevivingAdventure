@@ -6,8 +6,8 @@ class VacationDAO extends DAO {
  
   //get the vacation by id
   public function getVacationById($id){
-    $sql = "SELECT * FROM Vacation 
-    WHERE Vacation.id = :id";
+    $sql = "SELECT * FROM `Int4_Vacation` 
+    WHERE `Int4_Vacation`.`id` = :id";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':id', $id);
     $stmt->execute();
@@ -17,7 +17,7 @@ class VacationDAO extends DAO {
 
   //get the name of a vacation
   public function getVacationName($vacationId) {
-    $sql = "SELECT Vacation.id, Vacation.name FROM Vacation WHERE Vacation.id = :vacationId";
+    $sql = "SELECT `Int4_Vacation`.`id`, `Int4_Vacation`.`name` FROM `Int4_Vacation` WHERE `Int4_Vacation`.`id` = :vacationId";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute(array(
       ':vacationId' => $vacationId
@@ -27,10 +27,10 @@ class VacationDAO extends DAO {
   
   //get the participants (name and role) for a vacation
   public function getParticipants($vacationId) {
-    $sql = "SELECT Vacation_User.user_id as 'id', User.name, UserRole.description, User.picture as 'icon' 
-    FROM Vacation_User JOIN User ON Vacation_User.user_id = User.id 
-    JOIN UserRole ON Vacation_User.userrole_id = UserRole.id 
-    WHERE Vacation_User.vacation_id = :vacationId";
+    $sql = "SELECT `Int4_Vacation_User`.`user_id` as 'id', `Int4_User`.`name`, `Int4_UserRole`.`description`, `Int4_User`.`picture` as 'icon' 
+    FROM `Int4_Vacation_User` JOIN `Int4_User` ON `Int4_Vacation_User`.`user_id` = `Int4_User`.`id`
+    JOIN `Int4_UserRole` ON `Int4_Vacation_User`.`userrole_id` = `Int4_UserRole`.`id` 
+    WHERE `Int4_Vacation_User`.`vacation_id` = :vacationId";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute(array(
       ':vacationId' => $vacationId
@@ -39,10 +39,10 @@ class VacationDAO extends DAO {
   }
 
   public function getStatus($vacationId, $userId) {
-    $sql = "SELECT Vacation_User.status 
-    FROM Vacation_User 
-    WHERE Vacation_User.vacation_id = :vacationId 
-    AND Vacation_User.user_id = :userId";
+    $sql = "SELECT `Int4_Vacation_User`.`status` 
+    FROM `Int4_Vacation_User` 
+    WHERE `Int4_Vacation_User`.`vacation_id` = :vacationId 
+    AND `Int4_Vacation_User`.`user_id` = :userId";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute(array(
       ':vacationId' => $vacationId,
@@ -54,8 +54,8 @@ class VacationDAO extends DAO {
   //get cards from a vacation 
   public function getCardsFromVacation($id){
     $sql = "SELECT *
-    FROM Vacation_Card
-    WHERE Vacation_Card.vacation_id = :id";
+    FROM `Int4_Vacation_Card`
+    WHERE `Int4_Vacation_Card`.`vacation_id` = :id";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':id', $id);
     $stmt->execute();

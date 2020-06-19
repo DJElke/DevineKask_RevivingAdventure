@@ -7,7 +7,7 @@ class DesignDAO extends DAO {
   //get the name of a vacation
   public function getDesigns() {
 
-    $sql = "SELECT Design.id, Design.description, Design.lucky_cards, Design.hazard_cards FROM Design";
+    $sql = "SELECT `Int4_Design`.`id`, `Int4_Design`.`description`, `Int4_Design`.`lucky_cards`, `Int4_Design`.`hazard_cards` FROM `Int4_Design`";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -16,7 +16,7 @@ class DesignDAO extends DAO {
 
   public function registerVote($loggedInUser, $designId) {
 
-    $sql = "UPDATE `Vacation_User` SET `design_id` = :design_id WHERE Vacation_User.user_id = :user_id";
+    $sql = "UPDATE `Int4_Vacation_User` SET `design_id` = :design_id WHERE `Int4_Vacation_User`.`user_id` = :user_id";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':design_id' => $designId,

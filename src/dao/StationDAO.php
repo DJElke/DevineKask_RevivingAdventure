@@ -13,7 +13,7 @@ class StationDAO extends DAO {
 
         foreach ($cards as $card){
 
-          $sql = "INSERT INTO `Card` (`cardtype_id`) VALUES (:cardtype_id);";
+          $sql = "INSERT INTO `Int4_Card` (`cardtype_id`) VALUES (:cardtype_id);";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':cardtype_id' => 1      
@@ -22,7 +22,7 @@ class StationDAO extends DAO {
           
           $cardID = $this->pdo->lastInsertId();
 
-          $sql = "INSERT INTO `Title` (`description`) VALUES (:title_description);";
+          $sql = "INSERT INTO `Int4_Title` (`description`) VALUES (:title_description);";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':title_description' => $card['title']      
@@ -31,7 +31,7 @@ class StationDAO extends DAO {
 
           $titleID = $this->pdo->lastInsertId();
 
-          $sql = "INSERT INTO `Card_Title` (`card_id`, `title_id`) VALUES (:card_id, :title_id);";
+          $sql = "INSERT INTO `Int4_Card_Title` (`card_id`, `title_id`) VALUES (:card_id, :title_id);";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':card_id' => $cardID,
@@ -39,7 +39,7 @@ class StationDAO extends DAO {
             )
           );
 
-          $sql = "INSERT INTO `Picture` (`image`) VALUES (:image);";
+          $sql = "INSERT INTO `Int4_Picture` (`image`) VALUES (:image);";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':image' => $card['image']      
@@ -48,7 +48,7 @@ class StationDAO extends DAO {
 
           $pictureID = $this->pdo->lastInsertId();
 
-          $sql = "INSERT INTO `Card_Picture` (`card_id`, `picture_id`) VALUES (:card_id, :picture_id);";
+          $sql = "INSERT INTO `Int4_Card_Picture` (`card_id`, `picture_id`) VALUES (:card_id, :picture_id);";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':card_id' => $cardID,
@@ -56,7 +56,7 @@ class StationDAO extends DAO {
             )
           );
 
-          $sql = "INSERT INTO `Vacation_Card` (`card_id`, `vacation_id`) VALUES (:card_id, :vacation_id);";
+          $sql = "INSERT INTO `Int4_Vacation_Card` (`card_id`, `vacation_id`) VALUES (:card_id, :vacation_id);";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':card_id' => $cardID,
@@ -88,7 +88,7 @@ class StationDAO extends DAO {
 
         foreach ($cards as $card){
 
-          $sql = "INSERT INTO `Card` (`cardtype_id`) VALUES (:cardtype_id);";
+          $sql = "INSERT INTO `Int4_Card` (`cardtype_id`) VALUES (:cardtype_id);";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':cardtype_id' => 2      
@@ -97,7 +97,7 @@ class StationDAO extends DAO {
           
           $cardID = $this->pdo->lastInsertId();
 
-          $sql = "INSERT INTO `Picture` (`image`) VALUES (:image);";
+          $sql = "INSERT INTO `Int4_Picture` (`image`) VALUES (:image);";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':image' => $card['image']      
@@ -106,7 +106,7 @@ class StationDAO extends DAO {
 
           $pictureID = $this->pdo->lastInsertId();
 
-          $sql = "INSERT INTO `Card_Picture` (`card_id`, `picture_id`) VALUES (:card_id, :picture_id);";
+          $sql = "INSERT INTO `Int4_Card_Picture` (`card_id`, `picture_id`) VALUES (:card_id, :picture_id);";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':card_id' => $cardID,
@@ -114,7 +114,7 @@ class StationDAO extends DAO {
             )
           );
 
-          $sql = "INSERT INTO `Vacation_Card` (`card_id`, `vacation_id`) VALUES (:card_id, :vacation_id);";
+          $sql = "INSERT INTO `Int4_Vacation_Card` (`card_id`, `vacation_id`) VALUES (:card_id, :vacation_id);";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':card_id' => $cardID,
@@ -146,7 +146,7 @@ class StationDAO extends DAO {
 
         foreach ($cards as $card){
 
-          $sql = "INSERT INTO `Card` (`cardtype_id`) VALUES (:cardtype_id);";
+          $sql = "INSERT INTO `Int4_Card` (`cardtype_id`) VALUES (:cardtype_id);";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':cardtype_id' => 3      
@@ -155,7 +155,7 @@ class StationDAO extends DAO {
           
           $cardID = $this->pdo->lastInsertId();
 
-          $sql = "INSERT INTO `Picture` (`image`) VALUES (:image);";
+          $sql = "INSERT INTO `Int4_Picture` (`image`) VALUES (:image);";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':image' => $card['image']      
@@ -164,7 +164,7 @@ class StationDAO extends DAO {
 
           $pictureID = $this->pdo->lastInsertId();
 
-          $sql = "INSERT INTO `Card_Picture` (`card_id`, `picture_id`) VALUES (:card_id, :picture_id);";
+          $sql = "INSERT INTO `Int4_Card_Picture` (`card_id`, `picture_id`) VALUES (:card_id, :picture_id);";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':card_id' => $cardID,
@@ -172,7 +172,7 @@ class StationDAO extends DAO {
             )
           );
 
-          $sql = "INSERT INTO `Vacation_Card` (`card_id`, `vacation_id`) VALUES (:card_id, :vacation_id);";
+          $sql = "INSERT INTO `Int4_Vacation_Card` (`card_id`, `vacation_id`) VALUES (:card_id, :vacation_id);";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':card_id' => $cardID,
@@ -211,7 +211,7 @@ class StationDAO extends DAO {
   }
 
   public function updateStatus($vac_id, $user_id){
-    $sql = "UPDATE `Vacation_User` SET status = status + 1 WHERE user_id = :user_id AND vacation_id = :vacation_id ;";
+    $sql = "UPDATE `Int4_Vacation_User` SET status = status + 1 WHERE user_id = :user_id AND vacation_id = :vacation_id ;";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute(array(
         ':user_id' => $user_id,

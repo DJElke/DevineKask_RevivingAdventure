@@ -5,7 +5,7 @@ require_once __DIR__ . '/DAO.php';
 class HomeDAO extends DAO {
  
   public function getUserName($userid) {
-    $sql = "SELECT User.name from USER WHERE User.id = :userid";
+    $sql = "SELECT `Int4_User`.`name` from `Int4_User` WHERE `Int4_User`.`id` = :userid";
     $stmt = $this->pdo->prepare($sql);
 
     $stmt->execute(array(
@@ -15,12 +15,12 @@ class HomeDAO extends DAO {
   }
 
   public function getOwnedVacations($userid) {
-    $sql = "SELECT Vacation.id, Vacation.name, Vacation_User.status FROM Vacation 
-    JOIN Vacation_User on Vacation.id = Vacation_User.vacation_id
-    JOIN User on Vacation_User.user_id = User.id
-    JOIN UserRole ON UserRole.id = Vacation_User.userrole_id
-    WHERE User.id = :userid
-    AND UserRole.description = 'owner'";
+    $sql = "SELECT `Int4_Vacation`.`id`, `Int4_Vacation`.`name`, `Int4_Vacation_User`.`status` FROM `Int4_Vacation` 
+    JOIN `Int4_Vacation_User` on `Int4_Vacation`.`id` = `Int4_Vacation_User`.`vacation_id`
+    JOIN `Int4_User` on `Int4_Vacation_User`.`user_id` = `Int4_User`.`id`
+    JOIN `Int4_UserRole` ON `Int4_UserRole`.`id` = `Int4_Vacation_User`.`userrole_id`
+    WHERE `Int4_User`.`id` = :userid
+    AND `Int4_UserRole`.`description` = 'owner'";
     $stmt = $this->pdo->prepare($sql);
 
     $stmt->execute(array(
@@ -29,13 +29,13 @@ class HomeDAO extends DAO {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public function getInvolvedVacations($userid){
-    $sql = "SELECT Vacation.id, Vacation.name, Vacation_User.status FROM Vacation 
-    JOIN Vacation_User on Vacation.id = Vacation_User.vacation_id
-    JOIN User on Vacation_User.user_id = User.id
-    JOIN UserRole ON UserRole.id = Vacation_User.userrole_id
-    WHERE User.id = :userid
-    AND UserRole.description = 'editor'";
+  public function getInvolvedVacations($userid) {
+    $sql = "SELECT `Int4_Vacation`.`id`, `Int4_Vacation`.`name`, `Int4_Vacation_User`.`status` FROM `Int4_Vacation` 
+    JOIN `Int4_Vacation_User` on `Int4_Vacation`.`id` = `Int4_Vacation_User`.`vacation_id`
+    JOIN `Int4_User` on `Int4_Vacation_User`.`user_id` = `Int4_User`.`id`
+    JOIN `Int4_UserRole` ON `Int4_UserRole`.`id` = `Int4_Vacation_User`.`userrole_id`
+    WHERE `Int4_User`.`id` = :userid
+    AND `Int4_UserRole`.`description` = 'editor'";
     $stmt = $this->pdo->prepare($sql);
 
     $stmt->execute(array(

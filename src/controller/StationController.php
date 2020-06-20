@@ -74,6 +74,11 @@ class StationController extends Controller{
       }
       
     }
+
+    public function station5() {
+      
+      
+    }
   
     private function _handleAddCharacterCard() {
       $loggedInUser = 1;

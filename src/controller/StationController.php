@@ -20,6 +20,9 @@ class StationController extends Controller{
 
       $participants = $this->vacationDAO-> getParticipants($_GET['id']);
       $this->set('participants', $participants);
+      
+      $vacationId = $_GET['id'];
+      $this->set('vacationId', $vacationId);
 
       if (!empty($_POST['action'])) {
         $this->_handleAddCharacterCard();
@@ -33,6 +36,9 @@ class StationController extends Controller{
       $participants = $this->vacationDAO-> getParticipants($_GET['id']);
       $this->set('participants', $participants);
 
+      $vacationId = $_GET['id'];
+      $this->set('vacationId', $vacationId);
+
       if (!empty($_POST['action'])) {
         $this->_handleAddItemCard();
       }
@@ -44,6 +50,9 @@ class StationController extends Controller{
 
       $participants = $this->vacationDAO-> getParticipants($_GET['id']);
       $this->set('participants', $participants);
+
+      $vacationId = $_GET['id'];
+      $this->set('vacationId', $vacationId);
 
       if (!empty($_POST['action'])) {
         $this->_handleAddAdventureCard();
@@ -57,6 +66,8 @@ class StationController extends Controller{
       $designs = $this->designDAO-> getDesigns();
       $this->set('designs', $designs);
 
+      $vacationId = $_GET['id'];
+      $this->set('vacationId', $vacationId);
 
       if (!empty($_POST['action'])) {
         $this->_handleRegisterVote();

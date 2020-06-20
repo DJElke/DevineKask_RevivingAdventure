@@ -47,7 +47,7 @@
 
   <form class="hide editCardForm" action="index.php?page=photoEditor&amp;id=<?php echo $vacation['id'];?>&amp;cardCount=<?php echo $cardCount;?>" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="cardId" value="<?php echo $card['id']; ?>"/>
-    <img class="hide editBgImg" src=<?php echo $card['img']; ?> alt="background"/>
+    <img class="hide editBgImg" src=<?php echo $image; ?> alt="background"/>
     <div class="hide titleContainer">
       <?php if(($cardTitle != null) && ($status == 0)){?>
         <p class="red">psst... <?php echo $owner; ?> called <?php echo $cardTitle['description']; ?> ...</p>

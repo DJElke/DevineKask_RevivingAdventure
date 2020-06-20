@@ -14,17 +14,25 @@ class CardDAO extends DAO {
     return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
-  //get card and cardImage
-  public function getCardAndImage($id){
-    $sql = "SELECT `Int4_Card`.*, `Int4_Picture`.`image` as `img`
-    FROM `Int4_Card`
-    RIGHT JOIN `Int4_Picture`
-    ON `Int4_Picture`.`id` = `Int4_Card`.`picture_id`
-    WHERE `Int4_Card`.`id` = :id";
+  //get picture id by cardId
+  public function getPictureIdsByCardId($id){
+    $sql = "SELECT `picture_id` 
+    FROM `Int4_Card_Picture`
+    WHERE `Int4_Card_Picture`.`card_id` = :id";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':id', $id);
     $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public function getImageById($id){
+    $sql = "SELECT `image`
+    FROM `Int4_Picture`
+    WHERE `Int4_Picture`.`id` = :id";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
   //Voor de characterkaarten

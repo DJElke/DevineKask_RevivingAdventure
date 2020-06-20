@@ -8,7 +8,7 @@
 </header>
 
 <?php $i = 0 ?>
-<form class="form--design--card" action="index.php?page=station4" method="post">
+<form class="form--design--card" action="index.php?page=station4&amp;id=<?php echo $vacationId;?>" method="post">
 <input type="hidden" name="vacation_id" value="<?php echo $_GET['id'];?>" />
 <div class="list--design--card">
   <?php foreach ($designs as $design): ?>

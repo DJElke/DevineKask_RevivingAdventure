@@ -12,7 +12,7 @@
   <button type="button" class="nextBtn" >START</button>
 </div>
 
-<form class="characterCardForm" action="index.php?page=ownerStation1" method="post" enctype="multipart/form-data">
+<form class="characterCardForm" action="index.php?page=ownerStation1&amp;id=<?php echo $vacationId;?>" method="post" enctype="multipart/form-data">
 <!-- <input type="hidden" name="cardTypeId" value="1" /> -->
 
   <?php $i = 0 ?> 

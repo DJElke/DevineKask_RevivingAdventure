@@ -11,7 +11,7 @@
 <button type="button" class="nextBtn" >START</button>
 </div>
 
-<form class="itemCardForm" action="index.php?page=ownerStation2" method="post" enctype="multipart/form-data">
+<form class="itemCardForm" action="index.php?page=ownerStation2&amp;id=<?php echo $vacationId;?>" method="post" enctype="multipart/form-data">
 <input type="hidden" name="vacation_id" value="<?php echo $_GET['id'];?>" />
 <!-- <input type="hidden" name="cardTypeId" value="2" /> -->
 

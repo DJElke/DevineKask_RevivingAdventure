@@ -85,7 +85,7 @@ const init = () => {
   initTabButtons();
   showTab(currentTab);
   initCharacteristics();
- 
+
 };
  
 const startUpDashboard = () => {
@@ -442,47 +442,45 @@ const showTab = n =>{
       document.querySelector(".prevBtn").style.display = "inline";
     }
   }
-  
-  // $characteristicChecked = false;
-  // var radiobuttons = document.querySelectorAll(".characteristic--option".concat(n));
-  // radiobuttons.forEach($radiobutton => { if ($radiobutton.checked) {$characteristicChecked = true} })
-
-  // $characterImages = document.querySelectorAll(".characterCardForm__img");
-  // if($characterImages[n-1]){
-
-  // }
-
 }
- 
+
 //initionalise the buttons used to navigate between the tabs
 const initTabButtons = () => {
   document.querySelectorAll(".nextBtn").forEach($nbtn => {$nbtn.addEventListener('click', next)});
   document.querySelectorAll(".prevBtn").forEach($pbtn => {$pbtn.addEventListener('click', prev)});
 }
  
-//Show the next tab
+//Show the next tab if no fields are empty; else, show error message
 const next = () => {
   var x = document.querySelectorAll(".tab");
  
-  // Hide the current tab:
+  if(currentTab > 0){
+    var images = document.querySelectorAll(".output");
+    var descriptions = document.querySelectorAll(".characteristic--description");
+    var errorMessages = document.querySelectorAll(".error");
+    errorMessages[currentTab].innerHTML = "";
+
+    if(images[currentTab-1].src != "" && (descriptions.length == 0 || descriptions [currentTab-1].innerHTML!= " " )){
+      errorMessages[currentTab-1].innerHTML = "";
+      x[currentTab].style.display = "none";
+      currentTab = currentTab + 1;
+      showTab(currentTab);
+    } else {
+      errorMessages[currentTab-1].innerHTML = "Please complete the card first"
+    }
+  }
+  else {
   x[currentTab].style.display = "none";
- 
   currentTab = currentTab + 1;
- 
-  // Display the correct tab
   showTab(currentTab);
+  }
 }
  
 //Show previous tab
 const prev = () => {
   var x = document.querySelectorAll(".tab");
- 
-  // Hide the current tab:
   x[currentTab].style.display = "none";
- 
   currentTab = currentTab -1;
- 
-  // Display the correct tab
   showTab(currentTab);
 }
 

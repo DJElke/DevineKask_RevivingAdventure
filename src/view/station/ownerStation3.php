@@ -33,6 +33,7 @@
         </label>
         <?php endfor; ?>
       </div>
+      <p class="error"></p>
       <div>
         <button type="button" class="prevBtn">PREVIOUS</button>
         <button type="button" class="nextBtn"><?php echo $i+1 ?>/<?php echo count($momenttypes) ?> NEXT</button>

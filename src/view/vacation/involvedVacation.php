@@ -40,13 +40,13 @@
     <?php else: ?>
       class="locked" 
       <?php endif; ?>>
-    <a class="station__link" <?php if($status == 1): ?> href="index.php?page=ownerStation2&amp;id=<?php echo $vacation['id'];?>" <?php endif; ?>>
+    <a class="station__link" <?php if($status == 1): ?> href="index.php?page=editorIndex&amp;id=<?php echo $vacation['id'];?>" <?php endif; ?>>
       <p>Station two</p>
     </a>
     <input type='checkbox' disabled='disabled'><label>Item cards 0/26</label>
   </div> 
   <div <?php if($status >= 2): ?>class="unlocked" <?php else: ?>class="locked" <?php endif; ?>>
-    <a class="station__link" <?php if($status == 2): ?> href="index.php?page=ownerStation3" <?php endif; ?>>
+    <a class="station__link" <?php if($status == 2): ?> href="index.php?page=editorIndex&amp;id=<?php echo $vacation['id'];?>" <?php endif; ?>>
       <p>Station three</p>
     </a>
    <input type='checkbox' disabled='disabled'><label>Adventure cards 0/27</label>

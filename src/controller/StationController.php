@@ -146,8 +146,6 @@ class StationController extends Controller{
 
     private function _handleAddItemCard() {
       $loggedInUser = 1;
-
-      $loggedInUser = 1;
       $target_dir = "uploads/";
       $uploadedFiles = array();
       $cards = array();
@@ -203,8 +201,6 @@ class StationController extends Controller{
     }
 
     private function _handleAddAdventureCard() {
-      $loggedInUser = 1;
-
       $loggedInUser = 1;
       $target_dir = "uploads/";
       $uploadedFiles = array();

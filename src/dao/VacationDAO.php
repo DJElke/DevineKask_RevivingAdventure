@@ -52,12 +52,15 @@ class VacationDAO extends DAO {
   }
 
   //get cards from a vacation 
-  public function getCardsFromVacation($id){
-    $sql = "SELECT *
+  public function getCardsFromVacation($id, $cardType){
+    $sql = "SELECT `Int4_Vacation_Card`.*, `Int4_Card`.`cardtype_id` as `cardtype`
     FROM `Int4_Vacation_Card`
-    WHERE `Int4_Vacation_Card`.`vacation_id` = :id";
+    JOIN `Int4_Card` ON `Int4_Vacation_Card`.`card_id` = `Int4_Card`.`id`
+    WHERE `Int4_Vacation_Card`.`vacation_id` = :id
+    HAVING `cardtype` = :cardType";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':id', $id);
+    $stmt->bindValue(':cardType', $cardType);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }

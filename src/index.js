@@ -407,8 +407,49 @@ const saveStage = () => {
     submitContainer.classList.remove('hide');
     let editCardForm = document.querySelector('.editCardForm');
     editCardForm.classList.remove('hide');
+    disableNext();
   }, false);
 };
+
+//disable next button when title or description isn't filled in 
+const disableNext = () => {
+  let nextButton = document.querySelector('.nextPic');
+  let titleArea = document.querySelector('.titleArea');
+  let descArea = document.querySelector('.descArea');
+    if(titleArea != null){
+      if(titleArea.value === ""){
+        nextButton.disabled = true;
+        nextButton.classList.add('hide');
+      }
+      titleArea.addEventListener('input', () => {
+        nextButton.disabled = false;
+        nextButton.classList.remove('hide');
+        if((titleArea.value === "") || (descArea.value === "")){
+          nextButton.disabled = true;
+          nextButton.classList.add('hide');
+        }
+      });
+    }
+      if(descArea.value === ""){
+        nextButton.disabled = true;
+        nextButton.classList.add('hide');
+      }
+      descArea.addEventListener('input', () => {
+        nextButton.disabled = false;
+        nextButton.classList.remove('hide');
+        if(titleArea != null){
+          if((titleArea.value === "") || (descArea.value === "")){
+            nextButton.disabled = true;
+            nextButton.classList.add('hide');
+          }
+        }else{
+          if(descArea.value === ""){
+            nextButton.disabled = true;
+            nextButton.classList.add('hide');
+          }
+        }
+      });
+   }
  
 //// SECTION SELECT PICTURE
 const loadFile = e => {

@@ -229,5 +229,17 @@ class StationDAO extends DAO {
     );
     return $stmt->fetch(PDO::FETCH_ASSOC);
   }
+
+  //get `Int4_Vacation_User` id by filtering on user_id and vacation_id
+  public function getVacUserByUserIdAndVacId($userid, $vacationid){
+    $sql = "SELECT * FROM `Int4_Vacation_User` WHERE user_id = :userid AND vacation_id = :vacationid";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute(array(
+            ':userid' => $userid,
+            ':vacationid' => $vacationid
+    ));
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+  }
+
 }
 ?>

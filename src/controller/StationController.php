@@ -259,14 +259,22 @@ class StationController extends Controller{
 
     private function _handleRegisterVote() {
       $loggedInUser = 1;
+      $vacationId = $_POST['vacation_id'];
 
       if($_POST['action'] == 'add'){
-        $this->designDAO->registerVote($loggedInUser, $_POST['design--option']);
-        $this->stationDAO->updateStatus($_POST['vacation_id'],$loggedInUser);
-      }
+        $vacUser = $this->stationDAO->getVacUserByUserIdAndVacId($loggedInUser, $vacationId);
+        $this->designDAO->registerVote($vacUser['id'],$_POST['design--option']);
+        $this->stationDAO->updateStatus($vacationId, $loggedInUser);
 
-      header("Location: index.php?page=ownedVacation&id=" . $_POST['vacation_id']);
-      exit();
+        if($vacUser['userrole_id'] == 1){
+          header("Location: index.php?page=ownedVacation&id=" . $vacationId);
+          exit();
+        }
+        if($vacUser['userrole_id'] == 2){
+          header("Location: index.php?page=involvedVacation&id=" . $vacationId);
+          exit();
+        }
+      }
     }
   }
 ?>

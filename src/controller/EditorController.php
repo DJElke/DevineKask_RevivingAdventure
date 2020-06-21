@@ -5,6 +5,7 @@ require_once __DIR__ . '/../dao/VacationDAO.php';
 require_once __DIR__ . '/../dao/UserDAO.php';
 require_once __DIR__ . '/../dao/CardDAO.php';
 require_once __DIR__ . '/../dao/StationDAO.php';
+require_once __DIR__ . '/../dao/StickersDAO.php';
 
 class EditorController extends Controller{
 
@@ -13,6 +14,7 @@ class EditorController extends Controller{
       $this->userDAO = new UserDAO();
       $this->cardDAO = new CardDAO();
       $this->stationDAO = new StationDAO();
+      $this->stickersDAO = new StickersDAO();
     }
 
     public function editorIndex(){
@@ -96,6 +98,10 @@ class EditorController extends Controller{
         } 
       }
       $this->set('owner', $owner);
+
+      //stickers ophalen
+      $stickers = $this->stickersDAO->getStickerImages();
+      $this->set('stickers', $stickers);
 
       if(!empty($_POST['action'])){
         if($_POST['action'] == 'add'){

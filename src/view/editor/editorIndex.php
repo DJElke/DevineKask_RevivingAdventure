@@ -5,7 +5,13 @@
 <?php } ?> 
 <?php if($status == 1){ ?> 
   <h1 class="blue">Station two</h1>
-  <p class="red">Adventure cards! Give your most memorable adventures a nice title and description.</p>
+  <p class="red">Adventure cards! Edit the picture and give your most memorable adventures a nice title and description.</p>
+  </br>
+<?php } ?> 
+
+<?php if($status == 2){ ?> 
+  <h1 class="blue">Station cards</h1>
+  <p class="red">Item cards! Edit the picture and give the items from your vacation a fun title and description!</p>
   </br>
 <?php } ?> 
 

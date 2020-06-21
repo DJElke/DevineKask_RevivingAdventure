@@ -14,13 +14,13 @@ class DesignDAO extends DAO {
 
   }
 
-  public function registerVote($loggedInUser, $designId) {
+  public function registerVote($vacUserId, $designId) {
 
-    $sql = "UPDATE `Int4_Vacation_User` SET `design_id` = :design_id WHERE `Int4_Vacation_User`.`user_id` = :user_id";
+    $sql = "UPDATE `Int4_Vacation_User` SET `design_id` = :design_id WHERE `Int4_Vacation_User`.`id` = :vacUserId";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
               ':design_id' => $designId,
-              ':user_id' => $loggedInUser
+              ':vacUserId' => $vacUserId
             )
           );
   }

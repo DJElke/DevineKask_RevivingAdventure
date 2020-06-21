@@ -18,24 +18,11 @@
   <div class="optionsContainer">
     <!-- sticker items -->
     <div class="dragItems">
+    <?php foreach ($stickers as $sticker){?> 
       <div class="stickerContainer">
-          <img id="sticker1" class="sticker" src="assets/stickers/svg/citrus.svg" alt="sticker" draggable="true"/>
+        <img id="sticker<?php echo $sticker['id']; ?>" class="sticker" src="<?php echo $sticker['image'];?>" alt="sticker<?php echo $sticker['id']; ?>" draggable="true"/>
       </div>
-      <div class="stickerContainer">
-          <img id="sticker2" class="sticker" src="assets/stickers/svg/koi-red.svg" alt="sticker" draggable="true"/>
-      </div>
-      <div class="stickerContainer">
-          <img id="sticker3" class="sticker" src="assets/stickers/svg/bottle-blue.svg" alt="sticker" draggable="true"/>
-      </div>
-      <div class="stickerContainer">
-          <img id="sticker4" class="sticker" src="assets/stickers/svg/glass-purple.svg" alt="sticker" draggable="true"/>
-      </div>
-      <div class="stickerContainer">
-          <img id="sticker5" class="sticker" src="assets/stickers/svg/koi-blue.svg" alt="sticker" draggable="true"/>
-      </div>
-      <div class="stickerContainer">
-          <img id="sticker6" class="sticker" src="assets/stickers/svg/bottle-red.svg" alt="sticker" draggable="true"/>
-      </div>
+    <?php } ?>
     </div>
 
 
@@ -52,7 +39,7 @@
       <?php if(($cardTitle != null) && ($status == 0)){?>
         <p class="red">psst... <?php echo $owner; ?> called <?php echo $cardTitle['description']; ?> ...</p>
       <?php } else {?> 
-        <textarea name="title" type="textarea" placeholder="Title of the card..."></textarea>
+        <textarea class="titleArea" name="title" type="textarea" placeholder="Title of the card..."></textarea>
       <?php } ?>
     </div>
 
@@ -64,7 +51,7 @@
     </div>
 
     <div class="hide submitContainer">
-      <button type="submit" class="secondaryButton" name="action" value="add">NEXT</button>
+      <button type="submit" class="secondaryButton nextPic" name="action" value="add">NEXT</button>
     </div>
   </form>
 </div> 

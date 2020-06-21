@@ -51,40 +51,10 @@
     </a>
    <input type='checkbox' disabled='disabled'><label>Adventure cards 0/27</label>
   </div> 
-  <div class="<?php if($status >= 3): ?>unlocked <?php else: ?>locked" <?php endif; ?>>
-    <a class="station__link" <?php if($status == 3): ?>href="index.php?page=station4" <?php endif; ?>>
+  <div <?php if($status >= 3): ?>class="unlocked" <?php else: ?> class="locked" <?php endif; ?>>
+    <a class="station__link" <?php if($status == 3): ?> href="index.php?page=station4&amp;id=<?php echo $vacation['id'];?>" <?php endif; ?>>
       <p>Station four</p>
     </a>
-    <input type='checkbox' disabled='disabled'><label>Style votes</label>
+    <?php if($status >= 4): ?><input type='checkbox' disabled='disabled' checked='true'><?php else: ?><input type='checkbox' disabled='disabled'><?php endif;?><label>Style vote</label>
   </div> 
-    <div class="<?php if($status >= 4): ?>unlocked <?php else: ?>locked" <?php endif; ?>>
-      <a class="station__link" <?php if($status == 4): ?> href="index.php?page=station5" <?php endif; ?>>
-        <p>Station five</p>
-      </a>
-      <input type='checkbox' disabled='disabled'><label>Playercards review 0/4</label>
-    </div> 
-    <div class="<?php if($status >= 5): ?>unlocked <?php else: ?>locked" <?php endif; ?>>
-      <a class="station__link" <?php if($status == 5): ?>href="index.php?page=station6" <?php endif; ?>>
-        <p>Station six</p>
-      </a>
-      <input type='checkbox' disabled='disabled'><label>Item cards review 0/26</label>
-    </div> 
-    <div class="<?php if($status >= 6): ?>unlocked <?php else: ?>locked" <?php endif; ?>>
-      <a class="station__link" <?php if($status == 6): ?>href="index.php?page=station7" <?php endif; ?>>
-        <p>Station seven</p>
-      </a>
-      <input type='checkbox' disabled='disabled'><label>Adventure cards review 0/27</label>
-    </div> 
-    <div class="<?php if($status >= 7): ?>unlocked <?php else: ?>locked" <?php endif; ?>>
-      <a class="station__link" <?php if($status == 7): ?>href="index.php?page=station8" <?php endif; ?>>
-        <p>station eight</p>
-      </a>
-      <input type='checkbox' disabled='disabled'><label>Definitive style</label>
-    </div> 
-    <div class="<?php if($status >= 8): ?>unlocked <?php else: ?>locked" <?php endif; ?>>
-      <a class="station__link" <?php if($status == 8): ?>href="index.php?page=order" <?php endif; ?>>
-        <p>ORDER</p>
-      </a>
-      <input type='checkbox' disabled='disabled'><label>Play IRL</label>
-    </div> 
 </section>

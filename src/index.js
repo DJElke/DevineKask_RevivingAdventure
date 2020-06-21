@@ -1,5 +1,7 @@
 require('./style.css');
 require('konva');
+import { tns } from 'tiny-slider/src/tiny-slider.module.js';
+
 // ----VARIABLES
 let currentTab = 0;
 //konva stage
@@ -79,13 +81,15 @@ const init = () => {
     saveStage();
   }
 
+  
+
   initLoadCharacterFile();
   initLoadItemFile();
   initLoadAdventureFile();
   initTabButtons();
   showTab(currentTab);
   initCharacteristics();
-
+  initReviewer();
 };
  
 const startUpDashboard = () => {
@@ -493,9 +497,51 @@ const initCharacteristics = () => {
 }
 
 const handleClickCharacteristic = i => {
-  $characteristicDescription = document.querySelectorAll(".characteristic--description");
-  $characteristicDescription[currentTab-1].innerHTML = i.target.value;
+  var characteristicDescription = document.querySelectorAll(".characteristic--description");
+  characteristicDescription[currentTab-1].innerHTML = i.target.value;
 }
- 
+
+const initReviewer = () => {
+  document.querySelectorAll('.my-titles').forEach($titleSlider => {
+    $titleSlider = tns({
+      container: '.my-titles',
+      items: 1,
+      controls: false,
+      center: true,
+      navPosition: "bottom",
+      edgePadding: 50,
+      mouseDrag: true,
+      preventScrollOnTouch: 'force'
+    });
+  })
+
+  document.querySelectorAll('.my-images').forEach($imgSlider => {
+    $imgSlider = tns({
+      container: '.my-images',
+      items: 1,
+      controls: false,
+      center: true,
+      navPosition: "bottom",
+      edgePadding: 50,
+      mouseDrag: true,
+      preventScrollOnTouch: 'force'
+    });
+  })
+
+  document.querySelectorAll('.my-descriptions').forEach($descSlider => {
+    $descSlider = tns({
+      container: '.my-descriptions',
+      items: 1,
+      controls: false,
+      center: true,
+      navPosition: "bottom",
+      edgePadding: 50,
+      mouseDrag: true,
+      preventScrollOnTouch: 'force'
+    });
+  })
+
+};
+
 init();
  

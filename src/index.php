@@ -47,6 +47,10 @@ $routes = array(
       'controller' => 'Station',
       'action' => 'station4'
     ),
+    'station5Index' => array (
+      'controller' => 'Station',
+      'action' => 'station5Index'
+    ),
     'station5' => array (
       'controller' => 'Station',
       'action' => 'station5'

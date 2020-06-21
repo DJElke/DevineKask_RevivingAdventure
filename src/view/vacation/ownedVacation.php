@@ -58,7 +58,7 @@
   </div> 
 
     <div <?php if($status >= 4): ?>class="unlocked" <?php else: ?> class="locked" <?php endif; ?>>
-      <a class="station__link" <?php if($status == 4): ?> href="index.php?page=station5" <?php endif; ?>>
+      <a class="station__link" <?php if($status == 4): ?> href="index.php?page=station5Index&amp;id=<?php echo $vacation['id'];?>" <?php endif; ?>>
         <p>Station five</p>
       </a>
       <?php if($status >= 5): ?><input type='checkbox' disabled='disabled' checked='true'><label>Character cards review 4/4</label><?php else: ?><input type='checkbox' disabled='disabled'><label>Character cards 0/4</label><?php endif;?>

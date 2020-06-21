@@ -146,5 +146,25 @@ class CardDAO extends DAO {
       $stmt->bindValue(':picture_id', $pictureId['id']);
       $stmt->execute();
     }
+
+    public function getDescriptionIdsByCardId($id){
+      $sql = "SELECT `description_id` 
+      FROM `Int4_Card_Description`
+      WHERE `Int4_Card_Description`.`card_id` = :id";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->bindValue(':id', $id);
+      $stmt->execute();
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getTitleIdsByCardId($id){
+      $sql = "SELECT `title_id`
+      FROM `Int4_Card_Title`
+      WHERE `Int4_Card_Title`.`card_id` = :id;";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->bindValue(':id', $id);
+      $stmt->execute();
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>

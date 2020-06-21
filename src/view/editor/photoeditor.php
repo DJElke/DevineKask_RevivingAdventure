@@ -25,10 +25,17 @@
     <?php } ?>
     </div>
 
-
     <!-- text items -->
     <div class="textItem">
       <span class="text--big">+</span> </br> add some text
+    </div>
+
+    <!-- draw items -->
+    <div class="drawItems hide">
+      <div class="containerItem--left eraser"> Eraser
+      </div>
+      <div class="containerItem--right brush"> Brush
+      </div>
     </div>
   </div>
 

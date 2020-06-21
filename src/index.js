@@ -28,6 +28,9 @@ let drawButton = document.querySelector('.drawButton');
 //optionsContainer --> content
 let addTextButton = document.querySelector('.textItem');
 let dragItems = document.querySelector('.dragItems');
+let drawItems = document.querySelector('.drawItems');
+let brush = document.querySelector('.brush');
+let eraser = document.querySelector('.eraser');
 //menu
 let menuContainer = document.querySelector('.menuContainer');
 let quitButton = document.querySelector('.quitButton');
@@ -54,6 +57,9 @@ const init = () => {
       //put the stickers button on "checked"
       stickersButton.classList.add('editOption--checked');
       addTextButton.classList.add('hide');
+      drawItems.classList.add('hide');
+      brush.classList.add('hide');
+      eraser.classList.add('hide');
     }
   });
   if(stage != ''){
@@ -80,8 +86,6 @@ const init = () => {
   if(stage != ''){
     saveStage();
   }
-
-  
 
   initLoadCharacterFile();
   initLoadItemFile();
@@ -122,10 +126,14 @@ const optionsMenuClicked = () => {
   stickersButton.addEventListener('click', () => {
     //show right edit options
     addTextButton.classList.add('hide');
+    brush.classList.add('hide');
+    eraser.classList.add('hide');
+    drawItems.classList.add('hide');
     dragItems.classList.remove('hide');
  
     //change the edit options menu
     textButton.classList.remove('editOption--checked');
+    drawButton.classList.remove('editOption--checked');
     stickersButton.classList.add('editOption--checked');
   });
  
@@ -133,12 +141,36 @@ const optionsMenuClicked = () => {
   textButton.addEventListener('click', () => {
     //show right edit options
     dragItems.classList.add('hide');
+    brush.classList.add('hide');
+    eraser.classList.add('hide');
+    drawItems.classList.add('hide');
     addTextButton.classList.remove('hide');
  
     //change the edit options menu
     stickersButton.classList.remove('editOption--checked');
+    drawButton.classList.remove('editOption--checked');
     textButton.classList.add('editOption--checked');
   });
+
+    //drawButton clicked
+    drawButton.addEventListener('click', () => {
+      //show right edit options
+      dragItems.classList.add('hide');
+      addTextButton.classList.add('hide');
+      drawItems.classList.remove('hide');
+      brush.classList.remove('hide');
+      eraser.classList.remove('hide');
+  
+      //change the edit options menu
+      stickersButton.classList.remove('editOption--checked');
+      textButton.classList.remove('editOption--checked');
+      drawButton.classList.add('editOption--checked');
+
+      if(drawButton != null){
+        //add eventlistener to the draw button so they can draw on the canvas
+        startDrawing();
+      }
+    });
 }
  
 const loadBackground = () => {
@@ -241,6 +273,9 @@ const addTextToCanvas = () => {
       textLayer.draw();
       //create the textarea and style it
       addTextButton.classList.add('hide');
+      drawItems.classList.add('drawItems--height');
+      brush.classList.add('hide');
+      eraser.classList.add('hide');
       textArea = document.createElement('textarea');
       editOptions.appendChild(textArea);
       //apply many styles to match text on canvas as close as possible
@@ -261,8 +296,7 @@ const addTextToCanvas = () => {
       textArea.style.fontFamily = textNode.fontFamily();
       textArea.style.transformOrigin = 'left top';
       textArea.style.textAlign = textNode.align();
- 
-      rotation = textNode.rotation();
+      let rotation = textNode.rotation();
       let transform = '';
       if(rotation){
         transform += 'rotateZ(' + rotation + 'deg)';
@@ -299,6 +333,9 @@ const addTextToCanvas = () => {
         addTextButton.classList.remove('hide');
         quitButton.classList.remove('hide');
         saveButton.classList.remove('hide');
+        drawItems.classList.remove('drawItems--height');
+        brush.classList.remove('hide');
+        eraser.classList.remove('hide');
         menuContainer.removeChild(editButton);
       });
  
@@ -374,6 +411,48 @@ const addTransformer = (konvaItem, layer) => {
   layer.draw();
 };
 
+const startDrawing = () => {
+  let drawLayer = new Konva.Layer();
+  stage.add(drawLayer);
+
+  let isPaint = false;
+  let lastLine;
+  let mode = 'brush';
+
+  stage.addEventListener('touchstart', () => {
+    isPaint = true;
+    let pos = stage.getPointerPosition();
+    lastLine = new Konva.Line({
+      stroke: '#424A9F',
+      strokeWidth: 15,
+      globalCompositeOperation:
+        mode === 'brush' ? 'source-over' : 'destination-out',
+      points: [pos.x, pos.y],
+    });
+    drawLayer.add(lastLine);
+  });
+  stage.addEventListener('touchend', () => {
+    isPaint = false;
+  });
+
+  stage.addEventListener('touchmove', () => {
+    if(!isPaint){
+      return;
+    }
+    let pos = stage.getPointerPosition();
+    var newPoints = lastLine.points().concat([pos.x, pos.y]);
+    lastLine.points(newPoints);
+    drawLayer.batchDraw();
+  });
+
+  brush.addEventListener('click', () => {
+    mode = 'brush';
+  });
+  eraser.addEventListener('click', () => {
+    mode = 'eraser';
+  });
+};
+
 const saveStage = () => {
   saveButton.addEventListener('click', () => {
     let transformers = stage.find('Transformer');
@@ -401,6 +480,10 @@ const saveStage = () => {
     stickersButton.classList.add('hide');
     textButton.classList.add('hide');
     drawButton.classList.add('hide');
+    drawItems.classList.add('hide');
+    drawItems.classList.add('drawItems--height');
+    brush.classList.add('hide');
+    eraser.classList.add('hide');
     let photoContainer = document.querySelector('.photoContainer');
     photoContainer.classList.add('hide');
     quitButton.classList.add('hide');

@@ -1,22 +1,24 @@
 <a href="index.php?page=home">
   <span class="close">&#10005;</span>
 </a>
-<div class="tab">
-  <header>
-    <h1>Station five </h1>
-    <h2>Review the player cards for each player</h2>
-  </header>
-  <img src='assets/illustrations/quizmaster.svg'>
-  <p>Your friends edited the photo's you've uploaded. They also added some titles and descriptions. It's your turn to choose the best title  and description for them!<p>
-  <p>Swipe trough the titles and descriptions until you find a MATCH.</p>
-  <button type="button" class="nextBtn" >START</button>
+<div>
+  <p> Player cards</p>
 </div>
-<div class="tab">
-
-
-  <div>
-    <button type="button" class="prevBtn">PREVIOUS</button>
-    <button type="button" class="nextBtn"><?php echo $i+1 ?>/<?php echo count($momenttypes) ?> NEXT</button>
-  </div>
+<input type="hidden" name="cardId" value="<?php echo $card['id']; ?>"/>
+      <p><?php echo $title['description']?></p>
+<div class="my-images">
+    <?php foreach ($imageUrlArray as $image) : ?>
+      <div><img src="<?php echo $image ?>"></div>
+    <?php endforeach; ?>
 </div>
+<div class="my-descriptions">
+    <?php foreach ($descriptionArray as $description):  ?>
+      <p><?php echo $description ?></p>
+    <?php endforeach; ?>
+</div>
+<div>
+  <button type="button" class="prevBtn">PREVIOUS</button>
+  <button type="button" class="nextBtn"> NEXT</button>
+</div>
+
 

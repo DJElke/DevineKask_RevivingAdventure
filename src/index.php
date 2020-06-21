@@ -47,13 +47,13 @@ $routes = array(
       'controller' => 'Station',
       'action' => 'station4'
     ),
-    'station5Index' => array (
-      'controller' => 'Station',
-      'action' => 'station5Index'
+    'reviewIndex' => array (
+      'controller' => 'Review',
+      'action' => 'reviewIndex'
     ),
-    'station5' => array (
-      'controller' => 'Station',
-      'action' => 'station5'
+    'review' => array (
+      'controller' => 'Review',
+      'action' => 'review'
     ),
 );
 

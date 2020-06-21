@@ -82,6 +82,11 @@ const init = () => {
   //add eventlistener to the text button so they can add text to the canvas
   addTextToCanvas();
   }
+  if((brush != null) && (eraser != null)){
+    //add eventlistener to the draw button so they can draw on the canvas
+    //blokkeert de andere editor opties, dus daarom laten we deze weg
+    //startDrawing();
+  }
   //   PHOTO EDITOR SAVE THE STAGE
   if(stage != ''){
     saveStage();
@@ -165,11 +170,6 @@ const optionsMenuClicked = () => {
       stickersButton.classList.remove('editOption--checked');
       textButton.classList.remove('editOption--checked');
       drawButton.classList.add('editOption--checked');
-
-      if(drawButton != null){
-        //add eventlistener to the draw button so they can draw on the canvas
-        startDrawing();
-      }
     });
 }
  
@@ -334,8 +334,6 @@ const addTextToCanvas = () => {
         quitButton.classList.remove('hide');
         saveButton.classList.remove('hide');
         drawItems.classList.remove('drawItems--height');
-        brush.classList.remove('hide');
-        eraser.classList.remove('hide');
         menuContainer.removeChild(editButton);
       });
  
@@ -415,42 +413,74 @@ const startDrawing = () => {
   let drawLayer = new Konva.Layer();
   stage.add(drawLayer);
 
+  let drawCanvas = document.createElement('canvas');
+  drawCanvas.width = stage.width();
+  drawCanvas.height = stage.height();
+
+  let drawImage = new Konva.Image({
+    image: drawCanvas,
+    x: 0,
+    y: 0
+  });
+  drawLayer.add(drawImage);
+  stage.draw();
+
+  let drawContext = drawCanvas.getContext('2d');
+  drawContext.strokeStyle = '#424A9F';
+  drawContext.lineJoin = 'round';
+  drawContext.lineWidth = 20;
+
   let isPaint = false;
-  let lastLine;
+  let lastPointerPosition;
   let mode = 'brush';
 
-  stage.addEventListener('touchstart', () => {
-    isPaint = true;
-    let pos = stage.getPointerPosition();
-    lastLine = new Konva.Line({
-      stroke: '#424A9F',
-      strokeWidth: 15,
-      globalCompositeOperation:
-        mode === 'brush' ? 'source-over' : 'destination-out',
-      points: [pos.x, pos.y],
+  if((brush != null) && (eraser != null)){
+    stage.addEventListener('touchstart', () => {
+      isPaint = true;
+      lastPointerPosition = stage.getPointerPosition();
     });
-    drawLayer.add(lastLine);
-  });
-  stage.addEventListener('touchend', () => {
-    isPaint = false;
-  });
+    stage.addEventListener('touchend', () => {
+      isPaint = false;
+    });
 
-  stage.addEventListener('touchmove', () => {
-    if(!isPaint){
-      return;
-    }
-    let pos = stage.getPointerPosition();
-    var newPoints = lastLine.points().concat([pos.x, pos.y]);
-    lastLine.points(newPoints);
-    drawLayer.batchDraw();
-  });
+    stage.addEventListener('touchmove', () => {
+      if(!isPaint){
+        return;
+      }
+      if(mode === 'brush'){
+        drawContext.globalCompositeOperation = 'source-over';
+      }
+      if(mode === 'eraser'){
+        drawContext.globalCompositeOperation = 'destination-out';
+      }
+      drawContext.beginPath();
 
-  brush.addEventListener('click', () => {
-    mode = 'brush';
-  });
-  eraser.addEventListener('click', () => {
-    mode = 'eraser';
-  });
+      let localPos = {
+        x: lastPointerPosition.x - drawImage.x(),
+        y: lastPointerPosition.y - drawImage.y()
+      }
+      drawContext.moveTo(localPos.x, localPos.y);
+      let pos = stage.getPointerPosition();
+      localPos = {
+        x: pos.x - drawImage.x(),
+        y: pos.y - drawImage.y()
+      }
+      drawContext.lineTo(localPos.x, localPos.y);
+      drawContext.closePath();
+      drawContext.stroke();
+
+      lastPointerPosition = pos;
+      drawLayer.batchDraw();
+    });
+  
+    brush.addEventListener('click', () => {
+      mode = 'brush';
+    });
+    eraser.addEventListener('click', () => {
+      mode = 'eraser';
+    });
+  }
+
 };
 
 const saveStage = () => {

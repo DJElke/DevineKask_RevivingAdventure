@@ -17,6 +17,10 @@
         <a class="vacation__link" href="index.php?page=ownedVacation&amp;id=<?php echo $vacation['id'];?>">
           <p> <?php echo $vacation['name'] ?> </p>
           <p> <?php echo $vacation['status']*11 ?>% complete </p>
+          <div class="progressbar">
+            <!-- ik zat hier -->
+            <span class=""></span>
+          </div>
         </a>
       </div>
       <?php endforeach; ?>
@@ -45,9 +49,9 @@
   </section>
 
   <div class="navigation bg--red white">
-    <div class="navHome blue">Home</div>
+    <div class="navHome bold blue">Home</div>
     <div class="navRules">Rules</div>
-    <div class="navAdd">+</div>
+    <div class="navAdd bg--blue text--big">+</div>
     <div class="navGuide">Guide</div>
     <div class="navProfile">Profile</div>
   </div>

@@ -61,6 +61,7 @@
   <div class="tab">
     <p>You are all done!</p>
     <p>Now we wait if your friends will find it funny too &#128540;</p>
+    <p class="error"></p>
     <button type="submit" name="action" value="add">SUBMIT</button>
   </div>
 </form>

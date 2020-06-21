@@ -31,12 +31,21 @@ class StationDAO extends DAO {
 
           $titleID = $this->pdo->lastInsertId();
 
-          $sql = "INSERT INTO `Int4_Card_Title` (`card_id`, `title_id`) VALUES (:card_id, :title_id);";
+          //update Int4_Card
+          // $sql = "INSERT INTO `Int4_Card` (`id'`,`title_id`) VALUES (:id,:title_id);";
+          // $stmt = $this->pdo->prepare($sql);
+          // $stmt->execute(array(
+          //     ':id' => $cardId,
+          //     ':title_id' => $titleID      
+          //   )
+          // );
+          $sql = "UPDATE `Int4_Card` SET `title_id` = :title_id
+          WHERE `id`= :id";
           $stmt = $this->pdo->prepare($sql);
           $stmt->execute(array(
-              ':card_id' => $cardID,
-              ':title_id' => $titleID      
-            )
+                ':id' => $cardID,
+                ':title_id' => $titleID      
+              )
           );
 
           $sql = "INSERT INTO `Int4_Picture` (`image`) VALUES (:image);";

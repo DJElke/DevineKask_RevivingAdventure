@@ -458,7 +458,9 @@ const next = () => {
     var images = document.querySelectorAll(".output");
     var descriptions = document.querySelectorAll(".characteristic--description");
     var errorMessages = document.querySelectorAll(".error");
-    errorMessages[currentTab].innerHTML = "";
+    if(errorMessages != null){
+      errorMessages[currentTab].innerHTML = "";
+    }
 
     if(images[currentTab-1].src != "" && (descriptions.length == 0 || descriptions [currentTab-1].innerHTML!= " " )){
       errorMessages[currentTab-1].innerHTML = "";

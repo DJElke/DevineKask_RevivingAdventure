@@ -15,6 +15,7 @@
   display: flex;
   flex-flow: row;
   align-items: baseline;
+  margin: 0;
 }
 
 .itemCardForm__img, .adventureCardForm__img {
@@ -53,7 +54,7 @@
   color: white;
   background: #424A9F;
   border-radius: 19.5px;
-  padding: .2rem .5rem;
+  padding: 0.5rem 0.7rem 0.5rem 0.7rem;
   /* white-space: nowrap; */
 }
 
@@ -73,6 +74,7 @@ padding-right: .5rem;
   margin-bottom: 1rem;
   margin-right: .1rem;
   margin-left: .1rem;
+  margin-top: .3rem;
 }
 
 .tab--header {

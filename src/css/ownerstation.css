@@ -1,0 +1,67 @@
+.stationOne__grid{
+  display: grid;
+  grid-template-rows: 0.3fr 1fr 1fr 0.5fr;
+  height: 100vh;
+  padding: 1rem;
+}
+.stationOneHeader{
+  margin: 0;
+  grid-row: 1;
+  padding: 0;
+}
+
+.text--margintop{
+  margin-top: -1rem;
+}
+
+.stationOneIntro__img{
+  grid-row: 2;
+  margin: auto;
+}
+
+.stationOneIntro__text{
+  grid-row: 3;
+  text-align: center;
+}
+
+.stationOneIntro__next{
+  grid-row: 4;
+  margin: auto;
+}
+
+.stationOneDescription{
+  grid-row: 2;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stationFileInput{
+  grid-row: 3;
+  height: auto; 
+  border: solid #F8A593 0.5rem;
+}
+
+input[type="file"] {
+  display: none;
+  appearance: none;
+}
+
+.custom-file-upload{
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.plus{
+  color: #F8A593;
+  font-size: 10rem;
+  font-weight: 100;
+}
+
+.stationOneButtons{
+  grid-row: 4;
+  display: flex;
+  margin: auto;
+}

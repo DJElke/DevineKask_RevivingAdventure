@@ -32,12 +32,12 @@ body{
   text-align: right;
 }
 
-.text--big{
-  font-size: 2rem;
+.text--medium{
+  font-size: 1.2rem;
 }
 
-.text--large{
-  font-size: 1.5rem;
+.text--big{
+  font-size: 1.8rem;
 }
 
 .bold{
@@ -113,13 +113,30 @@ body{
 .progressbar{
   font-size: 0.85rem;
   font-weight: normal;
-  height: 1.5rem;
+  height: 100%;
   vertical-align: middle;
   color: white;
   background-color: #424A9F;
   position: relative;
-  padding: 0.2rem 0.2rem 0.2rem 1rem;
+  padding: 0;
+  margin: 0;
   width: 30%;
+}
+
+.progressbar__border--thin{
+  border: #424A9F 0.1rem solid;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  vertical-align: middle;
+}
+
+.progressbar__border--thick{
+  border: #424A9F 0.3rem solid;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  vertical-align: middle;
 }
 
 .progressbar:after{

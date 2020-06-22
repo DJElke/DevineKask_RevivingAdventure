@@ -43,6 +43,8 @@ let submitContainer = document.querySelector('.submitContainer');
 
 // let characterImg = document.querySelectorAll(".characterCardForm__img");
 // let itemImg = document.querySelectorAll(".itemCardForm__img");
+let stationImage = document.querySelectorAll(".output");
+let characterForm = document.querySelectorAll(".characterCardForm__img");
 
 const init = () => {
   startUpDashboard();
@@ -92,7 +94,7 @@ const init = () => {
     saveStage();
   }
 
-  initLoadCharacterFile();
+  //initLoadCharacterFile();
   initLoadItemFile();
   initLoadAdventureFile();
   initTabButtons();
@@ -570,12 +572,20 @@ const disableNext = () => {
  
 //// SECTION SELECT PICTURE
 const loadFile = e => {
-  var image = document.querySelectorAll(".output");
-  image[currentTab-1].src = URL.createObjectURL(e.target.files[0]);
+  if(stationImage != null){
+    characterForm.classList.add('hide');
+    stationImage[currentTab-1].classList.remove('hide');
+    stationImage[currentTab-1].src = URL.createObjectURL(e.target.files[0]);
+  }
 }
  
 const initLoadCharacterFile = () => {
-  document.querySelectorAll(".characterCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
+  if(characterForm != null && stationImage != null){
+    stationImage.foreach($img => {
+      $img.classList.add('hide');
+    });
+    characterForm.forEach($img => {$img.addEventListener('change', loadFile)});
+  }
 }
  
 const initLoadItemFile = () => {

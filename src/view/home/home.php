@@ -16,7 +16,9 @@
       <div class= "vacation">
         <a class="vacation__link" href="index.php?page=ownedVacation&amp;id=<?php echo $vacation['id'];?>">
           <p> <?php echo $vacation['name'] ?> </p>
-          <p class="progressbar"> <?php echo $vacation['status']*11 ?>% complete </p>
+          <div class="progressbar__border--thin">
+            <p class="progressbar"> <?php echo $vacation['status']*11 ?>% complete </p>
+          </div>
         </a>
       </div>
       <?php endforeach; ?>

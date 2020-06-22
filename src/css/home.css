@@ -1,21 +1,13 @@
-.unlocked {
-  color: green;
-}
-
-.locked {
-  color: red;
-}
-
 .dashboard__grid{
   display: grid;
   height: 100vh;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr 0.5fr 3fr 0.5fr;
+  grid-template-rows: 0.5fr 0.5fr 3fr 0.5fr;
 }
 
 .dashboardIntro{
   grid-column: 1 / span 5;
-  padding: 1rem;
+  padding: 1rem 1rem 0rem 1rem;
 }
 
 .dashboardIntro p{
@@ -25,17 +17,25 @@
 .dashboardTabs{
   grid-column: 1 / span 5;
   display: flex;
+  margin: 0 ;
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 2rem; 
 }
 
 .dashboardTab{ 
-  border: 2px #424A9F solid;
-  margin: 1rem;
-  text-align: center;
+  border-top: 0.1rem #424A9F solid;
+  border-left: 0.1rem #424A9F solid;
+  border-right: 0.1rem #424A9F solid;
+  margin: 0rem 1rem 0rem 1rem;
+  padding: 0rem 1rem 0rem 1rem;
 }
 
 .dashboardTab--selected{
   border: 2px white solid;
   background-color: white;
+  font-weight: bold;
 }
 
 .dashboardList{

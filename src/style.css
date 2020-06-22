@@ -3,6 +3,8 @@
 @import './css/home.css';
 @import './css/station.css';
 @import './css/quizmaster.css';
+@import './css/vacationoverview.css';
+@import './css/ownerstation.css';
 
 /* START SARAH CSS */
 
@@ -22,28 +24,7 @@ h1, h2 {
   font-size: 20px;
 }
 
-.user--icon {
- height: 3rem;
- width: auto;
- margin-bottom: -.8rem;
-}
 
-.participant {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.participant__list {
-justify-items: center;
-}
-
-.close {
-  position: absolute;
-  font-size: 25px;
-  right: 20px;
-}
 
 
 

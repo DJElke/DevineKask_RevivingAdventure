@@ -16,11 +16,7 @@
       <div class= "vacation">
         <a class="vacation__link" href="index.php?page=ownedVacation&amp;id=<?php echo $vacation['id'];?>">
           <p> <?php echo $vacation['name'] ?> </p>
-          <p> <?php echo $vacation['status']*11 ?>% complete </p>
-          <div class="progressbar">
-            <!-- ik zat hier -->
-            <span class=""></span>
-          </div>
+          <p class="progressbar"> <?php echo $vacation['status']*11 ?>% complete </p>
         </a>
       </div>
       <?php endforeach; ?>
@@ -37,7 +33,7 @@
       <div class= "vacation">
         <a class="vacation__link" href="index.php?page=involvedVacation&amp;id=<?php echo $vacation['id'];?>">
           <p> <?php echo $vacation['name'] ?> </p>
-          <p> <?php echo $vacation['status']*11 ?>% complete </p>
+          <p class="progressbar"> <?php echo $vacation['status']*11 ?>% complete </p>
         </a>
       </div>
       <?php endforeach; ?>

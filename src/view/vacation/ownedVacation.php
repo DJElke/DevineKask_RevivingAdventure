@@ -2,7 +2,7 @@
   <a href="index.php?page=home">
     <span class="close">&#10005;</span>
   </a>
-  <h1> Welcome to <?php echo $vacation['name'] ?>!</h1>
+  <p class="text--large white">Welcome to <span class="blue"><?php echo $vacation['name'] ?></span>!</p>
   <wrapper class="participant__list">
     <?php foreach($participants as $participant): ?>
         <div class= "participant">

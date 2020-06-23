@@ -1,15 +1,24 @@
+<div class="overlay">
+  <div>
+    <p>If you quit now your progress will be lost. </p>
+    <a href="index.php?page=home">OK</a>
+  </div>
+</div>
+
 <!-- FIRST TAP - INTRODUCTION -->
 <div class="tab">
   <div class="stationOne__grid">
     <header class="stationOneHeader">
       <h1 class="blue">Station one 
+
         <a href="index.php?page=home">
           <span class="close">&#10005;</span>
         </a>
+
       </h1>
       <p class="text--medium red text--margintop">Player cards for each player</p>
     </header>
-    <img class="stationOneIntro__img" src='assets/illustrations/passport.svg'>
+    <img class="stationOneIntro__img stationIntro__img--padding" src='assets/illustrations/passport.svg'/>
     <p class="stationOneIntro__text text--medium">Choose for every friend who is in this game a fitting character trait and a beautiful photo.</p>
     <button type="button" class="stationOneIntro__next nextBtn secondaryButton" >START</button>
   </div>
@@ -27,18 +36,20 @@
       <div class="tab--header stationOneHeader">
         <img src="<?php echo $participant['icon'];?>" class="user--icon">
         <p class="text--medium blue bold">Player cards
-        <a href="index.php?page=home">
+
+        <a class="create-character--close">
           <span class="close">&#10005;</span>
         </a>
+
         </p>
       </div>
       <!-- DESCRIPTION -->
       <div class="stationOneDescription">
       <div class="charactercard__name text--big bold">
         <input type="hidden" name="cards[<?php echo $i;?>][participant_name]" value="<?php echo $participant['name'];?>" />
-        <p><?php echo $participant['name'] ?>&nbsp;</p>
-        <p> is the &nbsp;</p>
-        <p class="characteristic--description red"> </p>
+        <p class="nomargin"><?php echo $participant['name'] ?>&nbsp;</p>
+        <p class="nomargin"> is the &nbsp;</p>
+        <p class="characteristic--description red nomargin"> </p>
       </div>
 
         <div class="characteristic--options">
@@ -54,10 +65,9 @@
       </div>
 
       <!-- FILE UPLOAD -->
-      <div class="img--input stationFileInput"> 
-        <label for="ptImage<?php echo $i;?>">
+      <div class="img--input stationOneFileInput"> 
           <img class="hide output" width="200px"/>
-          <label class="custom-file-upload" for="ptImage<?php echo $i;?>"><span class="plus">+</span></label>
+          <label class="custom-file-upload" for="ptImage<?php echo $i;?>">+</label>
           <input type="file" accept="image/*" class="characterCardForm__img" name="characterImage<?php echo $i;?>" id="ptImage<?php echo $i;?>" required>
         </label>
       </div>
@@ -65,21 +75,27 @@
 
       <!-- NEXT BUTTON -->
       <div class="stationOneButtons">
-        <button type="button" class="prevBtn">PREVIOUS</button>
-        <button type="button" class="nextBtn secondaryButton"><?php echo $participant['id'] ?>/<?php echo count($participants) ?> NEXT</button>
+        <button type="button" class="prevBtn previousStyling containerItem--left">PREVIOUS</button>
+        <button type="button" class="nextBtn floatRight secondaryButton containerItem--right"><?php echo $participant['id'] ?>/<?php echo count($participants) ?> NEXT</button>
       </div>
 
       </div>
     </div>
+
     <?php $i = $i + 1 ?> 
-  <?php endforeach; ?>
-  <?php unset($i); ?>
+    <?php endforeach; ?>
+    <?php unset($i); ?>
 
   <div class="tab">
-    <p>You are all done!</p>
-    <p>Now we wait if your friends will find it funny too &#128540;</p>
-    <p class="error"></p>
-    <button type="submit" name="action" value="add">SUBMIT</button>
+    <div class="stationOne__grid">
+      <div class="stationOneDone">
+        <h1 class="blue">You are all done!</h1>
+        </br>
+        <p>Now we wait if your friends will find it funny too &#128540;</p>
+        <p class="error"></p>
+        <button type="submit" name="action" value="add" class="primaryButton">SUBMIT</button>
+      </div>
+    </div>
   </div>
 </form>
 

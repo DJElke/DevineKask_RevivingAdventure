@@ -11,6 +11,38 @@ $routes = array(
       'controller' => 'Editor',
       'action' => 'index'
     ),
+    'onboarding' => array (
+      'controller' => 'Statisch',
+      'action' => 'onboarding'
+    ),
+    'register' => array (
+      'controller' => 'Statisch',
+      'action' => 'register'
+    ),
+    'createAdventure' => array (
+      'controller' => 'Statisch',
+      'action' => 'createAdventure'
+    ),
+    'order' => array (
+      'controller' => 'Statisch',
+      'action' => 'order'
+    ),
+    'guide' => array (
+      'controller' => 'Statisch',
+      'action' => 'guide'
+    ),
+    'rules' => array (
+      'controller' => 'Statisch',
+      'action' => 'rules'
+    ),
+    'profile' => array (
+      'controller' => 'Statisch',
+      'action' => 'profile'
+    ),
+    'tutorial' => array (
+      'controller' => 'Statisch',
+      'action' => 'tutorial'
+    ),
     'home' => array (
       'controller' => 'Home',
       'action' => 'home'

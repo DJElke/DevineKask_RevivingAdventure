@@ -55,13 +55,17 @@
 .navRules{
   grid-column: 2;
 }
+
 .navAdd{
   grid-column: 3;
 }
 .navGuide{
   grid-column: 4;
 }
+
 .navProfile{
   grid-column: 5;
 }
-
+.navRules a, .navGuide a, .navProfile a, .navAdd a{
+  color: white;
+}

@@ -4,6 +4,10 @@ import { tns } from 'tiny-slider/src/tiny-slider.module.js';
 
 // ----VARIABLES
 let currentTab = 0;
+let currentGuideTab = 1;
+let currentRulesTab = 1;
+let currentTutorialTab = 1;
+
 //konva stage
 let stageWidth = 1000;
 let stageHeight = 1000;
@@ -40,6 +44,9 @@ let imgEditContainer = document.querySelector('.imgEditContainer');
 let descriptionContainer = document.querySelector('.descriptionContainer');
 let submitContainer = document.querySelector('.submitContainer');
 
+let titleSlider;
+let imgSlider;
+let descriptionSlider;
 
 // let characterImg = document.querySelectorAll(".characterCardForm__img");
 // let itemImg = document.querySelectorAll(".itemCardForm__img");
@@ -94,13 +101,28 @@ const init = () => {
     saveStage();
   }
 
-  //initLoadCharacterFile();
-  initLoadItemFile();
-  initLoadAdventureFile();
+  if(document.querySelector(".characterCardForm__img") != null) {
+    initLoadCharacterFile();
+  }
+  if(document.querySelector(".itemCardForm__img") != null) {
+    initLoadItemFile();
+  }
+  if(document.querySelector(".itemCardForm__img") != null) {
+    initLoadAdventureFile();
+  }
   initTabButtons();
   showTab(currentTab);
   initCharacteristics();
   initReviewer();
+  initOnboarding();
+  initRegister();
+  initCreateAdventure();
+  initOnboarding();
+  initOrder();
+  initGuide();
+  initRules();
+  initProfile();
+  initTutorial();
 };
  
 const startUpDashboard = () => {
@@ -580,20 +602,21 @@ const loadFile = e => {
 }
  
 const initLoadCharacterFile = () => {
-  if(characterForm != null && stationImage != null){
-    stationImage.foreach($img => {
-      $img.classList.add('hide');
-    });
-    characterForm.forEach($img => {$img.addEventListener('change', loadFile)});
-  }
+    document.querySelectorAll(".create-character--close").forEach($close => {$close.addEventListener('click', overlayOn)});
+    document.querySelector(".overlay").addEventListener('click', overlayOff);
+    document.querySelectorAll(".characterCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
 }
  
 const initLoadItemFile = () => {
   document.querySelectorAll(".itemCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
+  document.querySelectorAll(".create-item--close").forEach($close => {$close.addEventListener('click', overlayOn)});
+  document.querySelector(".overlay").addEventListener('click', overlayOff);
 }
  
 const initLoadAdventureFile = () => {
   document.querySelectorAll(".adventureCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
+  document.querySelectorAll(".create-adventure--close").forEach($close => {$close.addEventListener('click', overlayOn)});
+  document.querySelector(".overlay").addEventListener('click', overlayOff);
 }
  
 ////SECTION TABS
@@ -666,46 +689,248 @@ const handleClickCharacteristic = i => {
 }
 
 const initReviewer = () => {
-  document.querySelectorAll('.my-titles').forEach($titleSlider => {
-    $titleSlider = tns({
-      container: '.my-titles',
-      items: 1,
-      controls: false,
-      center: true,
-      navPosition: "bottom",
-      edgePadding: 50,
-      mouseDrag: true,
-      preventScrollOnTouch: 'force'
-    });
-  })
+  if(document.querySelector('.my-titles') != null) {
+    titleSlider =  tns({
+        container: '.my-titles',
+        items: 1, 
+        slideBy: 'page',
+        controls: false,
+        center: true,
+        navPosition: "bottom",
+        edgePadding: 50,
+        mouseDrag: true,
+        preventScrollOnTouch: 'force'
+      });
+  }
 
-  document.querySelectorAll('.my-images').forEach($imgSlider => {
-    $imgSlider = tns({
-      container: '.my-images',
-      items: 1,
-      controls: false,
-      center: true,
-      navPosition: "bottom",
-      edgePadding: 50,
-      mouseDrag: true,
-      preventScrollOnTouch: 'force'
-    });
-  })
+  if(document.querySelector('.my-images') != null) {
+      imgSlider = tns({
+        container: '.my-images',
+        items: 1,
+        controls: false,
+        center: true,
+        navPosition: "bottom",
+        edgePadding: 50,
+        mouseDrag: true,
+        preventScrollOnTouch: 'force'
+      });
+  }
 
-  document.querySelectorAll('.my-descriptions').forEach($descSlider => {
-    $descSlider = tns({
-      container: '.my-descriptions',
-      items: 1,
-      controls: false,
-      center: true,
-      navPosition: "bottom",
-      edgePadding: 50,
-      mouseDrag: true,
-      preventScrollOnTouch: 'force'
-    });
-  })
+  if(document.querySelector('.my-descriptions') != null) {
+      descriptionSlider = tns({
+        container: '.my-descriptions',
+        items: 1,
+        controls: false,
+        center: true,
+        navPosition: "bottom",
+        edgePadding: 50,
+        mouseDrag: true,
+        preventScrollOnTouch: 'force'
+      });
+  }
 
+  // if(document.querySelector('.previewButton') != null){
+  //   document.querySelector('.previewButton').addEventListener('click', showPreview);
+  // }
+
+  // if(document.querySelector('.reviewButton') != null){
+  //   document.querySelector('.reviewButton').addEventListener('click', showReview);
+  // }
 };
+
+// const showPreview = () => {
+//   document.querySelector('.card--preview').style.display = "block";
+//   document.querySelector('.card--review').style.display = "none";
+//   document.querySelector('.card--type').style.display = "none";
+
+//   var info = titleSlider.getCurrentSlide();
+//   // document.querySelector('.title--preview').innerHTML = info.index;
+// }
+
+// const showReview = () => {
+//   document.querySelector('.card--preview').style.display = "none";
+//   document.querySelector('.card--review').style.display = "block";
+//   document.querySelector('.card--type').style.display = "block";
+// }
+
+
+const initOnboarding = () => {
+  if(document.querySelector(".onboarding1") != null) {
+    document.querySelector(".onboarding1").addEventListener('click', goToOnboarding2)
+    document.querySelector(".onboarding2").addEventListener('click', goToOnboarding3)
+  }
+}
+
+const goToOnboarding2 = () => {
+  document.querySelector(".onboarding1").style.display= "none";
+  document.querySelector(".onboarding2").style.display= "block";
+}
+
+const goToOnboarding3 = () => {
+  document.querySelector(".onboarding2").style.display= "none";
+  document.querySelector(".onboarding3").style.display= "block";
+
+}
+
+const initRegister = () => {
+  if(document.querySelector(".register--button") != null) {
+    document.querySelectorAll(".register--button").forEach($btn => {$btn.addEventListener('click', goToPersonaliseAccount)});
+    document.querySelector(".login--button").addEventListener('click', goToLogin)
+    document.querySelector(".personaliseAccount--button").addEventListener('click', goToPersonalData)
+  }
+}
+
+const goToPersonaliseAccount = () => {
+  document.querySelector(".loginRegister").style.display= "none";
+  document.querySelector(".login").style.display= "none";
+  document.querySelector(".personaliseAccount").style.display= "block";
+}
+
+const goToPersonalData = () => {
+  document.querySelector(".personaliseAccount").style.display= "none";
+  document.querySelector(".personalData").style.display= "block";
+}
+
+const goToLogin = () => {
+  document.querySelector(".loginRegister").style.display= "none";
+  document.querySelector(".login").style.display= "block";
+}
+
+const initCreateAdventure= () => {
+  if(document.querySelector(".takeOff--button") != null) {
+    document.querySelector(".takeOff--button").addEventListener('click', goToPersonaliseVacation);
+    document.querySelector(".invite--button").addEventListener('click', goToInviteFriends);
+    document.querySelectorAll(".createAdventure--close").forEach($close => { $close.addEventListener('click', overlayOn)});
+    document.querySelector(".overlay").addEventListener('click', overlayOff);
+  }
+}
+
+const goToPersonaliseVacation = () => {
+  document.querySelector(".emptyHomeScreen").style.display= "none";
+  document.querySelector(".personalizeVacation").style.display= "block";
+}
+
+const goToInviteFriends = () => {
+  document.querySelector(".personalizeVacation").style.display= "none";
+  document.querySelector(".inviteFriends").style.display= "block";
+
+}
+
+const overlayOn = () => {
+  document.querySelector(".overlay").style.display="block"
+}
+
+const overlayOff = () => {
+  document.querySelector(".overlay").style.display="none"
+}
+
+const initOrder = () => {
+  if(document.querySelector(".personalInfo--button") != null) {
+    document.querySelector(".personalInfo--button").addEventListener('click', goToPersonalInfo)
+    document.querySelector(".payment--button").addEventListener('click', goToPayment)
+    document.querySelector(".takeOff-order--button").addEventListener('click', goToTakeOff)
+    document.querySelector(".overview--button").addEventListener('click', goToOverview)
+
+  }
+}
+
+const goToPersonalInfo = () => {
+  document.querySelector(".selectPackage").style.display= "none";
+  document.querySelector(".personalInformation").style.display= "block";
+}
+
+const goToPayment = () => {
+  document.querySelector(".personalInformation").style.display= "none";
+  document.querySelector(".payment").style.display= "block";
+
+}
+
+const goToTakeOff = () => {
+  document.querySelector(".payment").style.display= "none";
+  document.querySelector(".takeOff").style.display= "block";
+
+}
+
+const goToOverview = () => {
+  document.querySelector(".takeOff").style.display= "none";
+  document.querySelector(".overview").style.display= "block";
+
+}
+
+const initGuide = () => {
+  currentGuideTab = 1;
+
+  if(document.querySelector(".guide") != null) {
+    document.querySelector(".guide").addEventListener('click', showNextGuideTab);
+  }
+}
+
+const showNextGuideTab = () => {
+currentGuideTab;
+var nextGuideTab = currentGuideTab + 1;
+var path = ".guide--tab--";
+  if(nextGuideTab < 7){
+    document.querySelector( path.concat(currentGuideTab.toString())).style.display= "none";
+    document.querySelector(path.concat(nextGuideTab.toString())).style.display= "block";
+    currentGuideTab = currentGuideTab + 1;
+  } 
+}
+
+const initRules = () => {
+  currentRulesTab = 1;
+  if(document.querySelector(".rules") != null) {
+    document.querySelector(".rules").addEventListener('click', showNextRulesTab);
+  }
+}
+
+const showNextRulesTab = () => {
+currentRulesTab;
+var nextRulesTab = currentRulesTab + 1;
+var path = ".rules--tab--";
+  if(nextRulesTab < 7){
+    document.querySelector( path.concat(currentRulesTab.toString())).style.display= "none";
+    document.querySelector(path.concat(nextRulesTab.toString())).style.display= "block";
+    currentRulesTab = currentRulesTab + 1;
+  }
+}
+
+const initProfile = () => {
+  if(document.querySelector(".profile--change-info--button") != null) {
+    document.querySelector(".profile--change-info--button").addEventListener('click', goToChangePersonalInfo)
+    document.querySelector(".profile--save").addEventListener('click', goToProfilePage)
+  }
+}
+
+const goToChangePersonalInfo = () => {
+  document.querySelector(".profile--custimize-info").style.display= "none";
+  document.querySelector(".profile--personal-info").style.display= "block";
+  document.querySelector(".profile--buttons").style.display= "none";
+
+}
+
+const goToProfilePage = () => {
+  document.querySelector(".profile--personal-info").style.display= "none";
+  document.querySelector(".profile--custimize-info").style.display= "block";
+  document.querySelector(".profile--buttons").style.display= "block";
+}
+
+const initTutorial = () => {
+  currentTutorialTab = 1;
+  if(document.querySelector(".tutorial") != null) {
+    document.querySelector(".tutorial").addEventListener('click', showNextTutorialTab);
+  }
+}
+
+const showNextTutorialTab = () => {
+currentTutorialTab;
+var nextTutorialTab = currentTutorialTab + 1;
+var path = ".tutorial--tab--";
+  if(nextTutorialTab < 7){
+    document.querySelector( path.concat(currentTutorialTab.toString())).style.display= "none";
+    document.querySelector(path.concat(nextTutorialTab.toString())).style.display= "block";
+    currentTutorialTab = currentTutorialTab + 1;
+  }
+}
 
 init();
  

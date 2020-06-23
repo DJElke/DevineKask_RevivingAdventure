@@ -166,5 +166,18 @@ class CardDAO extends DAO {
       $stmt->execute();
       return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function updateCard($cardId, $pictureId, $titleId, $descriptionId){
+      $sql = "UPDATE `Int4_Card`
+      SET `Int4_Card`.`picture_id` = :picture_id, `Int4_Card`.`description_id` = :description_id, `Int4_Card`.`title_id` = :title_id
+      WHERE `Int4_Card`.`id` = :card_id;";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->bindValue(':card_id', $cardId);
+      $stmt->bindValue(':picture_id', $pictureId);
+      $stmt->bindValue(':title_id', $titleId);
+      $stmt->bindValue(':description_id', $descriptionId);
+      $stmt->execute();
+    }
+
 }
 ?>

@@ -1,7 +1,14 @@
+<div class="overlay">
+  <div>
+    <p>If you quit now your progress will be lost. </p>
+    <a href="index.php?page=home">OK</a>
+  </div>
+</div>
+
+<div class="tab">
 <a href="index.php?page=home">
   <span class="close">&#10005;</span>
 </a>
-<div class="tab">
 <header>
   <h1>Station two </h1>
   <h2>Item cards for each player</h2>
@@ -22,6 +29,9 @@
 
   <?php foreach($participants as $participant): ?>
     <div class="tab">
+    <a class="create-item--close">
+        <span class="close">&#10005;</span>
+      </a>
       <p>Item cards for <?php echo $participant['name'] ?></p>
       <div class="itemCardFrom__imagesholder">
         <?php for($e = 1; $e <= $demoGame; $e++): ?>

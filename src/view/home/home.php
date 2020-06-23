@@ -48,10 +48,10 @@
 
   <div class="navigation bg--red white">
     <div class="navHome bold blue">Home</div>
-    <div class="navRules">Rules</div>
-    <div class="navAdd bg--blue text--big">+</div>
-    <div class="navGuide">Guide</div>
-    <div class="navProfile">Profile</div>
+    <div class="navRules white"><a href="index.php?page=rules">Rules</a></div>
+    <div class="navAdd bg--blue text--big"><a href="index.php?page=createAdventure">+</a></div>
+    <div class="navGuide white"><a href="index.php?page=guide">Guide</a></div>
+    <div class="navProfile"><a href="index.php?page=profile">Profile</a></div>
   </div>
 </div>
 

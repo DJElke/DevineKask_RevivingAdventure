@@ -14,7 +14,7 @@
     <div class="ownedVac">
       <p>You have no adventures  yet!</p>
       <img src="assets/illustrations/plane-blue.svg">
-      <a class="takeOff--button">Take of now</a>
+      <a class="takeOff--button">Take off now</a>
     </div>
 
     <div class="involvedVac">
@@ -40,7 +40,12 @@
     <span class="close">&#10005;</span>
   </a>
   <h1>Create a new game</h1>
-  <p>Hier komen de bolleks</p>
+  <div class="shop--crumble">
+    <div><span class="createGame-dot"></span><p>Personalize</p></div>
+    <div><span class="createGame-open-dot"></span><p>Invite</p></div>
+    <div><span class="createGame-open-dot"></span><p>Take-off</p></div>
+  </div>
+
   <div>
     <p>personalize</p>
     <p>invite</p>
@@ -72,7 +77,11 @@
     <span class="close">&#10005;</span>
   </a>
   <h1>Create a new game</h1>
-  <p>Hier komen de bolleks</p>
+  <div class="shop--crumble">
+    <div><span class="createGame-dot"></span><p>Personalize</p></div>
+    <div><span class="createGame-dot"></span><p>Invite</p></div>
+    <div><span class="createGame-open-dot"></span><p>Take-off</p></div>
+  </div>  
   <div>
     <p>personalize</p>
     <p>invite</p>

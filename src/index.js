@@ -598,15 +598,15 @@ const loadFile = file => {
       $customUpload.style.display = 'none';
     }
   });
-  if(stationImage != null){
-    stationImage[currentTab-1].classList.remove('hide');
-    stationImage[currentTab-1].src = URL.createObjectURL(file);
-  }else{
+  // if(stationImage != null){
+  //   stationImage[currentTab-1].classList.remove('hide');
+  //   stationImage[currentTab-1].src = URL.createObjectURL(file);
+  // }else{
     if(stationOneImage != null){
       stationOneImage[currentTab-1].classList.remove('hide');
       stationOneImage[currentTab-1].src = URL.createObjectURL(file);
     }
-  }
+  // }
 }
  
 const initLoadCharacterFile = () => {

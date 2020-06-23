@@ -94,6 +94,10 @@
   color: white;
 }
 
+/* .station__link:visited{
+  color: #424A9F;
+} */
+
 .checkboxContainer{
   display: block;
   position: relative;
@@ -127,4 +131,6 @@
   border: solid #424A9F 1px;
 }
 
-
+.station--checkbox--label {
+padding-left: 1.3rem;
+}

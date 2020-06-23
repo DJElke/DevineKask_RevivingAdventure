@@ -102,7 +102,7 @@ const init = () => {
   }
 
   if(document.querySelector(".characterCardForm__img") != null) {
-    //initLoadCharacterFile();
+    initLoadCharacterFile();
   }
   if(document.querySelector(".itemCardForm__img") != null) {
     initLoadItemFile();
@@ -593,18 +593,29 @@ const disableNext = () => {
    }
  
 //// SECTION SELECT PICTURE
-const loadFile = e => {
+const loadFile = file => {
+  let customUploads =  document.querySelectorAll('.custom-file-upload');
+  let uploadFor = 'ptImage' + [currentTab -1].toString();
+  customUploads.forEach($customUpload => {
+    if($customUpload.htmlFor === uploadFor){
+      $customUpload.style.display = 'none';
+    }
+  });
   if(stationImage != null){
-    characterForm.classList.add('hide');
     stationImage[currentTab-1].classList.remove('hide');
-    stationImage[currentTab-1].src = URL.createObjectURL(e.target.files[0]);
+    stationImage[currentTab-1].src = URL.createObjectURL(file);
   }
 }
  
 const initLoadCharacterFile = () => {
     document.querySelectorAll(".create-character--close").forEach($close => {$close.addEventListener('click', overlayOn)});
-    document.querySelector(".overlay").addEventListener('click', overlayOff);
-    document.querySelectorAll(".characterCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
+    let overlay = document.querySelector(".overlay");
+    if(overlay != null){
+      overlay.addEventListener('click', overlayOff);
+    }
+    document.querySelectorAll(".characterCardForm__img").forEach($img => {$img.addEventListener('change', () => {
+      loadFile(event.target.files[0]);
+    })});
 }
  
 const initLoadItemFile = () => {

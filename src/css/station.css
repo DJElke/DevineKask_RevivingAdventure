@@ -15,7 +15,6 @@
   display: flex;
   flex-flow: row;
   align-items: baseline;
-  margin: 0;
 }
 
 .itemCardForm__img, .adventureCardForm__img {

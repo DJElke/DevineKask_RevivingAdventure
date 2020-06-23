@@ -58,6 +58,7 @@ a {
   background-color: #424A9F;
   box-shadow: 0.3rem 0.3rem #424A9F;
   color:white;
+  font-size: 1rem;
 }
 
 .secondaryButton{
@@ -67,6 +68,16 @@ a {
   text-decoration: none;
   color: #424A9F;
   font-style: bold;
+  font-size: 1rem;
+}
+
+.previousStyling{
+  text-decoration: none;
+  color: #424A9F;
+  font-style: bold;
+  border: none;
+  background-color: white;
+  font-size: 1rem;
 }
 
 .vacation{
@@ -155,4 +166,10 @@ a {
   -moz-transform: skewX(-10deg);
   -ms-transform: skewX(-10deg);
   transform: skewX(-10deg);
+}
+
+.error{
+  color: red;
+  font-size: 1rem;
+  text-decoration: underline;
 }

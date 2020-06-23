@@ -47,15 +47,17 @@
   </br>
   </br>
   <?php if($status >= 1): ?>
-    <label class="checkboxContainer station--right blue">
+    <div class="checkboxContainer station--right blue">
       <input class="checkbox" type='checkbox' disabled='disabled' checked="true">
-      <span class="checkbox__custom--checked"></span>Playercards 4/4
-    </label>
+      <span class="checkbox__custom--checked"></span>
+      <label class="station--checkbox--label" >Playercards 4/4</label>
+    </div>
   <?php else: ?>
-      <label class="checkboxContainer station--right red">
+      <div class="checkboxContainer station--right red">
         <input class="checkbox" type='checkbox' disabled='disabled'>
-        <span class="checkbox__custom--unchecked"></span>Playercards 0/4
-      </label>
+        <span class="checkbox__custom--unchecked"></span>
+        <label class="station--checkbox--label" >Playercards 0/4</label>
+      </div>
   <?php endif;?>
 
   <!-- STATION 2 -->  
@@ -75,15 +77,17 @@
   </br>
   </br>
   <?php if($status >= 2): ?>
-    <label class="checkboxContainer station--left blue">
+    <div class="checkboxContainer station--left blue">
       <input class="checkbox" type='checkbox' disabled='disabled' checked="true">
-      <span class="checkbox__custom--checked"></span>Item cards 26/26
-    </label>
+      <span class="checkbox__custom--checked"></span>
+      <label class="station--checkbox--label" >Item cards 26/26</label>
+    </div>
     <?php else: ?>
-      <label class="checkboxContainer station--left red">
+      <div class="checkboxContainer station--left red">
         <input class="checkbox" type='checkbox' disabled='disabled'>
-        <span class="checkbox__custom--unchecked"></span>Item cards 0/26
-      </label>
+        <span class="checkbox__custom--unchecked"></span>
+        <label class="station--checkbox--label" >Item cards 0/26</label>
+      </div>
     <?php endif;?>
 
   <!-- STATION 3 -->
@@ -103,15 +107,17 @@
   </br>
   </br>
   <?php if($status >= 3): ?>
-    <label class="checkboxContainer station--right blue">
+    <div class="checkboxContainer station--right blue">
       <input class="checkbox" type='checkbox' disabled='disabled' checked="true">
-      <span class="checkbox__custom--checked"></span>Adventure cards 27/27
-    </label>
+      <span class="checkbox__custom--checked"></span>
+      <label class="station--checkbox--label" >Adventure cards 27/27</label>
+    </div>
   <?php else: ?>
-    <label class="checkboxContainer station--right red">
+    <div class="checkboxContainer station--right red">
         <input class="checkbox" type='checkbox' disabled='disabled'>
-        <span class="checkbox__custom--unchecked"></span>Adventure cards 0/27
-    </label>
+        <span class="checkbox__custom--unchecked"></span>
+        <label class="station--checkbox--label" >Adventure cards 0/27</label>
+    </div>
   <?php endif;?>
 
   <!-- STATION 4 -->
@@ -130,15 +136,17 @@
   </br>
   </br>
   <?php if($status >= 4): ?>
-    <label class="checkboxContainer station--left blue">
+    <div class="checkboxContainer station--left blue">
       <input class="checkbox" type='checkbox' disabled='disabled' checked="true">
-      <span class="checkbox__custom--checked"></span>Style vote
-    </label>
+      <span class="checkbox__custom--checked"></span>
+      <label class="station--checkbox--label" >Style vote</label>
+    </div>
   <?php else: ?>
-    <label class="checkboxContainer station--left red">
+    <div class="checkboxContainer station--left red">
         <input class="checkbox" type='checkbox' disabled='disabled'>
-        <span class="checkbox__custom--unchecked"></span>Style vote
-    </label>
+        <span class="checkbox__custom--unchecked"></span>
+        <label class="station--checkbox--label" >Style vote</label>
+    </div>
   <?php endif;?>
 </section>
 

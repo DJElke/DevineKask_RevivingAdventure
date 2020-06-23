@@ -1,0 +1,161 @@
+.btn-takeOff {
+  margin: 0 auto;
+  color: #424A9F;
+  border: .2rem solid #424A9F;
+  padding: .5rem 1rem;
+  font-weight: bold;
+  box-shadow: .3rem .5rem #424A9F;
+}
+
+.empty {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  color: darkGray;
+}
+
+.header--new-game {
+  padding: 1rem;
+}
+
+.shop--crumble {
+  display: flex;
+}
+
+.shop--crumble-dot {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.create-new-label {
+  margin-bottom: 2rem;
+}
+
+.create-new-title {
+  padding: 0 1rem;
+  font-weight: bold;
+}
+
+.destination-input input {
+  border: .01rem solid black;
+  padding: .5rem;
+  width: 80vw;
+}
+
+.destination-input {
+  display: flex;
+  flex-flow: row;
+  padding-left: 1rem;
+}
+
+.color--options-new{
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+.color--options-new label{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+}
+
+.invite--button {
+  margin: 0 auto;
+  border: .2rem solid black;
+  padding: .5rem 1rem;
+  font-weight: bold;
+  box-shadow: .3rem .5rem;
+  position: fixed;
+  transform: translateX(40vw);
+  bottom: 4rem;
+}
+
+.warning-quit {
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: white;
+  width: 70vw;
+  border: .6rem solid #FFE294;
+  text-align: center;
+  margin-top: 30vw;
+}
+
+.warning-quit a {
+  background-color: #FFE294;
+  padding: .5rem 1rem;
+  color: black;
+}
+
+.create-new-subText {
+  padding-left: 1rem;
+  margin-top: -1rem;
+}
+
+.counting-friends {
+  background-color: #424A9F;
+  padding: .1rem;
+  color: white;
+  font-weight: bold;
+}
+
+.added-friends {
+  display: flex;
+  flex-flow: row;
+}
+
+.invited-friend {
+  background-color: #424A9F;
+  display: flex;
+  flex-flow: row;
+  margin:1rem;
+  color: white;
+  margin-top: -.5rem;
+}
+
+.invited-friend img{
+  padding: 0 1rem;
+}
+
+.color--options-n[type=radio]:checked + label {
+  color: #424A9F;
+  font-weight: bold;
+}
+
+.create--crumble {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+}
+
+.create--crumble div{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.line {
+  width: 7rem;
+  border-bottom: .1rem solid black;
+  position: absolute;
+  padding-top: .7rem;
+}
+
+.line-dotted {
+  width: 7rem;
+  border-bottom: .1rem solid black;
+  border-bottom-style: dotted;
+  position: absolute;
+  padding-top: .7rem;
+}
+
+
+
+
+
+
+
+

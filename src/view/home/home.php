@@ -7,8 +7,8 @@
   </header>
 
   <wrapper class="dashboardTabs bg--red"> 
-    <div id="owned" class="containerItem--left blue dashboardTab">My own adventures</div>
-    <div id="involved" class="containerItem--right blue dashboardTab">Involved adventures</div>
+    <div id="owned" class="containerItem--left blue dashboardTab"><p>My own adventures</p></div>
+    <div id="involved" class="containerItem--right blue dashboardTab"><p>Involved adventures</p></div>
  </wrapper>
 
  <section class="dashboardList">

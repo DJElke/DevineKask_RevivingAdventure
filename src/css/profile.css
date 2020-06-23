@@ -9,6 +9,10 @@
   padding-top: 1rem;
 }
 
+.profile_name h1 {
+  padding-top: .6rem;
+}
+
 .profile_name img {
   margin-right: 1rem;
 }
@@ -46,12 +50,17 @@
 
 .color--options, .invite--options {
   display: flex;
-  flex-flow: row;
   justify-content: space-evenly;
 }
 
-.profile--avatar-checked {
-  box-shadow: .3rem .3rem;
+.invite--options label {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.color--options [type=radio]:checked + label img{
+  box-shadow: .3rem .3rem black;
   border-radius:3rem;
 }
 
@@ -123,4 +132,17 @@
   width: 3rem;
   text-align: center;
 }
+
+.img-arrow {
+  position: relative;
+  margin-top: -1rem;
+}
+
+.color--options-blue [type=radio]:checked + label .blue--dot {
+  background-color: #86D0D1;
+  font-weight: bold;
+  color: #7D5794;
+}
+
+
 

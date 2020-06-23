@@ -2,12 +2,19 @@
   font-weight: bold;
 }
 
-.guide-tab {
+.guide--tab{
   display: flex;
   flex-flow: column;
   align-items: center;
   text-align: center;
+  justify-content: space-evenly;
   padding: 2rem;
+  height: 100vw;
+}
+
+.guide-dots {
+  position: fixed;
+  bottom: 4rem;
 }
 
 

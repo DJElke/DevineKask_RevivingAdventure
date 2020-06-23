@@ -15,30 +15,36 @@
   <div>
         <p class="customize-info-title">Change icon</p>
           <div class="color--options">
-            <div><input type="radio"  id="blue" name="ptAvatar" value="lemon"><label for="lemon" ><img src="assets/user-icons/icon-citrus.svg"></label></div>
-            <div><input type="radio"  id="purple" name="ptAvatar" value="cocktail"><label for="cocktail" ><img src="assets/user-icons/icon-cocktail.svg"></label></div>
-            <div><input type="radio"  id="orange" name="ptAvatar" value="backpack"><label for="backpack" ><img src="assets/user-icons/icon-backpack.svg"></label></div>
-            <div class="profile--avatar-checked"><input type="radio"  id="orange" name="ptAvatar" value="melon" checked=true><label for="melon" ><img src="assets/user-icons/icon-watermelon.svg"></label></div>
+            <div><input type="radio"  id="lemon" name="ptAvatar" value="lemon"><label for="lemon" ><img src="assets/user-icons/icon-citrus.svg"></label></div>
+            <div><input type="radio"  id="cocktail" name="ptAvatar" value="cocktail"><label for="cocktail" ><img src="assets/user-icons/icon-cocktail.svg"></label></div>
+            <div><input type="radio"  id="backpack" name="ptAvatar" value="backpack"><label for="backpack" ><img src="assets/user-icons/icon-backpack.svg"></label></div>
+            <div><input type="radio"  id="melon" name="ptAvatar" value="melon" checked=true><label for="melon" ><img src="assets/user-icons/icon-watermelon.svg"></label></div>
           </div>
       </div>
 
   <div>
     <p class="customize-info-title">Change color</p>
     <div class="color--options">
-      <div><input type="radio" class="color--option" id="blue" name="blue" value="blue"><label for="blue" ><span class="blue--dot"><p>blue</p></label></div>
-      <div><input type="radio" checked=true class="color--option" id="purple" name="purple" value="purple"><label for="purple" ><span class="purple--dot"><p>purple</p></label></div>
-      <div><input type="radio" class="color--option" id="orange" name="orange" value="orange"><label for="orange" ><span class="orange--dot"><p>orange</p></label></div>
+      <div>
+      <input type="radio" class="color--option-blue" id="blue" name="blue" value="blue">
+        <label for="blue" >
+        <span class="blue--dot">
+          <p>blue</p>
+        </label>
+      </div>
+      <div><input type="radio" class="color--option" id="purple" name="purple" value="purple"><label for="purple" ><span class="purple--dot"><p>purple</p></label></div>
+      <div><input type="radio" checked=true class="color--option" id="orange" name="orange" value="orange"><label for="orange" ><span class="orange--dot"><p>orange</p></label></div>
     </div>
   </div>
 
-  <div>
+  <!-- <div>
     <p class="customize-info-title">Invite someone</p>
       <div class="invite--options">
         <div><input type="radio"><label for="text" ><img src="assets/icons/text.svg"></label></div>
         <div><input type="radio"><label for="mail" ><img src="assets/icons/mail.svg"></label></div>
         <div><input type="radio"><label for="messenger" ><img src="assets/icons/messenger.svg"></label></div>
       </div>
-  </div>
+  </div> -->
 
   <div>
     <p class="customize-info-title">Previous card games</p>

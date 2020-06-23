@@ -2,7 +2,7 @@
 <div class="photoEditor__grid">
   <div class="menuContainer">
     <div class="containerItem--left quitButton"><a href="index.php?page=involvedVacation&amp;id=<?php echo $vacation['id'];?>" class="secondaryButton">QUIT</a></div>
-    <div class="containerItem--right saveButton"><a class="primaryButton">NEXT</a></div>
+    <div class="containerItem--right button--marginleft saveButton"><a class="primaryButton">NEXT</a></div>
   </div>
 
   <div class="photoContainer">
@@ -46,7 +46,7 @@
       <?php if(($cardTitle != null) && ($status == 0)){?>
         <p class="red">psst... <?php echo $owner; ?> called <?php echo $cardTitle['description']; ?> ...</p>
       <?php } else {?> 
-        <textarea class="titleArea" name="title" type="textarea" placeholder="Title of the card..."></textarea>
+        <textarea class="titleArea" name="title" type="textarea" maxlength="100" placeholder="Title of the card..."></textarea>
       <?php } ?>
     </div>
 

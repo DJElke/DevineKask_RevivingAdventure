@@ -72,9 +72,11 @@ class EditorController extends Controller{
       //foto ophalen
       foreach($cardPicturesArray as $cardPicture){
         $cardImage = $this->cardDAO->getImageUrlById($cardPicture['picture_id']);
-        if(strpos($cardImage[0]['image'], 'uploads') !== false){
-          $imageUrl = $cardImage[0]['image'];
-          $this->set('image', $imageUrl);
+        if(count($cardImage)!= 0){
+          if(strpos($cardImage[0]['image'], 'uploads') !== false){
+            $imageUrl = $cardImage[0]['image'];
+            $this->set('image', $imageUrl);
+          }
         }
       }
 

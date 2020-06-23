@@ -109,6 +109,8 @@
 .titleContainer{
   grid-column: 1 / span 3;
   text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .photoEditorPart2__grid{
@@ -120,10 +122,6 @@
   padding: 0;
 }
 
-.titleContainer{
-  grid-column: 1 / span 3;
-  text-align: center;
-}
 
 .imgEditContainer{
   grid-column: 1 / span 3;
@@ -132,6 +130,8 @@
 
 .descriptionContainer{
   grid-column: 1 / span 3;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .descArea{
@@ -142,6 +142,8 @@
   margin-left: auto;
   margin-right: auto;
   display: block;
+  border: solid 0.2rem #F8A593;
+  font-family: avenir;
 }
 
 .editCardForm{
@@ -176,4 +178,54 @@
   text-align: center;
   border-right: #424A9F 2px solid; 
   vertical-align: center;
+}
+
+.editorIndex__grid{
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  height: 100vh;
+  padding: 1rem;
+}
+
+.editorStationTitle{
+  grid-row: 1;
+  width: 100%;
+  height: auto;
+}
+
+.editorStationImg{
+  grid-row: 2;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editorStationText{
+  grid-row:3;
+  text-align: center;
+  width: 100%;
+  height: auto;
+}
+
+.editorStationButton{
+  grid-row: 4;
+  margin: auto;
+}
+
+.button--marginleft{
+  margin-left: 10rem;
+}
+
+.submitContainer{
+  grid-column: 1 / span 3;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.titleArea{
+  border: solid 0.2rem #F8A593;
+  width: 95%;
+  font-family: avenir;
 }

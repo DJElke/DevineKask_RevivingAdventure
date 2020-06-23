@@ -1,0 +1,29 @@
+.onboarding1 {
+  margin-top: 15%;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: center;
+}
+
+.onboarding2 {
+  margin-top: 15%;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: center;
+}
+
+.onboarding3 {
+  margin-top: 15%;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: center;
+}
+
+.onboarding_image{
+  margin-top: 10%;
+}
+
+.onboarding_dots {
+  display: flex;
+  justify-content: space-evenly;
+}

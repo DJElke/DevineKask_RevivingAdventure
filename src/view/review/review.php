@@ -1,14 +1,16 @@
 <a href="index.php?page=home">
   <span class="close">&#10005;</span>
 </a>
+<div class="review--page--box">
 <div class="card--type">
   <?php if($status == 4): ?>
-    <p> Player cards</p>
+    <h1 class="blue"> Player cards</h1>
   <?php elseif($status == 5): ?>
-    <p> Item cards</p>
+    <h1 class="blue"> Item cards</h1>
   <?php else: ?>
-    <p> Adventure cards</p>
+    <h1 class="blue"> Adventure cards</h1>
   <?php endif; ?>
+</div>
 </div>
 
 <form class="reviewCardForm" action="index.php?page=review&amp;id=<?php echo $vacationId;?>&amp;cardCount=<?php echo $cardCount;?>" method="POST">
@@ -16,32 +18,32 @@
 
   <div class="card--review">
     <?php if($status == 4): ?>
-      <p><?php echo $title['description']?></p>
+      <p class="unique--review--title"><?php echo $title['description']?></p>
     <?php else: ?>
       <div class="my-titles">
         <?php foreach ($titleArray as $title) : ?>
-          <div><p><?php echo $title?></p></div>
+          <div><p class="review--title"><?php  echo $title?></p></div>
         <?php endforeach; ?>
     </div>  
     <?php endif; ?>
 
     <div class="my-images">
         <?php foreach ($imageUrlArray as $image) : ?>
-          <div><img src="<?php echo $image ?>"></div>
+          <div><img class="review--image" src="<?php echo $image ?>"></div>
         <?php endforeach; ?>
     </div>
 
     <div class="my-descriptions">
         <?php foreach ($descriptionArray as $description):  ?>
-          <p><?php echo $description ?></p>
+          <p class="review--description"><?php echo $description ?></p>
         <?php endforeach; ?>
     </div>
     <!-- <div class="previewButton">
       <a class="secondaryButton">NEXT</a>
     </div> -->
 
-    <div class="submitContainer">
-      <button type="submit" class="secondaryButton reviewSubmit" name="action" value="add">NEXT</button>
+    <div class="startreview-button">
+      <button type="submit" class="reviewpage1--intro" name="action" value="add">NEXT</button>
     </div>
   </div>
 
@@ -56,5 +58,6 @@
   </div> -->
 
 </form>
+
 
 

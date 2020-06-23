@@ -16,9 +16,57 @@
   box-shadow: 0.3rem 0.3rem #424A9F;
   text-decoration: none;
   color: #424A9F;
+  background-color: white;
 }
 
 .startreview-button{
   display: flex;
   justify-content: center;
+}
+
+.card--review {
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.review--title {
+  grid-column: 3;
+  border: 3px solid #F8A593;
+  text-align: center;
+  width: 80%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.review--image {
+  box-shadow: 0.3rem 0.3rem #DADADA;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.review--description {
+  grid-column: 3;
+  border: 3px solid #F8A593;
+  text-align: center;
+  width: 80%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin: 1rem;
+  margin-bottom: 3rem;
+}
+
+.review--page--box {
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.unique--review--title {
+  font-size: 1.2rem;
+  color: #F8A593;
+  margin-left: 5%;
+  margin-top: -2%;
+}
+
+.tns-nav {
+  display: none;
 }

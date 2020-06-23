@@ -30,12 +30,7 @@
 <img class="onboarding_image" src="assets/illustrations/box.svg">
 <p>Order it and plan out an amazing evening with the friends you made it with. But be prepared for all kind of suprises!</p>
 
-<div class="onboarding_dots">
-  <span class="dot"></span>
-  <span class="dot"></span>
-  <span class="dot"></span>
-</div>
-<div>
-  <a href="index.php?page=register">Let's get started!</a>
+<div class="onboarding-button">
+  <a class="startbutton-onboarding"href="index.php?page=register">LET'S GET STARTED !</a>
 </div>
 </div>

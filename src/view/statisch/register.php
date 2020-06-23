@@ -24,19 +24,19 @@
     <div class="register--color">
       <p>What's your favorite color</p>
       <div class="color--options">
-        <div><input type="checkbox" class="color--option" id="blue" name="blue" value="blue"><label for="blue" ><span class="blue--dot"><p class="namecolor_register">blue</p></label></div>
-        <div><input type="checkbox" class="color--option" id="purple" name="purple" value="purple"><label for="purple" ><span class="purple--dot"><p class="namecolor_register">purple</p></label></div>
-        <div><input type="checkbox" class="color--option" id="orange" name="orange" value="orange"><label for="orange" ><span class="orange--dot"><p  class="namecolor_register">orange</p></label></div>
+        <div><input type="radio" class="color--option" id="blue" name="coloroption" value="blue"><label for="blue" ><span class="blue--dot"><p class="namecolor_register">blue</p></label></div>
+        <div><input type="radio" class="color--option" id="purple" name="coloroption" value="purple"><label for="purple" ><span class="purple--dot"><p class="namecolor_register">purple</p></label></div>
+        <div><input type="radio" class="color--option" id="orange" name="coloroption" value="orange"><label for="orange" ><span class="orange--dot"><p  class="namecolor_register">orange</p></label></div>
       </div>
     </div>
 
   <div class="register--avatar">
       <p >Choose your avatar</p>
         <div class="color--options">
-          <div><input type="checkbox"  id="blue" name="ptAvatar" value="lemon"><label for="lemon" ><img src="assets/user-icons/icon-citrus.svg"></label></div>
-          <div><input type="checkbox"  id="purple" name="ptAvatar" value="cocktail"><label for="cocktail" ><img src="assets/user-icons/icon-cocktail.svg"></label></div>
-          <div><input type="checkbox"  id="orange" name="ptAvatar" value="backpack"><label for="backpack" ><img src="assets/user-icons/icon-backpack.svg"></label></div>
-          <div><input type="checkbox"  id="orange" name="ptAvatar" value="melon"><label for="backpack" ><img src="assets/user-icons/icon-watermelon.svg"></label></div>
+          <div><input type="radio"  id="lemon" name="ptAvatar" value="lemon"><label for="lemon" ><img src="assets/user-icons/icon-citrus.svg"></label></div>
+          <div><input type="radio"  id="cocktail" name="ptAvatar" value="cocktail"><label for="cocktail" ><img src="assets/user-icons/icon-cocktail.svg"></label></div>
+          <div><input type="radio"  id="backpack" name="ptAvatar" value="backpack"><label for="backpack" ><img src="assets/user-icons/icon-backpack.svg"></label></div>
+          <div><input type="radio"  id="melon" name="ptAvatar" value="melon"><label for="melon" ><img src="assets/user-icons/icon-watermelon.svg"></label></div>
         </div>
     </div>
     <div class="register--nextbotton">

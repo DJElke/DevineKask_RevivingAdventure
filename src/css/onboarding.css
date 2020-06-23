@@ -26,4 +26,19 @@
 .onboarding_dots {
   display: flex;
   justify-content: space-evenly;
+  margin-top: 55%;
+}
+
+.startbutton-onboarding {
+  border: solid black 2px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  box-shadow: 0.3rem 0.3rem black;
+  text-decoration: none;
+  color: black;
+}
+
+.onboarding-button{
+  margin-top: 15%;
+  display: flex;
+  justify-content: center;
 }

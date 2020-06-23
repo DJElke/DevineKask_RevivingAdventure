@@ -1,0 +1,247 @@
+.line-one {
+  border-bottom: dotted #F8A593 3px;
+  width: 70%;
+  margin: 0rem auto;
+}
+
+.line-one-order {
+  margin-top: -1.4rem;
+}
+
+.line-two-order {
+  margin-top: -0.15rem;
+}
+
+.line-two {
+  border-bottom: solid #424A9F 3px;
+  width: 15%;
+  margin-left: 15%;
+}
+
+.line-two-steptwo {
+  border-bottom: solid #424A9F 3px;
+  width: 35%;
+  margin-left: 15%;
+}
+
+.line-two-stepthree {
+  border-bottom: solid #424A9F 3px;
+  width: 60%;
+  margin-left: 15%;
+}
+
+.line-two-stepfour {
+  border-bottom: solid #424A9F 3px;
+  width: 70%;
+  margin-left: 15%;
+}
+
+.header-order {
+  background-color: #F8A593;
+  padding: 1.5rem;
+  text-align: center;
+  color: white;
+}
+
+.order--image {
+  margin-top: 3%;
+  width: 4rem;
+}
+
+.order--header--subtext {
+  font-size: 18px;
+  color: #424A9F;
+}
+
+.orderstatusbar {
+  border: 3px solid #F8A593;
+  width: 90%;
+  margin: 0rem auto;
+  margin-top: -1rem;
+}
+
+.shop--crumble {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.checkout-firstdot {
+  grid-column: 1;
+  margin: 0rem auto;
+}
+
+.checkout-seconddot {
+  grid-column: 2;
+  margin: 0rem auto;
+
+}
+
+.checkout-thirddot {
+  grid-column: 3;
+  margin: 0rem auto;
+
+}
+
+.checkout-fourthdot {
+  grid-column: 4;
+  margin: 0rem auto;
+}
+
+.shop--crumble--text {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  text-align: center;
+  font-size: 13px;
+  margin-top: 0.8rem;
+}
+
+.checkout-text-current {
+  color: #424A9F;
+}
+
+.checkout-text {
+  color: #F8A593;;
+}
+
+.order-items {
+  margin-top: 5%;
+}
+
+.vl {
+  border-left: 1px solid #424A9F;
+  height: 3rem;
+}
+
+.checkbox-order {
+  margin-top: 5%;
+}
+
+.order--item--text {
+  color: #424A9F;
+  width: 80%;
+}
+
+.order--price {
+  color: #424A9F;
+  margin-left: 10%;
+}
+
+.order--nextbotton {
+  margin: 15%;
+  display: flex;
+  justify-content: center;
+}
+
+.personalInfo--button{
+  border: solid #424A9F 2px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  box-shadow: 0.3rem 0.3rem #424A9F;
+  text-decoration: none;
+  color: #424A9F;
+}
+
+.order-input{
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+  width: 20rem;
+  align-items: center;
+}
+
+.order-input-special {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+  width: 7rem;
+}
+
+.order-zipcode{
+  margin-left: 1rem;
+}
+
+.order-personaldata {
+  margin-top: 5%;
+}
+
+.order-input-test{
+  margin-left: 5%;
+}
+
+.payment--button {
+  border: solid #424A9F 2px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  box-shadow: 0.3rem 0.3rem #424A9F;
+  text-decoration: none;
+  color: #424A9F;
+}
+
+.takeOff-order--button {
+  border: solid #424A9F 2px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  box-shadow: 0.3rem 0.3rem #424A9F;
+  text-decoration: none;
+  color: #424A9F;
+}
+
+.payment-method {
+  margin-top: 5%;
+  margin-left: 5%;
+
+}
+
+.checkbox-payment {
+  margin-top: 5%;
+} 
+
+.payment_text{
+  margin-left: 5%;
+}
+
+.payment--item{
+  margin-bottom: 3%;
+}
+
+.order_takeoff--image {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 10%;
+}
+
+.overview--button {
+  border: solid #424A9F 2px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  box-shadow: 0.3rem 0.3rem #424A9F;
+  text-decoration: none;
+  color: #424A9F;
+}
+
+.overview-box{
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-bottom: solid #424A9F 1px;
+}
+
+.overview-cost {
+  display: flex;
+  flex-direction: column;
+}
+
+.overviewdata {
+  color: #424A9F;
+  margin-left: 5%;
+}
+
+.overviewdata_price {
+  color: #424A9F;
+  margin-left: 57%;
+}
+
+.overviewdata_price-special {
+  margin-left: 51%;
+}

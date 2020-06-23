@@ -48,11 +48,8 @@ let titleSlider;
 let imgSlider;
 let descriptionSlider;
 
-// let characterImg = document.querySelectorAll(".characterCardForm__img");
-// let itemImg = document.querySelectorAll(".itemCardForm__img");
-let stationImage = document.querySelectorAll(".output");
-let characterForm = document.querySelectorAll(".characterCardForm__img");
-
+let stationOneImage = document.querySelectorAll(".output");
+let stationImage = document.querySelectorAll(".output--small");
 const init = () => {
   startUpDashboard();
   // PHOTO EDITOR SETUP 
@@ -604,6 +601,11 @@ const loadFile = file => {
   if(stationImage != null){
     stationImage[currentTab-1].classList.remove('hide');
     stationImage[currentTab-1].src = URL.createObjectURL(file);
+  }else{
+    if(stationOneImage != null){
+      stationOneImage[currentTab-1].classList.remove('hide');
+      stationOneImage[currentTab-1].src = URL.createObjectURL(file);
+    }
   }
 }
  
@@ -619,7 +621,9 @@ const initLoadCharacterFile = () => {
 }
  
 const initLoadItemFile = () => {
-  document.querySelectorAll(".itemCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
+  document.querySelectorAll(".itemCardForm__img").forEach($img => {$img.addEventListener('change', () => {
+    loadFile(event.target.files[0])
+  })});
   document.querySelectorAll(".create-item--close").forEach($close => {$close.addEventListener('click', overlayOn)});
   document.querySelector(".overlay").addEventListener('click', overlayOff);
 }

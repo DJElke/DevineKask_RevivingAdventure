@@ -70,7 +70,7 @@ a {
 }
 
 .vacation{
-  border: solid #424A9F 2px;
+  border: solid #424A9F .2rem;
   box-shadow: 0.5rem 0.5rem #424A9F;
   padding: 0.5rem 1rem 0.5rem 1rem;
 }
@@ -119,9 +119,9 @@ a {
   height: 100%;
   vertical-align: middle;
   color: white;
-  background-color: #424A9F;
+  background-color: #ED8D7C;
   position: relative;
-  padding: 0;
+  padding: .1rem 1rem;
   margin: 0;
   width: 30%;
 }
@@ -135,7 +135,7 @@ a {
 }
 
 .progressbar__border--thick{
-  border: #424A9F 0.3rem solid;
+  border: #424A9F 0.2rem solid;
   margin: 0;
   padding: 0;
   background-color: white;

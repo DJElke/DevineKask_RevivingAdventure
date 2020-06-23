@@ -21,6 +21,12 @@
   height: auto;
 }
 
+.vacation--people {
+  display: flex;
+  flex-flow: row;
+  margin-top: -2rem;
+}
+
 .stationOverview{
   grid-column: 1 /span 3;
   display: grid;

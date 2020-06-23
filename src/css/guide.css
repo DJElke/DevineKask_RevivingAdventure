@@ -1,0 +1,15 @@
+.guide--title {
+  font-weight: bold;
+}
+
+.guide-tab {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+
+
+

@@ -1,0 +1,126 @@
+.header_profile {
+  background-color: #F8A593;;
+}
+
+.profile_name {
+  display: flex;
+  flex-flow: row;
+  padding: 0 1rem;
+  padding-top: 1rem;
+}
+
+.profile_name img {
+  margin-right: 1rem;
+}
+
+.purple {
+  color: #424A9F;
+}
+
+.profile--buttons{
+  display: flex;
+  flex-flow: row;
+  align-items: baseline;
+  justify-content: space-evenly;
+}
+
+.profile--change-info--button {
+  border: .2rem solid black;
+  padding: .5rem 1rem;
+  font-weight: bold;
+  box-shadow: .3rem .5rem;
+}
+
+.profile--logOut {
+  font-weight: bold;
+  border-bottom: .1rem solid black;
+}
+
+.profile--custimize-info {
+  padding: 0 1.5rem;
+}
+
+.customize-info-title {
+  font-weight: bold;
+}
+
+.color--options, .invite--options {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+}
+
+.profile--avatar-checked {
+  box-shadow: .3rem .3rem;
+  border-radius:3rem;
+}
+
+
+.orange--dot p{
+  padding-top: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.purple--dot p{
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.blue--dot p{
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.previous-cardgames {
+  display: flex;
+  flex-wrap: wrap;
+}
+.previous-cardgame {
+  text-decoration: none;
+  font-weight: bold;
+  padding: .4rem 1.5rem;
+  margin: .2rem .1rem;
+}
+
+.chernobyl {
+  color: #EF525B;
+  background-color: #CAB6D9;
+}
+
+.surat {
+  color: #7D5794;
+  background-color: #86D0D1;
+}
+
+.colombo {
+  color: #01A990;
+  background-color: #FFE294;
+}
+
+.ushkuduk {
+  color: #424A9F;
+  background-color: #F8A593;
+}
+
+.profile--personal-info div {
+  margin: 1rem;
+  display: flex;
+  flex-flow: column;
+}
+
+.profile--personal-info input {
+  border: .01rem solid #424A9F;
+  padding: .5rem;
+}
+
+.profile--save {
+  border: .2rem solid black;
+  background-color: #F8A593;
+  padding: .5rem 1rem;
+  font-weight: bold;
+  box-shadow: .3rem .5rem;
+  width: 3rem;
+  text-align: center;
+}
+

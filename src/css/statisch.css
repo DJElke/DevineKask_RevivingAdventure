@@ -18,7 +18,7 @@
 .blue--dot {
   height: 35px;
   width: 35px;
-  border: #86D0D1 solid 1px;
+  border: #86D0D1 solid .1rem;
   border-radius: 50%;
   display: inline-block;
 }
@@ -27,7 +27,7 @@
 .purple--dot {
   height: 35px;
   width: 35px;
-  border: #CAB6D9 solid 1px;
+  border: #CAB6D9 solid .1rem;
   border-radius: 50%;
   display: inline-block;
 }
@@ -35,7 +35,8 @@
 .orange--dot {
   height: 35px;
   width: 35px;
-  border: #F8A593 solid 1px;
+  background-color: #F8A593;
+  border: #F8A593 solid .1rem;
   border-radius: 50%;
   display: inline-block;
 }

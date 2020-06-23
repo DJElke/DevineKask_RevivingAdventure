@@ -1,7 +1,9 @@
 <div class="dashboard__grid">
-  <header class="dashboardIntro bg--red white">
-    <h1> Welcome back, <span class="blue"><?php echo $user ?></span>!</h1>
-    <p>Choose your adventure</p>
+  <header class="dashboardIntro bg--red white profile_name">
+    <div class="home--welcome">
+      <h1> Welcome back, <span class="blue"><?php echo $user ?></span>!</h1>
+      <p>Choose your adventure</p>
+    </div>
   </header>
 
   <wrapper class="dashboardTabs bg--red"> 
@@ -16,7 +18,11 @@
       <div class= "vacation">
         <a class="vacation__link" href="index.php?page=ownedVacation&amp;id=<?php echo $vacation['id'];?>">
           <p> <?php echo $vacation['name'] ?> </p>
-          <div class="progressbar__border--thin">
+          <div class="vacation--people">
+            <img src="assets/icons/icon-people.svg">
+            <p>4</p>
+          </div>
+          <div class="progressbar__border--thick">
             <p class="progressbar"> <?php echo $vacation['status']*11 ?>% complete </p>
           </div>
         </a>
@@ -35,7 +41,13 @@
       <div class= "vacation">
         <a class="vacation__link" href="index.php?page=involvedVacation&amp;id=<?php echo $vacation['id'];?>">
           <p> <?php echo $vacation['name'] ?> </p>
-          <p class="progressbar"> <?php echo $vacation['status']*11 ?>% complete </p>
+          <div class="vacation--people">
+            <img src="assets/icons/icon-people.svg">
+            <p>5</p>
+          </div>
+          <div class="progressbar__border--thick">
+            <p class="progressbar"> <?php echo $vacation['status']*11 ?>% complete </p>
+          </div>
         </a>
       </div>
       <?php endforeach; ?>

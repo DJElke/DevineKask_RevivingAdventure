@@ -18,3 +18,4 @@
 <p class="stationOneIntro__text text--medium">Your friends edited the photo's you've uploaded. They also added some titles and descriptions. It's your turn to choose the best title  and description for them!<p>
 <p class="stationOneIntro__text text--medium">Swipe trough the titles and descriptions until you find a MATCH.</p>
 <div class="startreview-button"><a href="index.php?page=review&amp;id=<?php echo $_GET['id'];?>" class="reviewpage1--intro">START</a></div>
+

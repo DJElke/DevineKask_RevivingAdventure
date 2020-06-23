@@ -1,10 +1,17 @@
 
-<header>
+<div class="overlay">
+  <div class="warning-quit">
+    <p>If you quit now your progress will be lost. </p>
+    <a href="index.php?page=home">OK</a>
+  </div>
+</div>
+
+<header class="header--station">
   <a href="index.php?page=home">
     <span class="close">&#10005;</span>
   </a>
   <h1>Station four </h1>
-  <h2>Vote for you favorite card style</h2>
+  <p class="sub-text">Vote for you favorite card style</p>
 </header>
 
 <?php $i = 0 ?>
@@ -17,7 +24,7 @@
         <input type="radio" class="design--option" id="option<?php echo $i;?>" name="design--option" value="<?php echo $design['id']?>">
         <div class="design--checkbox"></div> 
       </label>
-      <p><?php echo $design['description']?></p>
+      <p class="description-design"><?php echo $design['description']?></p>
       <div>      
         <img class="design" src="<?php echo $design['lucky_cards']?>">
         <img class="design" src="<?php echo $design['hazard_cards']?>">
@@ -28,5 +35,5 @@
   <?php endforeach; ?>
   <?php unset($i) ?>
 </div>
-<button type="submit" name="action" value="add">VOTE</button>
+<button class="secondaryButton" type="submit" name="action" value="add">VOTE</button>
 </form>

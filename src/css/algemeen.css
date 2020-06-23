@@ -62,13 +62,12 @@ a {
 }
 
 .secondaryButton{
-  border: solid #424A9F 2px;
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  box-shadow: 0.3rem 0.3rem #424A9F;
-  text-decoration: none;
+  border: .2rem solid #424A9F;
+  padding: .5rem 1rem;
+  font-weight: bold;
+  box-shadow: .3rem .5rem #424A9F;
   color: #424A9F;
-  font-style: bold;
-  font-size: 1rem;
+  background-color: white;
 }
 
 .previousStyling{
@@ -84,6 +83,7 @@ a {
   border: solid #424A9F .2rem;
   box-shadow: 0.5rem 0.5rem #424A9F;
   padding: 0.5rem 1rem 0.5rem 1rem;
+  margin-bottom: 2rem;
 }
 
 .vacation__link{

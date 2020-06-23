@@ -1,0 +1,24 @@
+.startimage--review {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reviewpage {
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.reviewpage1--intro {
+  border: solid #424A9F 2px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  box-shadow: 0.3rem 0.3rem #424A9F;
+  text-decoration: none;
+  color: #424A9F;
+}
+
+.startreview-button{
+  display: flex;
+  justify-content: center;
+}

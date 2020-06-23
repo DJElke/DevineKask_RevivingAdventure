@@ -102,7 +102,7 @@ const init = () => {
   }
 
   if(document.querySelector(".characterCardForm__img") != null) {
-    initLoadCharacterFile();
+    //initLoadCharacterFile();
   }
   if(document.querySelector(".itemCardForm__img") != null) {
     initLoadItemFile();

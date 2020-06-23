@@ -1,4 +1,7 @@
 <header>
+  <a href="index.php?page=home">
+    <span class="close">&#10005;</span>
+  </a>
   <div>
     <img src="assets/user-icons/icon-watermelon.svg">
     <h1> Welcome back, <span class="blue">Elke</span>!</h1>
@@ -16,7 +19,6 @@
             <div><input type="radio"  id="purple" name="ptAvatar" value="cocktail"><label for="cocktail" ><img src="assets/user-icons/icon-cocktail.svg"></label></div>
             <div><input type="radio"  id="orange" name="ptAvatar" value="backpack"><label for="backpack" ><img src="assets/user-icons/icon-backpack.svg"></label></div>
             <div><input type="radio"  id="orange" name="ptAvatar" value="melon" checked=true><label for="backpack" ><img src="assets/user-icons/icon-watermelon.svg"></label></div>
-
           </div>
       </div>
 

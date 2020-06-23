@@ -1,9 +1,10 @@
 <div class="overlay">
-  <div>
+  <div class="warning-quit">
     <p>If you quit now your progress will be lost. </p>
     <a href="index.php?page=home">OK</a>
   </div>
 </div>
+
 
 <div class="tab">
   <div class="station__grid">

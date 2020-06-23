@@ -87,6 +87,22 @@ padding-right: .5rem;
 
 /*** STATION 4 ***/
 
+.header--station {
+  margin: 2rem;
+}
+
+.header--station h1{
+  color: #424A9F;
+}
+
+.sub-text {
+  color: #F8A593;
+  margin-top: -.5rem;
+}
+
+.description-design {
+  font-weight: bold;
+}
 
 .design {
   height: 8rem;
@@ -133,4 +149,20 @@ padding-right: .5rem;
   display: flex;
   flex-flow: column;
   align-items: center;
+}
+
+.station-review-body {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 2rem;
+}
+
+.station-review-body img{
+  margin-left: -3rem;
+}
+
+.station-review-body p{
+  margin-top: -.5rem;
 }

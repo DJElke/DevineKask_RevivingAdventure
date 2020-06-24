@@ -68,7 +68,7 @@
 
       <!-- FILE UPLOAD -->
       <div class="img--input stationOneFileInput"> 
-          <img class="hide output" width="200px"/>
+          <img class="hide output" width="200px" id="img<?php echo $i;?>"/>
           <label class="custom-file-upload" for="ptImage<?php echo $i;?>">+</label>
           <input type="file" accept="image/*" class="characterCardForm__img" name="characterImage<?php echo $i;?>" id="ptImage<?php echo $i;?>" required>
         </label>

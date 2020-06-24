@@ -48,9 +48,9 @@
          <div class="img--input fileInput__wrapper">
             <?php for($e = 1; $e <= $actualGame; $e++): ?>
               <div class="stationFileInput">
-              <img class="hide output--small"/>
-              <label class="custom-file-upload custom-file-upload--small" for="ptImage<?php echo $i;?>">+</label>
-              <input type="file" accept="image/*" class="itemCardForm__img" name="itemImage<?php echo $i;?>" id="ptImage<?php echo $i;?>">
+              <img class="hide output--small" id="img<?php echo $i . $e;?>"/>
+              <label class="custom-file-upload custom-file-upload--small" id="lblImage<?php echo $i . $e;?>" for="ptImage<?php echo $i . $e;?>">+</label>
+              <input type="file" accept="image/*" class="itemCardForm__img" name="itemImage<?php echo $i . $e;?>" id="ptImage<?php echo $i . $e;?>">
             </label>
               </div>
             <?php endfor; ?>
@@ -74,6 +74,8 @@
         <h1 class="blue">You are all done!</h1>
         </br>
         <p>I bet you can't wait for their review! &#128540;</p>
+        <p class="error"></p>
+
         <button type="submit" name="action" value="add" class="primaryButton">SUBMIT</button>
       </div>
     </div>

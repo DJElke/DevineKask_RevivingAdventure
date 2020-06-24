@@ -104,7 +104,7 @@ const init = () => {
   if(document.querySelector(".itemCardForm__img") != null) {
     initLoadItemFile();
   }
-  if(document.querySelector(".itemCardForm__img") != null) {
+  if(document.querySelector(".adventureCardForm__img") != null) {
     initLoadAdventureFile();
   }
   initTabButtons();
@@ -588,11 +588,17 @@ const disableNext = () => {
         }
       });
    }
- 
+
+
 //// SECTION SELECT PICTURE
-const loadFile = file => {
+const loadFile = (file,e)  => {
+  let idarray = e.split('e');
+  let idnmr = idarray[1];
+  // for (var i=1; i <= 27; i++){
   let customUploads =  document.querySelectorAll('.custom-file-upload');
-  let uploadFor = 'ptImage' + [currentTab -1].toString();
+  // let tab = [currentTab -1].toString()
+  // let id = tab.concat(i);
+  let uploadFor = 'ptImage' + idnmr;
   customUploads.forEach($customUpload => {
     if($customUpload.htmlFor === uploadFor){
       $customUpload.style.display = 'none';
@@ -603,10 +609,13 @@ const loadFile = file => {
   //   stationImage[currentTab-1].src = URL.createObjectURL(file);
   // }else{
     if(stationOneImage != null){
-      stationOneImage[currentTab-1].classList.remove('hide');
-      stationOneImage[currentTab-1].src = URL.createObjectURL(file);
+      // stationOneImage[currentTab-1].classList.remove('hide');
+      // stationOneImage[currentTab-1].src = URL.createObjectURL(file);
+      let img = "img".concat(idnmr.toString())
+      document.getElementById(img).src = URL.createObjectURL(file);
+      document.getElementById(img).classList.remove('hide');
     }
-  // }
+  
 }
  
 const initLoadCharacterFile = () => {
@@ -616,20 +625,22 @@ const initLoadCharacterFile = () => {
       overlay.addEventListener('click', overlayOff);
     }
     document.querySelectorAll(".characterCardForm__img").forEach($img => {$img.addEventListener('change', () => {
-      loadFile(event.target.files[0]);
+      loadFile(event.target.files[0], event.target.id);
     })});
 }
  
 const initLoadItemFile = () => {
   document.querySelectorAll(".itemCardForm__img").forEach($img => {$img.addEventListener('change', () => {
-    loadFile(event.target.files[0])
+    loadFile(event.target.files[0], event.target.id)
   })});
   document.querySelectorAll(".create-item--close").forEach($close => {$close.addEventListener('click', overlayOn)});
   document.querySelector(".overlay").addEventListener('click', overlayOff);
 }
  
 const initLoadAdventureFile = () => {
-  document.querySelectorAll(".adventureCardForm__img").forEach($img => {$img.addEventListener('change', loadFile)});
+  document.querySelectorAll(".adventureCardForm__img").forEach($img => {$img.addEventListener('change', () => {
+    loadFile(event.target.files[0], event.target.id)
+  })});
   document.querySelectorAll(".create-adventure--close").forEach($close => {$close.addEventListener('click', overlayOn)});
   document.querySelector(".overlay").addEventListener('click', overlayOff);
 }
@@ -642,11 +653,11 @@ const showTab = n =>{
     x[n].style.display = "block";
  
     //Handle buttons:
-    if (n == 1) {
-      document.querySelector(".prevBtn").style.display = "none";
-    } else {
-      document.querySelector(".prevBtn").style.display = "inline";
-    }
+    // if (n == 1) {
+    //   document.querySelector(".prevBtn").style.display = "none";
+    // } else {
+    //   document.querySelector(".prevBtn").style.display = "inline";
+    // }
   }
 }
 
@@ -662,20 +673,45 @@ const next = () => {
  
   if(currentTab > 0){
     var images = document.querySelectorAll(".output");
+    var smallImages = document.querySelectorAll(".output--small");
     var descriptions = document.querySelectorAll(".characteristic--description");
     var errorMessages = document.querySelectorAll(".error");
     if(errorMessages != null){
       errorMessages[currentTab].innerHTML = "";
     }
 
-    if(images[currentTab-1].src != "" && (descriptions.length == 0 || descriptions [currentTab-1].innerHTML!= " " )){
-      errorMessages[currentTab-1].innerHTML = "";
-      x[currentTab].style.display = "none";
-      currentTab = currentTab + 1;
-      showTab(currentTab);
-    } else {
-      errorMessages[currentTab-1].innerHTML = "Please complete the card first"
+    if(images.length >0){
+      if(images[currentTab-1].src != "" && (descriptions.length == 0 || descriptions [currentTab-1].innerHTML!= " " )){
+        errorMessages[currentTab-1].innerHTML = "";
+        x[currentTab].style.display = "none";
+        currentTab = currentTab + 1;
+        showTab(currentTab);
+      } else {
+        errorMessages[currentTab-1].innerHTML = "Please complete the card first"
+      }
+    } else{
+    //   let srcArray  = [];
+    //   let containsID = "img".concat([currentTab-1].toString());
+    //   smallImages.forEach($img => { 
+    //     let imgID = $img.id.toString();
+    //     if (imgID.includes(containsID)){
+    //     if($img.src.length > 0){
+    //       srcArray.push("true")
+    //     } else {
+    //       srcArray.push("false");
+    //   }}
+    // });
+
+    //   if(!srcArray.includes("false")){
+        errorMessages[currentTab-1].innerHTML = "";
+        x[currentTab].style.display = "none";
+        currentTab = currentTab + 1;
+        showTab(currentTab);
+      // } else {
+      //   errorMessages[currentTab-1].innerHTML = "Please complete the card first"
+      // }
     }
+    
   }
   else {
   x[currentTab].style.display = "none";

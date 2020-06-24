@@ -35,7 +35,7 @@
 
     <div class="my-descriptions">
         <?php foreach ($descriptionArray as $description):  ?>
-          <p class="review--description"><?php echo $description ?></p>
+          <div class="despription--test"><p class="review--description"><span><?php echo $description ?></p></div>
         <?php endforeach; ?>
     </div>
     <!-- <div class="previewButton">

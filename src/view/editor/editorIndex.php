@@ -25,9 +25,15 @@
 <?php } ?> 
 
 <?php if($status == 2){ ?> 
-  <h1 class="blue">Station cards</h1>
-  <img src='assets/illustrations/plane.svg'>
-  <p class="red">Item cards! Edit the picture and give the items from your vacation a fun title and description!</p>
+  <article class="editorStationTitle">
+  <h1 class="blue">Station cards
+      <a href="index.php?page=home">
+        <span class="close">&#10005;</span>
+      </a>
+    </h1>
+  </article>
+  <img class="editorStationImg" src='assets/illustrations/plane.svg'>
+  <p class="editorStationText red">Item cards! Edit the picture and give the items from your vacation a fun title and description!</p>
   </br>
 <?php } ?> 
 

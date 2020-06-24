@@ -94,9 +94,9 @@
   color: white;
 }
 
-/* .station__link:visited{
+.station__link:visited{
   color: #424A9F;
-} */
+}
 
 .checkboxContainer{
   display: block;

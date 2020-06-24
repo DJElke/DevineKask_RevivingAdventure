@@ -20,7 +20,7 @@
     <div class="dragItems">
     <?php foreach ($stickers as $sticker){?> 
       <div class="stickerContainer">
-        <img id="sticker<?php echo $sticker['id']; ?>" class="sticker" src="<?php echo $sticker['image'];?>" alt="sticker<?php echo $sticker['id']; ?>" draggable="true"/>
+        <img id="sticker<?php echo $sticker['id']; ?>" class="sticker" src="assets/<?php echo $sticker['image'];?>" alt="sticker<?php echo $sticker['id']; ?>" draggable="true"/>
       </div>
     <?php } ?>
     </div>

@@ -2,15 +2,15 @@
 
 class DAO {
 
-  private static $dbHost = "localhost";
-  private static $dbName = "Integration4";
-  private static  $dbUser = "root";
-  private static  $dbPass = "root";
+  // private static $dbHost = "localhost";
+  // private static $dbName = "Integration4-final";
+  // private static  $dbUser = "root";
+  // private static  $dbPass = "root";
 
-  // private static $dbHost = "ID281926_20182019.db.webhosting.be";
-  // private static $dbName = "ID281926_20182019";
-  // private static $dbUser = "ID281926_20182019";
-  // private static $dbPass = "Boterbloempje23";
+  private static $dbHost = "ID281926_20182019.db.webhosting.be";
+  private static $dbName = "ID281926_20182019";
+  private static $dbUser = "ID281926_20182019";
+  private static $dbPass = "Boterbloempje23";
 
     // Properties
 	private static $sharedPDO;

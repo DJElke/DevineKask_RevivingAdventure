@@ -239,12 +239,8 @@
   <?php endif;?>
   
   <!-- STATION 8 --> 
-  <div <?php if($status >= 7): ?>
-    class="station--left station--unlocked" 
-  <?php else: ?> 
-    class="station--left station--locked" 
-  <?php endif; ?>>
-    <a class="station__link" <?php if($status == 7): ?> <?php endif; ?>>
+  <div class="station--left station--unlocked" >
+    <a class="station__link" href="index.php?page=order">
       <p>station eight</p>
     </a>
   </div>

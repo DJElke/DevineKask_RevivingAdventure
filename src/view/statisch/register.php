@@ -60,7 +60,7 @@
     <input class="input_register" type=password placeholder="iamsohandsome321" name="ptPasswordRe">
   </div>
   <div class="register--finishedbotton">
-    <a class="registerFinished--button" href="index.php?page=tutorial">REGISTER</a>
+    <a class="registerFinished--button" href="index.php?page=home">REGISTER</a>
   </div>
 </div>
 

@@ -39,10 +39,6 @@ $routes = array(
       'controller' => 'Statisch',
       'action' => 'profile'
     ),
-    'tutorial' => array (
-      'controller' => 'Statisch',
-      'action' => 'tutorial'
-    ),
     'home' => array (
       'controller' => 'Home',
       'action' => 'home'

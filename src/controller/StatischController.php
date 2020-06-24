@@ -35,8 +35,4 @@ class StatischController extends Controller {
   public function profile(){
 
   }
-  
-  public function tutorial(){
-
-  }
 }
